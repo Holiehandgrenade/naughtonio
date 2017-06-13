@@ -1,0 +1,20 @@
+body{
+	padding: 0;
+	margin: 0;
+}
+
+.walls_text {
+	font-size: 1.6em;
+	position: fixed;
+	color: #885522;
+}
+
+.walls_text#walls1 {
+	left: 30px;
+	top: 50px;
+}
+
+.walls_text#walls2 {
+	right: 30px;
+	bottom: 50px;
+}

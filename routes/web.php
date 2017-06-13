@@ -24,6 +24,8 @@ Route::group(['prefix' => 'public'], function () {
         return view('public.barcode.index');
     });
     Route::post('barcode', 'PublicController@barcode');
+
+    Route::get('quoridor', 'PublicController@quoridor');
 });
 
 Route::group(['middleware' => 'auth'], function () {

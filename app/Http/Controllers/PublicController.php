@@ -10,4 +10,9 @@ class PublicController extends Controller
     {
 
     }
+
+    public function quoridor()
+    {
+        return view('barcode.public.index');
+    }
 }
