@@ -23,6 +23,6 @@ Route::group(['prefix' => 'public'], function () {
 
 });
 
-Route::group(['middleware' => ''], function () {
-
+Route::group(['middleware' => 'auth'], function () {
+    
 });
