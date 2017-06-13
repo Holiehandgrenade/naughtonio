@@ -3,15 +3,15 @@
 <head>
     <title>Use the force, Luke</title>
 
-    <link rel="shortcut icon" href="vader.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/img/single-projects/star-wars/vader.ico" type="image/x-icon" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="countdown.min.js"></script>
-    <script type="text/javascript" src="modernizr.min.js"></script>
+    <script type="text/javascript" src="/js/single-projects/star-wars/countdown.min.js"></script>
+    <script type="text/javascript" src="/js/single-projects/star-wars/modernizr.min.js"></script>
     
     <script type="text/javascript">
         function update()
@@ -128,7 +128,7 @@
     </table>
 
     <audio autoplay id="star-wars-theme">
-        <source src="star-wars.mp3" type="audio/mpeg">
+        <source src="/music/single-projects/star-wars/star-wars.mp3" type="audio/mpeg">
     </audio>
 
     <div id="volume">
