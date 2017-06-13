@@ -2,14 +2,14 @@
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-	<script src="ngStorage.min.js"></script>
-	<script src="calcs.js"></script>
+	<script src="/js/single-projects/loans/ngStorage.min.js"></script>
+	<script src="/js/single-projects/loans/calcs.js"></script>
 
-	<link rel="stylesheet" href="style.css"/>
+	<link rel="stylesheet" href="/css/single-projects/loans/style.css"/>
 </head>
 <body ng-app = "calc-app">
 <div id = "interest_div" ng-controller = "calcController as calc">
-	<p>Total Loans Added: {{total_loans}}
+	<p>Total Loans Added: @{{total_loans}}
 	<input ng-model = "loan.principle"/  placeholder = "Principal">
 	<input ng-model = "loan.rate"/ placeholder = "Rate (yearly as a percent)">
 	<input ng-model = "loan.minimum"/ placeholder = "Minimum (monthly payment)">
