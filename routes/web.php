@@ -26,6 +26,8 @@ Route::group(['prefix' => 'public'], function () {
     Route::post('barcode', 'PublicController@barcode');
 
     Route::get('quoridor', 'PublicController@quoridor');
+
+    Route::get('tiny-tables', 'PublicController@tinyTables');
 });
 
 Route::group(['middleware' => 'auth'], function () {

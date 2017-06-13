@@ -15,4 +15,9 @@ class PublicController extends Controller
     {
         return view('public.quoridor.index');
     }
+
+    public function tinyTables()
+    {
+        return view('public.tiny-tables.index');
+    }
 }
