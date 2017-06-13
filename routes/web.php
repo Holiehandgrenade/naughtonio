@@ -20,5 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'public'], function () {
-    
+
+});
+
+Route::group(['middleware' => ''], function () {
+
 });
