@@ -32,6 +32,8 @@ Route::group(['prefix' => 'public'], function () {
     Route::get('pathfinder', 'PublicController@pathfinder');
 
     Route::get('genetic-pathfinder', 'PublicController@geneticPathfinder');
+
+    Route::get('star-wars', 'PublicController@starWars');
 });
 
 Route::group(['middleware' => 'auth'], function () {

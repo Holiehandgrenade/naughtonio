@@ -30,4 +30,9 @@ class PublicController extends Controller
     {
         return view('public.genetic-pathfinder.index');
     }
+
+    public function starWars()
+    {
+        return view('public.star-wars.index');
+    }
 }
