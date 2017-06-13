@@ -30,6 +30,8 @@ Route::group(['prefix' => 'public'], function () {
     Route::get('tiny-tables', 'PublicController@tinyTables');
 
     Route::get('pathfinder', 'PublicController@pathfinder');
+
+    Route::get('genetic-pathfinder', 'PublicController@geneticPathfinder');
 });
 
 Route::group(['middleware' => 'auth'], function () {

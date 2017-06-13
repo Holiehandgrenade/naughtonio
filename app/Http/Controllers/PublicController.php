@@ -25,4 +25,9 @@ class PublicController extends Controller
     {
         return view('public.pathfinder.index');
     }
+
+    public function geneticPathfinder()
+    {
+        return view('public.genetic-pathfinder.index');
+    }
 }
