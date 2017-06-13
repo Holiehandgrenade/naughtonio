@@ -35,4 +35,9 @@ class PublicController extends Controller
     {
         return view('public.star-wars.index');
     }
+
+    public function clock()
+    {
+        return view('public.clock.index');
+    }
 }
