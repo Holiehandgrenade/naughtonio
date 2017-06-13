@@ -28,6 +28,8 @@ Route::group(['prefix' => 'public'], function () {
     Route::get('quoridor', 'PublicController@quoridor');
 
     Route::get('tiny-tables', 'PublicController@tinyTables');
+
+    Route::get('pathfinder', 'PublicController@pathfinder');
 });
 
 Route::group(['middleware' => 'auth'], function () {

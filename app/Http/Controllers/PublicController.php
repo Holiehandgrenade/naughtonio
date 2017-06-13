@@ -20,4 +20,9 @@ class PublicController extends Controller
     {
         return view('public.tiny-tables.index');
     }
+
+    public function pathfinder()
+    {
+        return view('public.pathfinder.index');
+    }
 }
