@@ -20,10 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'public'], function () {
-    Route::get('barcode', function () {
-        return view('public.barcode.index');
-    });
-    Route::post('barcode', 'PublicController@barcode');
+    Route::get('barcode', 'PublicController@barcode');
+    Route::post('barcode', 'PublicController@barcodeize');
 
     Route::get('quoridor', 'PublicController@quoridor');
 

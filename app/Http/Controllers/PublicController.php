@@ -8,7 +8,12 @@ class PublicController extends Controller
 {
     public function barcode()
     {
+        return view('public.barcode.index');
+    }
 
+    public function barcodeize()
+    {
+        dd('asdf');
     }
 
     public function quoridor()
