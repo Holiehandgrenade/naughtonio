@@ -12,7 +12,7 @@ $(document).ready(function(){
 
 		if(ticker == 60){
 			ticker = 0;
-			$("body").css("background-image", "url('"+faces[counter]+"')");
+			$("body").css("background-image", "url('/img/single-projects/face/"+faces[counter]+"')");
 			$("body").css("background-size","100%");
 			counter++;
 			if(counter == faces.length){
