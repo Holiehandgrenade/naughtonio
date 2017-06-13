@@ -40,4 +40,9 @@ class PublicController extends Controller
     {
         return view('public.clock.index');
     }
+
+    public function face()
+    {
+        return view('public.face.index');
+    }
 }

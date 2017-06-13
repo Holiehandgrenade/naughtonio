@@ -37,6 +37,8 @@ Route::group(['prefix' => 'public'], function () {
     Route::get('starwars', 'PublicController@starWars');
 
     Route::get('clock', 'PublicController@clock');
+
+    Route::get('face', 'PublicController@face');
 });
 
 Route::group(['middleware' => 'auth'], function () {
