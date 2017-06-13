@@ -8,6 +8,6 @@ class PublicController extends Controller
 {
     public function barcode()
     {
-        dd('asdf');
+
     }
 }
