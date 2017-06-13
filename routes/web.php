@@ -24,5 +24,5 @@ Route::group(['prefix' => 'public'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    
+
 });
