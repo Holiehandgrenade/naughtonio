@@ -27,6 +27,7 @@
     <div class="content">
 
         <form name="testForm" action="barcode" method="POST" class="form-horizontal">
+            {{ csrf_field() }}
             <div class="form-group">
                 <label for="text" class="col-md-4 control-label">Text</label>
                 <div class="col-md-5">
