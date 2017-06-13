@@ -45,4 +45,9 @@ class PublicController extends Controller
     {
         return view('public.face.index');
     }
+
+    public function loans()
+    {
+        return view('public.loans.index');
+    }
 }

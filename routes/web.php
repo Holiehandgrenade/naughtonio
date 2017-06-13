@@ -39,6 +39,8 @@ Route::group(['prefix' => 'public'], function () {
     Route::get('clock', 'PublicController@clock');
 
     Route::get('face', 'PublicController@face');
+
+    Route::get('loans', 'PublicController@loans');
 });
 
 Route::group(['middleware' => 'auth'], function () {

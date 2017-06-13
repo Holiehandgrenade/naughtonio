@@ -1,0 +1,27 @@
+#interest_div{
+	position: relative;
+	top: 100px;
+	width:400px;
+	margin: auto;
+}
+
+#interest_div input{
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-radius: 10px;
+	font-size: 20px;
+}
+
+#interest_div button{
+	width: 50%;
+	height:30px;
+	margin: auto;
+	font-size: 20px;
+}
+
+#answers{
+	position: relative;
+	top: -150px;
+	float: right;
+}
