@@ -13,6 +13,6 @@ class PublicController extends Controller
 
     public function quoridor()
     {
-        return view('barcode.public.index');
+        return view('public.quoridor.index');
     }
 }
