@@ -60,4 +60,41 @@ class PublicController extends Controller
     {
         return view('public.jp.index');
     }
+
+    public function jpPost(Request $request)
+    {
+        $word = $request->input('input');
+        $chars = str_split($word);
+        $digits = [];
+        foreach ($chars as $char) {
+            array_push($digits, ord($char));
+        }
+
+        $full = [];
+        for($i = 0; $i < 30; $i++) {
+            array_push($full, ($i+1) * ($digits[($i%count($digits))]));
+        }
+
+        $p="/[!@#$%^&*();|+=._a-zA-Z0-9]/";
+        $final = [];
+        foreach ($full as $index => $val) {
+            $counter = 2;
+
+            if($index < 2){
+                $val = $val*3;
+            }
+
+            while( ! preg_match($p, chr($val))) {
+                $val = floor($val / $counter);
+                $counter++;
+                if($val < 10){
+                    $val += ($counter*$counter);
+                }
+            }
+            array_push($final, chr($val));
+        }
+
+        $output = implode("", $final);
+        return view('public.jp.return', compact('output'));
+    }
 }
