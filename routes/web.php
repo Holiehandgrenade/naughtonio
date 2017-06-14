@@ -39,6 +39,9 @@ Route::group(['prefix' => 'public'], function () {
     Route::get('face', 'PublicController@face');
 
     Route::get('loans', 'PublicController@loans');
+
+    Route::get('jp', 'PublicController@jp');
+    Route::post('jp', 'PublicController@jpPost');
 });
 
 Route::group(['middleware' => 'auth'], function () {

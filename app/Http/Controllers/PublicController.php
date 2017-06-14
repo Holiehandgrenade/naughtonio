@@ -55,4 +55,9 @@ class PublicController extends Controller
     {
         return view('public.loans.index');
     }
+
+    public function jp()
+    {
+        return view('public.jp.index');
+    }
 }
