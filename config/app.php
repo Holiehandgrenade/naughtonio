@@ -168,6 +168,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        \Naughtonium\LaravelDarkSky\LaravelDarkSkyServiceProvider::class,
 
         /*
          * Application Service Providers...
