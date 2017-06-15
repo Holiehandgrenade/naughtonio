@@ -23,6 +23,20 @@ class WeatherTextController extends Controller
             'active' => 'required',
             'timezone' => 'required',
         ]);
+
+        $user = \Auth::user();
+
+        if ( ! $user->weatherText) {
+            $user->createWeatherText([
+                'time' => $request->input('time'),
+                'active' => $request->input('active'),
+            ]);
+        }
+
+        $user->update([
+            'phone' => $request->input('phone'),
+            'timezone' => $request->input('timezone'),
+        ]);
     }
 
     public function phone(Request $request)

@@ -15,7 +15,7 @@ class CreateWeatherTextsTable extends Migration
     {
         Schema::create('weather_texts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unique();
             $table->time('time');
             $table->boolean('active');
             $table->timestamps();
