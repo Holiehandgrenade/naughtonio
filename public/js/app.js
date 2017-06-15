@@ -1757,20 +1757,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
-var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             phone: '',
-            csrf_token: csrf_token
+            csrf_token: $('meta[name="csrf-token"]').attr('content')
         };
     },
 
     components: {
         MaskedInput: __WEBPACK_IMPORTED_MODULE_0_vue_masked_input__["a" /* default */]
+    },
+    mounted: function mounted() {
+        console.log($('meta[name="csrf-token"]').attr('content'));
     }
 });
 
@@ -31870,11 +31875,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "method": "POST",
       "action": "/weather-text/phone"
     }
-  }, [_c('label', {
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.csrf_token),
+      expression: "csrf_token"
+    }],
     attrs: {
-      "for": "phone"
+      "type": "hidden",
+      "name": "_token"
+    },
+    domProps: {
+      "value": (_vm.csrf_token)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.csrf_token = $event.target.value
+      }
     }
-  }, [_vm._v("\n                    Phone\n                ")]), _vm._v(" "), _c('masked-input', {
+  }), _vm._v(" "), _c('label', [_vm._v("\n                    Phone\n                ")]), _vm._v(" "), _c('masked-input', {
     attrs: {
       "id": "phone",
       "name": "phone",

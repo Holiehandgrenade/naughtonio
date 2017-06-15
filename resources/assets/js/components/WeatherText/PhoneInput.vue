@@ -3,9 +3,12 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <form method="POST" action="/weather-text/phone">
-                    <label for="phone">
+                    <input type="hidden" name="_token" v-model="csrf_token">
+
+                    <label>
                         Phone
                     </label>
+
                     <masked-input
                         id="phone"
                         name="phone"
@@ -22,17 +25,17 @@
 
 <script>
     import MaskedInput from 'vue-masked-input';
-    var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
     export default {
         data () {
             return {
                 phone: '',
-                csrf_token: csrf_token,
+                csrf_token: $('meta[name="csrf-token"]').attr('content'),
             }
         },
         components: {
           MaskedInput
         },
+        mounted(){console.log($('meta[name="csrf-token"]').attr('content'));}
     }
 </script>

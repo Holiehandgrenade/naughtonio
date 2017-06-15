@@ -29,6 +29,7 @@ class WeatherTextBrowserTest extends DuskTestCase
         $this->browse(function ($browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/weather-text')
+                ->assertSee('Phone')
                 ->assertSee('Time')
                 ->assertSee('Timezone')
                 ->assertSee('Active');
@@ -57,6 +58,23 @@ class WeatherTextBrowserTest extends DuskTestCase
                 ->visit('/weather-text')
                 ->type('phone', '5555555555')
                 ->click('button[type="submit"]');
+        });
+    }
+
+    /** @test */
+    public function user_should_be_redirected_to_time_page_after_phone_submission()
+    {
+        $user = factory(User::class)->create(['phone' => null]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit('/weather-text')
+                ->type('phone', '5555555555')
+                ->click('button[type="submit"]');
+            $browser->assertSee('Phone')
+                ->assertSee('Time')
+                ->assertSee('Timezone')
+                ->assertSee('Active');
         });
     }
 }
