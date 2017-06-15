@@ -36,6 +36,5 @@
         components: {
           MaskedInput
         },
-        mounted(){console.log($('meta[name="csrf-token"]').attr('content'));}
     }
 </script>

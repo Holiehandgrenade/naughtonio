@@ -1773,9 +1773,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     components: {
         MaskedInput: __WEBPACK_IMPORTED_MODULE_0_vue_masked_input__["a" /* default */]
-    },
-    mounted: function mounted() {
-        console.log($('meta[name="csrf-token"]').attr('content'));
     }
 });
 
