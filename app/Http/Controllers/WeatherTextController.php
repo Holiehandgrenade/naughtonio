@@ -30,24 +30,6 @@ class WeatherTextController extends Controller
         ]);
 
         event(new WeatherTextUpdated($request->all()));
-
-        $user = Auth::user();
-
-        if ( ! $weatherText = $user->weatherText) {
-            $weatherText = new WeatherText();
-        }
-
-        $weatherText->fill([
-            'time' => $request->input('time'),
-            'active' => $request->input('active'),
-        ]);
-
-        $user->weatherText()->save($weatherText);
-
-        $user->update([
-            'phone' => $request->input('phone'),
-            'timezone' => $request->input('timezone'),
-        ]);
     }
 
     public function phone(Request $request)
