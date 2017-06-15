@@ -45,5 +45,7 @@ Route::group(['prefix' => 'public'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-
+    Route::group(['prefix' => 'weather-text'], function () {
+        Route::get('/', 'WeatherTextController@show');
+    });
 });
