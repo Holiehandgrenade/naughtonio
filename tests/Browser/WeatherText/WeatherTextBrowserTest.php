@@ -34,4 +34,16 @@ class WeatherTextBrowserTest extends DuskTestCase
                 ->assertSee('Active:');
         });
     }
+    
+    /** @test */
+    public function a_user_can_enter_phone_information()
+    {
+        $user = factory(User::class)->create(['phone' => null]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit('/weather-text')
+                ->type('phone', '5555555555');
+        });
+    }
 }
