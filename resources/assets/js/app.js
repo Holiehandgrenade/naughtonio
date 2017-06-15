@@ -15,14 +15,16 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-
-const app = new Vue({
-    el: '#app'
-});
 
 /**
  * Custom Vue Components
  */
+Vue.component('example', require('./components/Example.vue'));
+Vue.component('weathertext-phone-input', require('./components/WeatherText/PhoneInput.vue'));
 
-// Vue.component('weathertext-phone-input', require('./components/WeatherText/PhoneInput.vue'));
+
+
+
+const app = new Vue({
+    el: '#app'
+});
