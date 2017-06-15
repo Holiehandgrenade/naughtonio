@@ -124,10 +124,9 @@ class WeatherTextFeatureTest extends TestCase
         $weatherText = new WeatherText([
             'time' => '8:00',
             'active' => true,
-        ])
+        ]);
+        $user->weatherText()->save($weatherText);
         $this->be($user);
-
-        $this->assertNull($user->weatherText);
 
         $this->patch('weather-text', [
             'phone' => '5555555555',
@@ -143,7 +142,7 @@ class WeatherTextFeatureTest extends TestCase
         $this->assertDatabaseHas('weather_texts', [
             'user_id' => $user->id,
             'active' => true,
-            'time' => '8:00',
+            'time' => '7:00',
         ]);
     }
 }
