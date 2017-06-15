@@ -9,6 +9,11 @@ use Auth;
 
 class WeatherTextController extends Controller
 {
+    /**
+     * Returns one of two views to gather needed info
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show()
     {
         // If user doesn't have a phone already, return form
@@ -20,6 +25,11 @@ class WeatherTextController extends Controller
         }
     }
 
+    /**
+     * Updates the User and WeatherText records
+     *
+     * @param Request $request
+     */
     public function update(Request $request)
     {
         $this->validate($request, [
@@ -32,6 +42,12 @@ class WeatherTextController extends Controller
         event(new WeatherTextUpdated($request->all()));
     }
 
+    /**
+     * Updates User phone record
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function phone(Request $request)
     {
         $this->validate($request, [
