@@ -1,5 +1,7 @@
 <?php
 
+namespace App\UserTraits;
+
 /**
  * Created by PhpStorm.
  * User: jack
@@ -8,12 +10,8 @@
  */
 trait WeatherText
 {
-    protected function createWeatherText ($time, $active)
+    protected function weatherText ()
     {
-        DB::insert([
-            'user_id' => $this->id,
-            'time' => $time,
-            'active' => $active,
-        ]);
+        return $this->hasOne(\App\Models\WeatherText::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class WeatherTextController extends Controller
 {
@@ -24,13 +25,10 @@ class WeatherTextController extends Controller
             'timezone' => 'required',
         ]);
 
-        $user = \Auth::user();
+        $user = Auth::user();
 
         if ( ! $user->weatherText) {
-            $user->createWeatherText(
-                $request->input('time'),
-                $request->input('active')
-            );
+            Auth::user()->weatherText
         }
 
         $user->update([
