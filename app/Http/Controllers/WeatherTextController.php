@@ -21,8 +21,12 @@ class WeatherTextController extends Controller
             'phone' => 'required',
         ]);
 
-        \Auth::user()->update([
+        $user = \Auth::user();
+
+        $user->update([
             'phone' => $request->input('phone')
         ]);
+
+        return view('weathertext.show', compact('user'));
     }
 }

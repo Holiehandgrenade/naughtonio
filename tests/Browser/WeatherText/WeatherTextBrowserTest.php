@@ -9,6 +9,8 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class WeatherTextBrowserTest extends DuskTestCase
 {
+    use DatabaseMigrations;
+
     /** @test */
     public function if_user_has_no_phone_they_should_see_a_phone_input()
     {
