@@ -9,12 +9,12 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class WeatherTextUnitTest extends TestCase
 {
-    use DatabaseTransactions;
+    use DatabaseTransactions, DatabaseMigrations;
 
     /** @test */
     public function a_user_has_nullable_phone()
     {
-        $user = factory(User::class)->create(['phone' => null]);
-        $this->assertDatabaseHas('users', $user);
+        $user = factory(User::class)->create();
+        $this->assertDatabaseHas('users', $user['attributes']);
     }
 }
