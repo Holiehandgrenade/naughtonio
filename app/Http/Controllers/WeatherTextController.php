@@ -14,12 +14,13 @@ class WeatherTextController extends Controller
      */
     public function show()
     {
+        $user = \Auth::user();
         // If user doesn't have a phone already, return form
-        if (\Auth::user()->phone == null) {
+        if ($user->phone == null) {
             return view('weathertext.phone');
         } else {
             // Else return regular form
-            return view('weathertext.show', ['user' => \Auth::user()]);
+            return view('weathertext.show', ['user' => $user, 'activeText' => $user->weatherText]);
         }
     }
 
