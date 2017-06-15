@@ -21,4 +21,14 @@ class WeatherTextFeatureTest extends TestCase
         $this->get('/weather-text')
             ->assertSuccessful();
     }
+
+    /** @test */
+    public function user_can_post_phone_data()
+    {
+        $user = factory(User::class)->create(['phone' => null]);
+        $this->be($user);
+
+        $this->post('weather-text/phone')
+            ->assertSuccessful();
+    }
 }
