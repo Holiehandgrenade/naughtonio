@@ -20,3 +20,9 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+/**
+ * Custom Vue Components
+ */
+
+Vue.component('weathertext-phone-input', require('./components/WeatherText/PhoneInput.vue'));
