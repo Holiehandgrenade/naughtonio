@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WeatherText\WeatherText;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -28,7 +29,12 @@ class WeatherTextController extends Controller
         $user = Auth::user();
 
         if ( ! $user->weatherText) {
-            Auth::user()->weatherText
+            $weatherText = new WeatherText([
+                'time' => $request->input('time'),
+                'active' => $request->input('active'),
+            ]);
+
+            $user->weatherText()->save($weatherText);
         }
 
         $user->update([

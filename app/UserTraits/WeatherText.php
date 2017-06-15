@@ -10,7 +10,7 @@ namespace App\UserTraits;
  */
 trait WeatherText
 {
-    protected function weatherText ()
+    public function weatherText()
     {
         return $this->hasOne(\App\Models\WeatherText\WeatherText::class);
     }

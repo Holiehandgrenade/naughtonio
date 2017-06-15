@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\WeatherText;
 
+use App\Models\WeatherText\WeatherText;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -113,6 +114,36 @@ class WeatherTextFeatureTest extends TestCase
             'user_id' => $user->id,
             'active' => true,
             'time' => '7:00',
+        ]);
+    }
+
+    /** @test */
+    public function if_user_has_weather_text_associated_simply_update()
+    {
+        $user = factory(User::class)->create(['phone' => '9999999999']);
+        $weatherText = new WeatherText([
+            'time' => '8:00',
+            'active' => true,
+        ])
+        $this->be($user);
+
+        $this->assertNull($user->weatherText);
+
+        $this->patch('weather-text', [
+            'phone' => '5555555555',
+            'timezone' => 'EST',
+            'active' => true,
+            'time' => '7:00',
+        ])
+            ->assertSuccessful();
+        $this->assertDatabaseHas('users', [
+            'phone' => '5555555555',
+            'timezone' => 'EST',
+        ]);
+        $this->assertDatabaseHas('weather_texts', [
+            'user_id' => $user->id,
+            'active' => true,
+            'time' => '8:00',
         ]);
     }
 }
