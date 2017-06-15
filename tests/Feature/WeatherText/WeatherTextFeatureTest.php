@@ -16,6 +16,8 @@ class WeatherTextFeatureTest extends TestCase
     public function user_can_visit_weather_text_url()
     {
         $user = factory(User::class)->create(['phone' => null]);
+        $this->be($user);
+        
         $this->get('/weather-text')
             ->assertSuccessful();
     }
