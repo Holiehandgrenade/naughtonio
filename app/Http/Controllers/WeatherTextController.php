@@ -20,7 +20,7 @@ class WeatherTextController extends Controller
             return view('weathertext.phone');
         } else {
             // Else return regular form
-            return view('weathertext.show', ['user' => $user, 'activeText' => $user->weatherText]);
+            return view('weathertext.show', ['user' => $user, 'weatherText' => $user->weatherText]);
         }
     }
 
