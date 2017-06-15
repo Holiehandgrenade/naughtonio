@@ -14,4 +14,9 @@ class WeatherTextController extends Controller
             return view('weathertext.show');
         }
     }
+
+    public function phone(Request $request)
+    {
+        
+    }
 }

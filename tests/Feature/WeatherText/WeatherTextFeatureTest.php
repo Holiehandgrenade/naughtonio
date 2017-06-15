@@ -28,7 +28,7 @@ class WeatherTextFeatureTest extends TestCase
         $user = factory(User::class)->create(['phone' => null]);
         $this->be($user);
 
-        $this->post('weather-text/phone')
+        $this->post('weather-text/phone', ['phone' => '5555555555'])
             ->assertSuccessful();
     }
 }
