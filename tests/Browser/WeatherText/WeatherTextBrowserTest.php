@@ -43,7 +43,8 @@ class WeatherTextBrowserTest extends DuskTestCase
         $this->browse(function ($browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/weather-text')
-                ->type('phone', '5555555555');
+                ->type('phone', '5555555555')
+                ->assertSee('5555555555');
         });
     }
 }
