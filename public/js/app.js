@@ -1751,23 +1751,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
+var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            phone: ''
+            phone: '',
+            csrf_token: csrf_token
         };
     },
 
     components: {
         MaskedInput: __WEBPACK_IMPORTED_MODULE_0_vue_masked_input__["a" /* default */]
-    },
-    methods: {
-        log: function log(v) {
-            console.log(v);
-        }
     }
 });
 
@@ -31862,8 +31865,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-8 col-md-offset-2"
-  }, [_c('masked-input', {
+  }, [_c('form', {
     attrs: {
+      "method": "POST",
+      "action": "/weather-text/phone"
+    }
+  }, [_c('label', {
+    attrs: {
+      "for": "phone"
+    }
+  }, [_vm._v("\n                    Phone\n                ")]), _vm._v(" "), _c('masked-input', {
+    attrs: {
+      "id": "phone",
       "name": "phone",
       "mask": "(111) 111-1111",
       "placeholder": "Please input"
@@ -31874,12 +31887,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }), _vm._v(" "), _c('button', {
-    on: {
-      "click": function($event) {
-        _vm.log(_vm.phone)
-      }
+    attrs: {
+      "type": "submit"
     }
-  })], 1)])])
+  }, [_vm._v("Submit")])], 1)])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

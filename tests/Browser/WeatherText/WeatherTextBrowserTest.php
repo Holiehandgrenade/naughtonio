@@ -17,7 +17,7 @@ class WeatherTextBrowserTest extends DuskTestCase
         $this->browse(function ($browser) use ($user) {
             $browser->loginAs($user)
                     ->visit('/weather-text')
-                    ->assertSee('Phone:');
+                    ->assertSee('Phone');
         });
     }
 
@@ -29,9 +29,9 @@ class WeatherTextBrowserTest extends DuskTestCase
         $this->browse(function ($browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/weather-text')
-                ->assertSee('Time:')
-                ->assertSee('Timezone:')
-                ->assertSee('Active:');
+                ->assertSee('Time')
+                ->assertSee('Timezone')
+                ->assertSee('Active');
         });
     }
     

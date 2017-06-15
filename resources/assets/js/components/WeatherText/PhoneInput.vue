@@ -2,13 +2,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <masked-input
-                    name="phone"
-                    mask="(111) 111-1111"
-                    placeholder="Please input"
-                    @input="phone = arguments[1]"
-                />
-                <button @click="log(phone)"></button>
+                <form method="POST" action="/weather-text/phone">
+                    <label for="phone">
+                        Phone
+                    </label>
+                    <masked-input
+                        id="phone"
+                        name="phone"
+                        mask="(111) 111-1111"
+                        placeholder="Please input"
+                        @input="phone = arguments[1]"
+                    />
+                    <button type="submit">Submit</button>
+                </form>
             </div>
         </div>
     </div>
@@ -16,20 +22,17 @@
 
 <script>
     import MaskedInput from 'vue-masked-input';
+    var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
     export default {
         data () {
             return {
                 phone: '',
+                csrf_token: csrf_token,
             }
         },
         components: {
           MaskedInput
         },
-        methods: {
-            log (v) {
-                console.log(v);
-            }
-        }
     }
 </script>
