@@ -24,7 +24,7 @@ class WeatherTextBrowserTest extends DuskTestCase
     /** @test */
     public function if_user_has_phone_they_should_see_a_time_timezone_active_input()
     {
-        $user = factory(User::class)->create(['phone' => null]);
+        $user = factory(User::class)->create(['phone' => '5555555555']);
 
         $this->browse(function ($browser) use ($user) {
             $browser->loginAs($user)
