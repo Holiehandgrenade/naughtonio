@@ -59,4 +59,19 @@ class WeatherTextFeatureTest extends TestCase
             ->assertStatus(302);
         $this->assertDatabaseMissing('users', ['phone' => '5555555555']);
     }
+
+    /** @test */
+    public function time_is_required()
+    {
+        $user = factory(User::class)->create(['phone' => '9999999999']);
+        $this->be($user);
+
+        $this->patch('weather-text', [
+            'phone' => '5555555555',
+            'timezone' => 'EST',
+            'active' => true
+        ])
+            ->assertStatus(302);
+        $this->assertCount(0, \DB::table('weather_texts')->count());
+    }
 }
