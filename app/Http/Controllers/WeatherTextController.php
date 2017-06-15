@@ -8,6 +8,6 @@ class WeatherTextController extends Controller
 {
     public function show()
     {
-        
+        return view('weathertext.phone');
     }
 }
