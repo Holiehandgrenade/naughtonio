@@ -29,7 +29,7 @@ class WeatherTextController extends Controller
             'timezone' => 'required',
         ]);
 
-        event(WeatherTextUpdated::class);
+        event(new WeatherTextUpdated($request->all()));
 
         $user = Auth::user();
 
