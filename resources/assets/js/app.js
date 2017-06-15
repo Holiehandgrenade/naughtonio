@@ -25,4 +25,4 @@ const app = new Vue({
  * Custom Vue Components
  */
 
-Vue.component('weathertext-phone-input', require('./components/WeatherText/PhoneInput.vue'));
+// Vue.component('weathertext-phone-input', require('./components/WeatherText/PhoneInput.vue'));
