@@ -15,7 +15,8 @@ class WeatherTextBrowserTest extends DuskTestCase
         $user = factory(User::class)->create(['phone' => null]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->visit('/weather-text')
+            $browser->loginAs($user)
+                    ->visit('/weather-text')
                     ->assertSee('Phone:');
         });
     }
