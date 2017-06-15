@@ -14,7 +14,7 @@ class WeatherTextUnitTest extends TestCase
     /** @test */
     public function a_user_has_nullable_phone()
     {
-        $user = factory(User::class)->create();
+        $user = factory(User::class)->create(['phone' => null]);
         $this->assertDatabaseHas('users', $user['attributes']);
     }
 }
