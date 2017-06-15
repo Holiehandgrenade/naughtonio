@@ -12,6 +12,6 @@ trait WeatherText
 {
     protected function weatherText ()
     {
-        return $this->hasOne(\App\Models\WeatherText::class);
+        return $this->hasOne(\App\Models\WeatherText\WeatherText::class);
     }
 }
