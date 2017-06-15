@@ -17,6 +17,10 @@ class WeatherTextController extends Controller
 
     public function phone(Request $request)
     {
-        
+        $this->validate($request, [
+            'phone' => 'required',
+        ]);
+
+
     }
 }

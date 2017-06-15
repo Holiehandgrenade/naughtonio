@@ -30,5 +30,16 @@ class WeatherTextFeatureTest extends TestCase
 
         $this->post('weather-text/phone', ['phone' => '5555555555'])
             ->assertSuccessful();
+        $this->assertDatabaseHas('users', ['phone' => '5555555555']);
+    }
+
+    /** @test */
+    public function phone_is_required()
+    {
+        $user = factory(User::class)->create(['phone' => null]);
+        $this->be($user);
+
+        $this->post('weather-text/phone', [])
+            ->assertStatus(302);
     }
 }
