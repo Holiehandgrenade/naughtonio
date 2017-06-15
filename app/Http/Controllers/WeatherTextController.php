@@ -15,6 +15,16 @@ class WeatherTextController extends Controller
         }
     }
 
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'time' => 'required',
+            'phone' => 'required',
+            'active' => 'required',
+            'timezone' => 'required',
+        ]);
+    }
+
     public function phone(Request $request)
     {
         $this->validate($request, [
