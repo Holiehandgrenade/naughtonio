@@ -59,6 +59,6 @@ class WeatherTextController extends Controller
             'phone' => $request->input('phone')
         ]);
 
-        return view('weathertext.show', compact('user'));
+        return back();
     }
 }

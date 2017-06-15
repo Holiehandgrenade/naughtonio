@@ -24,7 +24,7 @@
             {!! Form::label('time', null, ['class' => 'col-md-4 control-label'], false) !!}
 
             <div class="col-md-6">
-                {!! Form::text('time', $weatherText->time, ['class' => 'form-control']) !!}
+                {!! Form::text('time', $weatherText ? $weatherText->time : null, ['class' => 'form-control']) !!}
                 @if ($errors->has('time'))
                     <span class="help-block">
                         <strong>{{ $errors->first('time') }}</strong>
@@ -50,7 +50,7 @@
             {!! Form::label('active', null, ['class' => 'col-md-4 control-label'], false) !!}
 
             <div class="col-md-6">
-                {!! Form::text('active', $weatherText->active, ['class' => 'form-control']) !!}
+                {!! Form::text('active', $weatherText ? $weatherText->active : null, ['class' => 'form-control']) !!}
                 @if ($errors->has('active'))
                     <span class="help-block">
                             <strong>{{ $errors->first('active') }}</strong>
