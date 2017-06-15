@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <form method="POST" action="/weather-text">
+    {{ Form::open([
+        'url' => 'weather-text',
+        'method' => 'put'
+    ]) }}
 
-    </form>
+    {{ Form::text('phone', $user->phone) }}
 
+    {{ Form::close() }}
 
 
     <div>Phone </div>

@@ -11,7 +11,7 @@ class WeatherTextController extends Controller
         if (\Auth::user()->phone == null) {
             return view('weathertext.phone');
         } else {
-            return view('weathertext.show');
+            return view('weathertext.show', ['user' => \Auth::user()]);
         }
     }
 
