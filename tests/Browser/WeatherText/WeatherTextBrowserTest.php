@@ -79,4 +79,20 @@ class WeatherTextBrowserTest extends DuskTestCase
                 ->assertSee('Active');
         });
     }
+
+    /** @test */
+    public function user_can_submit_weather_text_information()
+    {
+        $user = factory(User::class)->create(['phone' => '5555555555']);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit('/weather-text')
+                ->select('time', '7:00')
+                ->select('timezone', 'EST')
+                ->check('active')
+                ->click('button[type="submit"]');
+            $browser->assertSee('Record Saved');
+        });
+    }
 }
