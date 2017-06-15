@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\WeatherTextUpdated;
-use App\Models\WeatherText\WeatherText;
 use Illuminate\Http\Request;
-use Auth;
 
 class WeatherTextController extends Controller
 {
