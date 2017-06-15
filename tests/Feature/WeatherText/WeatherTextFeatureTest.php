@@ -72,6 +72,21 @@ class WeatherTextFeatureTest extends TestCase
             'active' => true
         ])
             ->assertStatus(302);
-        $this->assertCount(0, \DB::table('weather_texts')->count());
+        $this->assertCount(0, \DB::table('weather_texts')->get());
+    }
+
+    /** @test */
+    public function active_is_required()
+    {
+        $user = factory(User::class)->create(['phone' => '9999999999']);
+        $this->be($user);
+
+        $this->patch('weather-text', [
+            'phone' => '5555555555',
+            'timezone' => 'EST',
+            'time' => '7:00',
+        ])
+            ->assertStatus(302);
+        $this->assertCount(0, \DB::table('weather_texts')->get());
     }
 }
