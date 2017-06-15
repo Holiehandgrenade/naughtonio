@@ -46,4 +46,17 @@ class WeatherTextBrowserTest extends DuskTestCase
                 ->type('phone', '5555555555');
         });
     }
+
+    /** @test */
+    public function a_user_can_submit_phone_information()
+    {
+        $user = factory(User::class)->create(['phone' => null]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit('/weather-text')
+                ->type('phone', '5555555555')
+                ->click('button[type="submit"]');
+        });
+    }
 }
