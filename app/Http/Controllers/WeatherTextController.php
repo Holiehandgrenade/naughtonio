@@ -8,6 +8,10 @@ class WeatherTextController extends Controller
 {
     public function show()
     {
-        return view('weathertext.phone');
+        if (\Auth::user()->phone == null) {
+            return view('weathertext.phone');
+        } else {
+            return view('weathertext.show');
+        }
     }
 }
