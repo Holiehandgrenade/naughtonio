@@ -32,6 +32,7 @@ class TextUserWithWeatherUpdate implements ShouldQueue
      */
     public function handle()
     {
-        dd($this->weatherText);
+        $user = $this->weatherText->user;
+        dd($user);
     }
 }
