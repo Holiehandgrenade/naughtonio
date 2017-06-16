@@ -24,7 +24,7 @@ class WeatherTextRepository
 
         $weatherText->fill([
             'time' => $data['time'],
-            'active' => $data['active'] ? true : false,
+            'active' => isset($data['active']),
         ]);
 
         $user->weatherText()->save($weatherText);

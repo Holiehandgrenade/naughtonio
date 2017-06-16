@@ -63,9 +63,8 @@
 
         <div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
             {!! Form::label('active', null, ['class' => 'col-md-4 control-label'], false) !!}
-
             <div class="col-md-6">
-                {!! Form::checkbox('active', $weatherText ? $weatherText->active : false, ['class' => 'form-control']) !!}
+                {!! Form::checkbox('active', '1', $weatherText ? $weatherText->active : false) !!}
                 @if ($errors->has('active'))
                     <span class="help-block">
                         <strong>{{ $errors->first('active') }}</strong>
