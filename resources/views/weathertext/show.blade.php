@@ -24,7 +24,7 @@
             {!! Form::label('time', null, ['class' => 'col-md-4 control-label'], false) !!}
 
             <div class="col-md-6">
-                {!! Form::text('time', $weatherText ? $weatherText->time : null, ['class' => 'form-control']) !!}
+                {!! Form::select('time', $times, $weatherText ? $weatherText->time : null, ['class' => 'form-control']) !!}
                 @if ($errors->has('time'))
                     <span class="help-block">
                         <strong>{{ $errors->first('time') }}</strong>
