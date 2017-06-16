@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\WeatherTextUpdated;
 use App\Repositories\WeatherTextRepository;
 use Illuminate\Http\Request;
 
@@ -32,10 +31,10 @@ class WeatherTextController extends Controller
 
             // Else return regular form
             return view('weathertext.show', [
-                'user' => $user,
-                'weatherText' => $user->weatherText,
-                'timezones' => $this->weatherTextRepo->getTimezones(),
-                'times' => $this->weatherTextRepo->getTimes(),
+                'user'          => $user,
+                'weatherText'   => $user->weatherText,
+                'times'         => $this->weatherTextRepo->getTimes(),
+                'timezones'     => $this->weatherTextRepo->getTimezones(),
             ]);
         }
     }
