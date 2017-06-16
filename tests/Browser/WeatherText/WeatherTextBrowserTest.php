@@ -91,7 +91,7 @@ class WeatherTextBrowserTest extends DuskTestCase
                 ->select('time', '7:00')
                 ->select('timezone', 'EST')
                 ->check('active')
-                ->click('button[type="submit"]');
+                ->click('input[type="submit"]');
             $browser->assertSee('Record Saved');
         });
     }

@@ -3,7 +3,7 @@
 @section('content')
     {{ Form::open([
         'url' => 'weather-text',
-        'method' => 'put',
+        'method' => 'patch',
         'class' => 'form-horizontal',
     ]) }}
 
@@ -53,9 +53,15 @@
                 {!! Form::checkbox('active', $weatherText ? $weatherText->active : null, ['class' => 'form-control']) !!}
                 @if ($errors->has('active'))
                     <span class="help-block">
-                            <strong>{{ $errors->first('active') }}</strong>
-                        </span>
+                        <strong>{{ $errors->first('active') }}</strong>
+                    </span>
                 @endif
+            </div>
+        </div>
+
+        <div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
+            <div class="col-md-6">
+                {!! Form::submit('Save', ['class' => 'form-control']) !!}
             </div>
         </div>
     {{ Form::close() }}
