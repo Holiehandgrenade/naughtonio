@@ -1,7 +1,6 @@
 <?php
 
 use App\Jobs\TextUserWithWeatherUpdate;
-use Illuminate\Foundation\Inspiring;
 use App\Models\WeatherText\WeatherText;
 
 /*
@@ -14,10 +13,6 @@ use App\Models\WeatherText\WeatherText;
 | simple approach to interacting with each command's IO methods.
 |
 */
-
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->describe('Display an inspiring quote');
 
 
 Artisan::command('weatherText', function () {
