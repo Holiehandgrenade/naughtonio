@@ -8,6 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class TextUserWithWeatherUpdate implements ShouldQueue
 {
@@ -33,6 +34,10 @@ class TextUserWithWeatherUpdate implements ShouldQueue
     public function handle()
     {
         $user = $this->weatherText->user;
-        dd($user);
+        Nexmo::message()->send([
+            'to' => $user->phone,
+            'from' => getenv('NEXMO_PHONE_NUMBER'),
+            'text' => 'Fuck you',
+        ]);
     }
 }
