@@ -100,7 +100,7 @@ class WeatherTextFeatureTest extends TestCase
         $this->assertDatabaseHas('weather_texts', [
             'user_id' => $user->id,
             'active' => true,
-            'time' => '2017-06-16 12:00:00', // converted in WeatherTextRepository
+            'time' => '12:00', // converted in WeatherTextRepository
         ]);
     }
 
@@ -129,7 +129,7 @@ class WeatherTextFeatureTest extends TestCase
         $this->assertDatabaseHas('weather_texts', [
             'user_id' => $user->id,
             'active' => true,
-            'time' => '2017-06-16 12:00:00', // converted in WeatherTextRepository
+            'time' => '12:00', // converted in WeatherTextRepository
         ]);
     }
 }
