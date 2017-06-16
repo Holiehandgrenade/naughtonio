@@ -48,10 +48,9 @@ class WeatherTextController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'time' => 'required',
-            'phone' => 'required',
-            'active' => 'required',
-            'timezone' => 'required',
+            'time'      => 'required',
+            'phone'     => 'required',
+            'timezone'  => 'required',
         ]);
 
         $this->weatherTextRepo->updateUserAndWeatherText($request->all());
