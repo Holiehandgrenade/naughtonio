@@ -11,6 +11,7 @@ namespace App\Repositories;
 
 use App\Models\WeatherText\WeatherText;
 use Auth;
+use Carbon\Carbon;
 
 class WeatherTextRepository
 {
@@ -27,8 +28,11 @@ class WeatherTextRepository
             'timezone' => $data['timezone'],
         ]);
 
+        $time = Carbon::createFromFormat('H:i', $data['time'], $data['timezone'])
+            ->setTimezone(new \DateTimeZone('UTC'));
+
         $weatherText->fill([
-            'time' => $data['time'],
+            'time' => $time,
             'active' => isset($data['active']),
         ]);
 

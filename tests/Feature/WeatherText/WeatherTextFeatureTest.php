@@ -89,17 +89,18 @@ class WeatherTextFeatureTest extends TestCase
             'phone' => '5555555555',
             'timezone' => 'EST',
             'active' => true,
-            'time' => '7:00',
+            'time' => '07:00',
         ]);
 
         $this->assertDatabaseHas('users', [
             'phone' => '5555555555',
             'timezone' => 'EST',
         ]);
+
         $this->assertDatabaseHas('weather_texts', [
             'user_id' => $user->id,
             'active' => true,
-            'time' => '7:00',
+            'time' => '2017-06-16 12:00:00', // converted in WeatherTextRepository
         ]);
     }
 
@@ -128,7 +129,7 @@ class WeatherTextFeatureTest extends TestCase
         $this->assertDatabaseHas('weather_texts', [
             'user_id' => $user->id,
             'active' => true,
-            'time' => '7:00',
+            'time' => '2017-06-16 12:00:00', // converted in WeatherTextRepository
         ]);
     }
 }
