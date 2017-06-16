@@ -21,4 +21,12 @@ class WeatherText extends Model
             ->setTimezone(new \DateTimeZone($this->user->timezone))
             ->format('H:i');
     }
+
+    public function scopeWithinFifteenMinutes($query)
+    {
+        $ago = Carbon::now()->subSeconds(450)->format('H:i');
+        $future = Carbon::now()->addSeconds(450)->format('H:i');
+
+        return $query->whereBetween('time', [$ago, $future]);
+    }
 }
