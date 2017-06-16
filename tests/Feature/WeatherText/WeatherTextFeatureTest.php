@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\WeatherText;
 
-use App\Events\WeatherTextUpdated;
 use App\Models\WeatherText\WeatherText;
 use App\User;
 use Tests\TestCase;
