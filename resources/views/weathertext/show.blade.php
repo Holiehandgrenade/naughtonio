@@ -50,7 +50,7 @@
             {!! Form::label('active', null, ['class' => 'col-md-4 control-label'], false) !!}
 
             <div class="col-md-6">
-                {!! Form::text('active', $weatherText ? $weatherText->active : null, ['class' => 'form-control']) !!}
+                {!! Form::checkbox('active', $weatherText ? $weatherText->active : null, ['class' => 'form-control']) !!}
                 @if ($errors->has('active'))
                     <span class="help-block">
                             <strong>{{ $errors->first('active') }}</strong>
