@@ -44,6 +44,7 @@ class WeatherTextController extends Controller
      * Updates the User and WeatherText records
      *
      * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request)
     {
