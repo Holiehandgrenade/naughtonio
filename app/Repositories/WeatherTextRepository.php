@@ -9,8 +9,32 @@
 namespace App\Repositories;
 
 
+use App\Models\WeatherText\WeatherText;
+use Auth;
+
 class WeatherTextRepository
 {
+    public function updateUserAndWeatherText($data)
+    {
+        $user = Auth::user();
+
+        if ( ! $weatherText = $user->weatherText) {
+            $weatherText = new WeatherText();
+        }
+
+        $weatherText->fill([
+            'time' => $data['time'],
+            'active' => $data['active'],
+        ]);
+
+        $user->weatherText()->save($weatherText);
+
+        $user->update([
+            'phone' => $data['phone'],
+            'timezone' => $data['timezone'],
+        ]);
+    }
+
     public function getTimezones()
     {
         return [

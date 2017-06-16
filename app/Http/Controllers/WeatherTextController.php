@@ -55,7 +55,7 @@ class WeatherTextController extends Controller
             'timezone' => 'required',
         ]);
 
-        event(new WeatherTextUpdated($request->all()));
+        $this->weatherTextRepo->updateUserAndWeatherText($request->all());
 
         return back()->with(['success' => 'Record Saved']);
     }
