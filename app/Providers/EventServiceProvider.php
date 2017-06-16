@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Events\WeatherTextUpdated;
-use App\Listeners\UpdateUserAndWeatherText;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -15,9 +13,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        WeatherTextUpdated::class => [
-            UpdateUserAndWeatherText::class,
-        ],
+
     ];
 
     /**
