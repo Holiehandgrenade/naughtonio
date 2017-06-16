@@ -22,17 +22,17 @@ class WeatherTextRepository
             $weatherText = new WeatherText();
         }
 
+        $user->update([
+            'phone' => $data['phone'],
+            'timezone' => $data['timezone'],
+        ]);
+
         $weatherText->fill([
             'time' => $data['time'],
             'active' => isset($data['active']),
         ]);
 
         $user->weatherText()->save($weatherText);
-
-        $user->update([
-            'phone' => $data['phone'],
-            'timezone' => $data['timezone'],
-        ]);
     }
 
     public function getTimezones()
