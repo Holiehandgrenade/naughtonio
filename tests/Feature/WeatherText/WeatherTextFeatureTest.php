@@ -132,4 +132,14 @@ class WeatherTextFeatureTest extends TestCase
             'time' => '12:00', // converted in WeatherTextRepository
         ]);
     }
+
+    /** @test */
+    public function phone_is_stripped_of_formatting()
+    {
+        $user = factory(User::class)->create(['phone' => null]);
+        $this->be($user);
+
+        $this->post('weather-text/phone', ['phone' => '(555) 555-5555']);
+        $this->assertDatabaseHas('users', ['phone' => '5555555555']);
+    }
 }

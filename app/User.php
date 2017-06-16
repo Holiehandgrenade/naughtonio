@@ -25,4 +25,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Strips phone of non numeric characters
+     *
+     * @param $phone
+     */
+    public function setPhoneAttribute($phone)
+    {
+        $this->attributes['phone'] = preg_replace('/[^0-9]/s', '', $phone);
+    }
 }
