@@ -55,6 +55,8 @@ class WeatherTextController extends Controller
         ]);
 
         event(new WeatherTextUpdated($request->all()));
+
+        return back()->with(['success' => 'Record saved']);
     }
 
     /**
