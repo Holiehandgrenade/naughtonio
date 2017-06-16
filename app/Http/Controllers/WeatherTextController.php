@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Events\WeatherTextUpdated;
+use App\Repositories\WeatherTextRepository;
 use Illuminate\Http\Request;
 
 class WeatherTextController extends Controller
 {
+    protected $weatherTextRepo;
+
+    public function __construct(WeatherTextRepository $weatherTextRepository)
+    {
+        $this->weatherTextRepo = $weatherTextRepository;
+    }
+
     /**
      * Returns one of two views to gather needed info
      *
@@ -15,12 +23,19 @@ class WeatherTextController extends Controller
     public function show()
     {
         $user = \Auth::user();
-        // If user doesn't have a phone already, return form
+
         if ($user->phone == null) {
+
+            // If user doesn't have a phone already, return form
             return view('weathertext.phone');
         } else {
+
             // Else return regular form
-            return view('weathertext.show', ['user' => $user, 'weatherText' => $user->weatherText]);
+            return view('weathertext.show', [
+                'user' => $user,
+                'weatherText' => $user->weatherText,
+                'timezones' => $this->weatherTextRepo->getTimezones(),
+            ]);
         }
     }
 

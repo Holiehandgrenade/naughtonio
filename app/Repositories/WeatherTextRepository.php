@@ -11,5 +11,13 @@ namespace App\Repositories;
 
 class WeatherTextRepository
 {
-
+    public function getTimezones()
+    {
+        return [
+            'EST',
+            'CST',
+            'MST',
+            'PST',
+        ];
+    }
 }
