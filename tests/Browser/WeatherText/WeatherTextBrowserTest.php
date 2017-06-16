@@ -88,8 +88,8 @@ class WeatherTextBrowserTest extends DuskTestCase
         $this->browse(function ($browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/weather-text')
-                ->select('time', '7:00')
-                ->select('timezone', 'EST')
+                ->select('time', '07:00')
+                ->select('timezone', 'CST')
                 ->check('active')
                 ->click('input[type="submit"]');
             $browser->assertSee('Record Saved');
