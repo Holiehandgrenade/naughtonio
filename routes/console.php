@@ -1,6 +1,8 @@
 <?php
 
+use App\Jobs\TextUserWithWeatherUpdate;
 use Illuminate\Foundation\Inspiring;
+use App\Models\WeatherText\WeatherText;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,12 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+
+Artisan::command('weatherText', function () {
+    WeatherText::withinFifteenMinutes()
+        ->get()
+        ->each(function ($w) {
+            dispatch(new TextUserWithWeatherUpdate($w));
+        });
+})->describe('Texts users with daily weather update');
