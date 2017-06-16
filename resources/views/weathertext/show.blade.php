@@ -37,7 +37,7 @@
             {!! Form::label('timezone', null, ['class' => 'col-md-4 control-label'], false) !!}
 
             <div class="col-md-6">
-                {!! Form::select('timezone', ['EST', 'CST', 'MST', 'PST'], $user->timezone, ['class' => 'form-control']) !!}
+                {!! Form::select('timezone', $timezones, $user->timezone, ['class' => 'form-control']) !!}
                 @if ($errors->has('timezone'))
                     <span class="help-block">
                         <strong>{{ $errors->first('timezone') }}</strong>

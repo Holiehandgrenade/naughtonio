@@ -35,6 +35,7 @@ class WeatherTextController extends Controller
                 'user' => $user,
                 'weatherText' => $user->weatherText,
                 'timezones' => $this->weatherTextRepo->getTimezones(),
+                'times' => $this->weatherTextRepo->getTimes(),
             ]);
         }
     }
