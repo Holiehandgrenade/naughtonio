@@ -38,10 +38,10 @@ class WeatherTextRepository
     public function getTimezones()
     {
         return [
-            'EST' => 'EST',
-            'CST' => 'CST',
-            'MST' => 'MST',
-            'PST' => 'PST',
+            'America/New_York' => 'EST',
+            'America/Chicago' => 'CST',
+            'America/Denver' => 'MST',
+            'America/Los_Angeles' => 'PST',
         ];
     }
 
