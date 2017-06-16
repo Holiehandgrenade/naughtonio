@@ -105,8 +105,8 @@ class WeatherTextFeatureTest extends TestCase
             'timezone' => 'EST',
             'active' => true,
             'time' => '7:00',
-        ])
-            ->assertSuccessful();
+        ]);
+
         $this->assertDatabaseHas('users', [
             'phone' => '5555555555',
             'timezone' => 'EST',
@@ -134,30 +134,14 @@ class WeatherTextFeatureTest extends TestCase
             'timezone' => 'EST',
             'active' => true,
             'time' => '7:00',
-        ])
-            ->assertSuccessful();
+        ]);
+
         $this->assertDatabaseHas('users', [
             'phone' => '5555555555',
             'timezone' => 'EST',
         ]);
         $this->assertDatabaseHas('weather_texts', [
             'user_id' => $user->id,
-            'active' => true,
-            'time' => '7:00',
-        ]);
-    }
-
-    /** @test */
-    public function on_update_event_is_fired()
-    {
-        $this->expectsEvents(WeatherTextUpdated::class);
-
-        $user = factory(User::class)->create(['phone' => '9999999999']);
-        $this->be($user);
-
-        $this->patch('weather-text', [
-            'phone' => '5555555555',
-            'timezone' => 'EST',
             'active' => true,
             'time' => '7:00',
         ]);
