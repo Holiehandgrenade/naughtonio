@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\WeatherText\WeatherText;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -12,14 +13,16 @@ class TextUserWithWeatherUpdate implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    public $weatherText;
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(WeatherText $weatherText)
     {
-        //
+        $this->weatherText = $weatherText;
     }
 
     /**
@@ -29,6 +32,6 @@ class TextUserWithWeatherUpdate implements ShouldQueue
      */
     public function handle()
     {
-        //
+        dd($this->weatherText);
     }
 }
