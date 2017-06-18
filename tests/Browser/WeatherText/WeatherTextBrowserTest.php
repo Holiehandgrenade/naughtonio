@@ -90,6 +90,8 @@ class WeatherTextBrowserTest extends DuskTestCase
     /** @test */
     public function user_can_submit_weather_text_information()
     {
+        $this->withoutJobs();
+
         $user = factory(User::class)->create(['phone' => '5555555555']);
 
         $this->browse(function ($browser) use ($user) {
