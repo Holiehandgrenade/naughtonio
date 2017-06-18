@@ -68,6 +68,7 @@ class WeatherTextController extends Controller
     {
         $this->validate($request, [
             'phone' => 'required',
+            'zip' => 'required',
         ]);
 
         $user = \Auth::user();
