@@ -9,6 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Nexmo\Laravel\Facade\Nexmo;
+use DarkSky;
 
 class TextUserWithWeatherUpdate implements ShouldQueue
 {
@@ -34,6 +35,11 @@ class TextUserWithWeatherUpdate implements ShouldQueue
     public function handle()
     {
         $user = $this->weatherText->user;
+
+        $weather = DarkSky::location($user->latitude, $user->longitude)
+                        ->currently()
+                        ->get()['currently'];
+
         Nexmo::message()->send([
             'to' => $user->phone,
             'from' => getenv('NEXMO_PHONE_NUMBER'),
