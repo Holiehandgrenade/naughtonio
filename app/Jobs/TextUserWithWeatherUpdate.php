@@ -37,7 +37,7 @@ class TextUserWithWeatherUpdate implements ShouldQueue
         Nexmo::message()->send([
             'to' => $user->phone,
             'from' => getenv('NEXMO_PHONE_NUMBER'),
-            'text' => 'FUCK YOU -- ',
+            'text' => 'What\'s going on? -- ',
         ]);
     }
 }

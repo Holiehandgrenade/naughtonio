@@ -24,14 +24,14 @@ class WeatherTextFeatureTest extends TestCase
     }
 
     /** @test */
-    public function user_can_post_phone_data()
+    public function user_can_post_phone_and_zip_data()
     {
-        $user = factory(User::class)->create(['phone' => null]);
+        $user = factory(User::class)->create(['phone' => null, 'zip' => null]);
         $this->be($user);
 
-        $this->post('weather-text/phone', ['phone' => '5555555555'])
+        $this->post('weather-text/phone', ['phone' => '5555555555', 'zip' => '55555'])
             ->assertStatus(302);
-        $this->assertDatabaseHas('users', ['phone' => '5555555555']);
+        $this->assertDatabaseHas('users', ['phone' => '5555555555', 'zip' => '55555']);
     }
 
     /** @test */
@@ -45,6 +45,19 @@ class WeatherTextFeatureTest extends TestCase
         $this->assertDatabaseMissing('users', ['phone' => '5555555555']);
 
     }
+
+    /** @test */
+    public function zip_is_required()
+    {
+        $user = factory(User::class)->create(['zip' => null, 'phone' => '5555555555']);
+        $this->be($user);
+
+        $this->post('weather-text/phone', ['phone' => '6666666666'])
+            ->assertStatus(302);
+        $this->assertDatabaseMissing('users', ['phone' => '6666666666']);
+
+    }
+
 
     /** @test */
     public function timezone_is_required()
@@ -138,7 +151,7 @@ class WeatherTextFeatureTest extends TestCase
         $user = factory(User::class)->create(['phone' => null]);
         $this->be($user);
 
-        $this->post('weather-text/phone', ['phone' => '(555) 555-5555']);
+        $this->post('weather-text/phone', ['phone' => '(555) 555-5555', 'zip' => '55555']);
         $this->assertDatabaseHas('users', ['phone' => '5555555555']);
     }
 }
