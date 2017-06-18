@@ -1194,16 +1194,16 @@
         },
         {
             "name": "naughtonium/laravel-dark-sky",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/naughtonium/laravel-dark-sky.git",
-                "reference": "b679b91f082f28b139068bf7e3649b4c81c6fe77"
+                "reference": "ad3da72d0bf86e7b710c5d05df25b22d0f19f212"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/naughtonium/laravel-dark-sky/zipball/b679b91f082f28b139068bf7e3649b4c81c6fe77",
-                "reference": "b679b91f082f28b139068bf7e3649b4c81c6fe77",
+                "url": "https://api.github.com/repos/naughtonium/laravel-dark-sky/zipball/ad3da72d0bf86e7b710c5d05df25b22d0f19f212",
+                "reference": "ad3da72d0bf86e7b710c5d05df25b22d0f19f212",
                 "shasum": ""
             },
             "require": {
@@ -1242,7 +1242,7 @@
                 "laravel-dark-sky",
                 "naughtonium"
             ],
-            "time": "2017-06-14T19:26:19+00:00"
+            "time": "2017-06-18T18:54:51+00:00"
         },
         {
             "name": "nesbot/carbon",
