@@ -7,6 +7,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Geocode;
 
 class AddLatLongFromZipToUser implements ShouldQueue
 {
@@ -33,6 +34,9 @@ class AddLatLongFromZipToUser implements ShouldQueue
     public function handle()
     {
         $geo = Geocode::make()->address($this->zip);
-
+        $this->user->update([
+            'latitude' => $geo->latitude(),
+            'longitude' => $geo->longitude(),
+        ]);
     }
 }

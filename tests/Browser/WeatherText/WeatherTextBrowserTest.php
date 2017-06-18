@@ -2,6 +2,7 @@
 
 namespace Tests\Browser\WeatherText;
 
+use App\Jobs\AddLatLongFromZipToUser;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\DuskTestCase;
@@ -54,6 +55,8 @@ class WeatherTextBrowserTest extends DuskTestCase
     /** @test */
     public function a_user_can_submit_phone_information()
     {
+        $this->withoutJobs();
+
         $user = factory(User::class)->create(['phone' => null]);
 
         $this->browse(function ($browser) use ($user) {
@@ -67,6 +70,8 @@ class WeatherTextBrowserTest extends DuskTestCase
     /** @test */
     public function user_should_be_redirected_to_time_page_after_phone_submission()
     {
+        $this->withoutJobs();
+
         $user = factory(User::class)->create(['phone' => null, 'zip' => null]);
 
         $this->browse(function ($browser) use ($user) {

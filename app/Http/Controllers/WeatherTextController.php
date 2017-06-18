@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Jobs\AddLatLongFromZipToUser;
 use App\Repositories\WeatherTextRepository;
 use Illuminate\Http\Request;
-use Geocode;
 
 class WeatherTextController extends Controller
 {
