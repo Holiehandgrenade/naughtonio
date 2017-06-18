@@ -32,7 +32,7 @@ class AddLatLongFromZipToUser implements ShouldQueue
      */
     public function handle()
     {
-        $geo = Geocode::make()->address($zip);
-        
+        $geo = Geocode::make()->address($this->zip);
+
     }
 }

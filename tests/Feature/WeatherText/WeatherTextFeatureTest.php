@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\WeatherText;
 
+use App\Jobs\AddLatLongFromZipToUser;
 use App\Models\WeatherText\WeatherText;
 use App\User;
 use Tests\TestCase;
@@ -26,6 +27,8 @@ class WeatherTextFeatureTest extends TestCase
     /** @test */
     public function user_can_post_phone_and_zip_data()
     {
+        $this->expectsJobs(AddLatLongFromZipToUser::class);
+
         $user = factory(User::class)->create(['phone' => null, 'zip' => null]);
         $this->be($user);
 
@@ -150,6 +153,8 @@ class WeatherTextFeatureTest extends TestCase
     /** @test */
     public function phone_is_stripped_of_formatting()
     {
+        $this->expectsJobs(AddLatLongFromZipToUser::class);
+
         $user = factory(User::class)->create(['phone' => null]);
         $this->be($user);
 
