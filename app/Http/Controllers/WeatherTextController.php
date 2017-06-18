@@ -74,7 +74,8 @@ class WeatherTextController extends Controller
         $user = \Auth::user();
 
         $user->update([
-            'phone' => $request->input('phone')
+            'phone' => $request->input('phone'),
+            'zip' => $request->input('zip'),
         ]);
 
         return back();

@@ -67,12 +67,13 @@ class WeatherTextBrowserTest extends DuskTestCase
     /** @test */
     public function user_should_be_redirected_to_time_page_after_phone_submission()
     {
-        $user = factory(User::class)->create(['phone' => null]);
+        $user = factory(User::class)->create(['phone' => null, 'zip' => null]);
 
         $this->browse(function ($browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/weather-text')
                 ->type('phone', '5555555555')
+                ->type('zip', '55555')
                 ->click('button[type="submit"]');
             $browser->assertSee('Phone')
                 ->assertSee('Time')
