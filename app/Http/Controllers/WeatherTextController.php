@@ -81,7 +81,7 @@ class WeatherTextController extends Controller
             'zip' => $request->input('zip'),
         ]);
 
-        $this->dispatch(new AddLatLongFromZipToUser($user, $request->input('zip')));
+        dispatch(new AddLatLongFromZipToUser($user, $request->input('zip')));
 
         return back();
     }

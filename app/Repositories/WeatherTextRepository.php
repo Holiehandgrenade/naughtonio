@@ -9,6 +9,7 @@
 namespace App\Repositories;
 
 
+use App\Jobs\AddLatLongFromZipToUser;
 use App\Models\WeatherText\WeatherText;
 use Auth;
 use Carbon\Carbon;
@@ -38,6 +39,8 @@ class WeatherTextRepository
         ]);
 
         $user->weatherText()->save($weatherText);
+
+        dispatch(new AddLatLongFromZipToUser($user, $user->fresh()->zip));
     }
 
     public function getTimezones()
