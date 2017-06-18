@@ -16,6 +16,16 @@
                         placeholder="Please input"
                         @input="phone = arguments[1]"
                     />
+
+                    <label for="zip">
+                        Zip Code
+                    </label>
+                    <input
+                        id="zip"
+                        name="zip"
+                        placeholder="Please input"
+                    />
+
                     <button type="submit">Submit</button>
                 </form>
             </div>
