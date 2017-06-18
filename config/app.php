@@ -171,6 +171,7 @@ return [
         Naughtonium\LaravelDarkSky\LaravelDarkSkyServiceProvider::class,
         Nexmo\Laravel\NexmoServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Jcf\Geocode\GeocodeServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -212,6 +213,7 @@ return [
         'File' => Illuminate\Support\Facades\File::class,
         'Form' => Collective\Html\FormFacade::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
+        'Geocode' => Jcf\Geocode\Facades\Geocode::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
