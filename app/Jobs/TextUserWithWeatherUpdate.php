@@ -37,13 +37,12 @@ class TextUserWithWeatherUpdate implements ShouldQueue
         $user = $this->weatherText->user;
 
         $weather = DarkSky::location($user->latitude, $user->longitude)
-                        ->currently()
-                        ->get()['currently'];
+                        ->currently();
 
         Nexmo::message()->send([
             'to' => $user->phone,
             'from' => getenv('NEXMO_PHONE_NUMBER'),
-            'text' => 'What\'s going on? -- ',
+            'text' => 'Current Temperature: ' . $weather->temperature. ' -- ',
         ]);
     }
 }
