@@ -35,6 +35,19 @@
             </div>
         </div>
 
+        <div class="form-group{{ $errors->has('zip') ? ' has-error' : '' }}">
+            {!! Form::label('zip', null, ['class' => 'col-md-4 control-label'], false) !!}
+
+            <div class="col-md-6">
+                {!! Form::text('zip', $user->zip, ['class' => 'form-control']) !!}
+                @if ($errors->has('zip'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('zip') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+
         <div class="form-group{{ $errors->has('time') ? ' has-error' : '' }}">
             {!! Form::label('time', null, ['class' => 'col-md-4 control-label'], false) !!}
 

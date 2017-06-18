@@ -102,6 +102,7 @@ class WeatherTextFeatureTest extends TestCase
             'timezone' => 'EST',
             'active' => true,
             'time' => '07:00',
+            'zip' => '55555',
         ]);
 
         $this->assertDatabaseHas('users', [
@@ -132,6 +133,7 @@ class WeatherTextFeatureTest extends TestCase
             'timezone' => 'EST',
             'active' => true,
             'time' => '7:00',
+            'zip' => '55555',
         ]);
 
         $this->assertDatabaseHas('users', [
