@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\AddLatLongFromZipToUser;
 use App\Repositories\WeatherTextRepository;
 use Illuminate\Http\Request;
+use Geocode;
 
 class WeatherTextController extends Controller
 {
@@ -72,12 +74,15 @@ class WeatherTextController extends Controller
             'zip' => 'required',
         ]);
 
+
         $user = \Auth::user();
 
         $user->update([
             'phone' => $request->input('phone'),
             'zip' => $request->input('zip'),
         ]);
+
+        $this->dispatch(new AddLatLongFromZipToUser($user, $request->input('zip')));
 
         return back();
     }
