@@ -10,4 +10,19 @@ class PhoneController extends Controller
     {
         return view('phone.show');
     }
+
+    public function post(Request $request)
+    {
+        $this->validate($request, [
+            'phone' => 'required',
+        ]);
+
+        $user = \Auth::user();
+
+        $user->update([
+            'phone' => $request->input('phone'),
+        ]);
+
+        return back();
+    }
 }
