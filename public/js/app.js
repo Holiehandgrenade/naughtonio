@@ -1760,16 +1760,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -32437,16 +32427,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "input": function($event) {
         _vm.phone = arguments[1]
       }
-    }
-  }), _vm._v(" "), _c('label', {
-    attrs: {
-      "for": "zip"
-    }
-  }, [_vm._v("\n                    Zip Code\n                ")]), _vm._v(" "), _c('input', {
-    attrs: {
-      "id": "zip",
-      "name": "zip",
-      "placeholder": "Please input"
     }
   }), _vm._v(" "), _c('button', {
     attrs: {
