@@ -47,9 +47,8 @@ Route::group(['prefix' => 'public'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'weather-text'], function () {
 
-        Route::group(['middleware' => 'requires-phone'], function () {
-            Route::get('/', 'WeatherTextController@show');
-        });
+        Route::get('/', 'WeatherTextController@show')
+        ->middleware('requires-phone');
 
         Route::patch('/', 'WeatherTextController@update');
         Route::post('/phone', 'WeatherTextController@phone');

@@ -15,7 +15,10 @@ class RequiresPhone
      */
     public function handle($request, Closure $next)
     {
-        dd('hi');
+        if ( ! \Auth::user()->phone) {
+            // redirect to update phone
+            return redirect('/phone');
+        }
         return $next($request);
     }
 }
