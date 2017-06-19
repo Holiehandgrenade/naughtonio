@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\PhoneRepository;
 use Illuminate\Http\Request;
 
 class PhoneController extends Controller
 {
+    private $phoneRepo;
+
+    public function __construct(PhoneRepository $phoneRepository)
+    {
+        $this->phoneRepo = $phoneRepository;
+    }
+
     public function show()
     {
         return view('phone.show');
@@ -19,13 +27,15 @@ class PhoneController extends Controller
 
         $user = \Auth::user();
 
-        $user->update([
-            'phone' => $request->input('phone'),
-        ]);
+        // store a phone_verification record
+        $this->phoneRepo->createPhoneVerification($user);
 
-        $url = session()->get('url.intended');
-        session()->forget('url.intended');
 
-        return redirect()->to($url);
+        // text code to phone
+
+
+
+        // redirect to /phone-verify
+        return redirect()->to('/phone-verify');
     }
 }
