@@ -45,14 +45,15 @@ Route::group(['prefix' => 'public'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::group(['prefix' => 'weather-text'], function () {
 
+    Route::get('/phone', 'PhoneController@show');
+    Route::post('/phone', 'PhoneController@post');
+
+    Route::group(['prefix' => 'weather-text'], function () {
         Route::get('/', 'WeatherTextController@show')
-        ->middleware('requires-phone');
+                ->middleware('requires-phone');
 
         Route::patch('/', 'WeatherTextController@update');
 
-        Route::post('/get', 'PhoneController@show');
-        Route::post('/phone', 'PhoneController@post');
     });
 });
