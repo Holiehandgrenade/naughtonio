@@ -18,7 +18,7 @@ class PhoneVerifications extends Migration
             $table->integer('user_id');
             $table->string('pending_phone');
             $table->string('verify_code');
-            $table->unsignedInteger('created_at');
+            $table->time('created_at');
         });
     }
 

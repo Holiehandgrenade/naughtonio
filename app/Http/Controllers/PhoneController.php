@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Jobs\SendPhoneVerificationText;
 use App\Repositories\PhoneRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PhoneController extends Controller
 {
     private $phoneRepo;
+    private $codeExpirationMinutes = 5;
 
     public function __construct(PhoneRepository $phoneRepository)
     {
@@ -44,5 +46,33 @@ class PhoneController extends Controller
     public function showVerify()
     {
         return view('phone.show-verify');
+    }
+
+    public function postVerify(Request $request)
+    {
+        $this->validate($request, [
+            'code' => 'required',
+        ]);
+
+        $user = \Auth::user();
+
+        $verification = $this->phoneRepo->getLatestVerificationForUser($user);
+
+        // Correct
+        if ($verification->verify_code == $request->input('code')) {
+            // verify users phone and add to record
+        }
+
+        // Incorrect
+        if ($verification->verify_code != $request->input('code')) {
+            // return back with errors
+        }
+
+        // Expired
+        if (Carbon::now()->diffInMinutes(Carbon::parse($verification->created_at)) > $this->codeExpirationMinutes) {
+            // redirect to /phone with message
+        }
+
+        // Internal Error. Return to /phone with errors
     }
 }
