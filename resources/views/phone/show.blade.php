@@ -29,7 +29,7 @@
 
         <div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
             <div class="col-md-6">
-                {!! Form::submit('Save', ['class' => 'form-control']) !!}
+                {!! Form::submit('Submit', ['class' => 'form-control']) !!}
             </div>
         </div>
 
