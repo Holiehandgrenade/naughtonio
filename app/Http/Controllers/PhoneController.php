@@ -42,11 +42,8 @@ class PhoneController extends Controller
 
         $user = \Auth::user();
 
-        // append US global code
-        $phone = '1' . $request->input('phone');
-
         // store a phone_verification record
-        $this->phoneRepo->createPhoneVerification($user, $phone);
+        $this->phoneRepo->createPhoneVerification($user, $request->input('phone'));
 
         // text code to phone
         $this->dispatch(new SendPhoneVerificationText($user));
