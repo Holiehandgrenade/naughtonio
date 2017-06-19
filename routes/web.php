@@ -51,6 +51,8 @@ Route::group(['middleware' => 'auth'], function () {
         ->middleware('requires-phone');
 
         Route::patch('/', 'WeatherTextController@update');
-        Route::post('/phone', 'WeatherTextController@phone');
+
+        Route::post('/get', 'PhoneController@show');
+        Route::post('/phone', 'PhoneController@post');
     });
 });
