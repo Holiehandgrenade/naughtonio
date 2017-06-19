@@ -33,6 +33,13 @@ class PhoneRepository
             ->first();
     }
 
+    public function updateUserPhone(User $user, $verification)
+    {
+        $user->update([
+            'phone' => $verification->pending_phone,
+        ]);
+    }
+
     private function stripPhone ($phone) {
         // numeric only
         return preg_replace('/[^0-9]/s', '', $phone);

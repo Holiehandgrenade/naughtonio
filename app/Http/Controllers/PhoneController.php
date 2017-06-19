@@ -61,6 +61,12 @@ class PhoneController extends Controller
         // Correct
         if ($verification->verify_code == $request->input('code')) {
             // verify users phone and add to record
+            $this->phoneRepo->updateUserPhone($user, $verification);
+
+            // redirect to intended url
+            $url = session()->get('url.intended');
+            session()->forget('url.intended');
+            return redirect()->to($url);
         }
 
         // Incorrect
