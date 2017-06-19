@@ -26,7 +26,7 @@ class PhoneController extends Controller
     public function post(Request $request)
     {
         $this->validate($request, [
-            'phone' => 'required',
+            'phone' => 'required|max:10|min:10',
         ]);
 
         $user = \Auth::user();
@@ -41,6 +41,8 @@ class PhoneController extends Controller
         $this->dispatch(new SendPhoneVerificationText($user));
 
         // redirect to /phone-verify
+        Session::flash('phone', $phone);
+        Session::flash('message', 'A verification code has been sent to this number.');
         return redirect()->to('/phone-verify');
     }
 

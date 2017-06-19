@@ -8,11 +8,25 @@
         </div>
     @endif
 
+    @if(session('message'))
+        <div class="alert alert-success" role="alert">
+            {{ session('message') }}
+        </div>
+    @endif
+
     {{ Form::open([
         'url' => 'phone-verify',
         'method' => 'post',
         'class' => 'form-horizontal',
     ]) }}
+
+        <div class="form-group">
+            {!! Form::label('phone', null, ['class' => 'col-md-4 control-label'], false) !!}
+
+            <div class="col-md-6">
+                {!! Form::text('phone', session('phone'), ['class' => 'form-control', 'readonly']) !!}
+            </div>
+        </div>
 
         <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
             {!! Form::label('code', null, ['class' => 'col-md-4 control-label'], false) !!}
