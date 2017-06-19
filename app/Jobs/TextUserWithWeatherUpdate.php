@@ -40,7 +40,7 @@ class TextUserWithWeatherUpdate implements ShouldQueue
                         ->currently();
 
         Nexmo::message()->send([
-            'to' => $user->phone,
+            'to' => $user->calling_code . $user->phone,
             'from' => getenv('NEXMO_PHONE_NUMBER'),
             'text' => 'Current Temperature: ' . $weather->temperature. ' -- ',
         ]);

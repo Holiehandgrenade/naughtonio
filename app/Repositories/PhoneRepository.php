@@ -37,6 +37,7 @@ class PhoneRepository
     {
         $user->update([
             'phone' => $verification->pending_phone,
+            'calling_code' => $verification->pending_calling_code,
         ]);
     }
 
