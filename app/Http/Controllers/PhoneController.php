@@ -34,7 +34,6 @@ class PhoneController extends Controller
         // text code to phone
         $this->dispatch(new SendPhoneVerificationText($user));
 
-
         // redirect to /phone-verify
         return redirect()->to('/phone-verify');
     }
