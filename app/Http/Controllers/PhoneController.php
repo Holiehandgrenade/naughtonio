@@ -18,11 +18,22 @@ class PhoneController extends Controller
         $this->phoneRepo = $phoneRepository;
     }
 
+    /**
+     * Show enter phone page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show()
     {
         return view('phone.show');
     }
 
+    /**
+     * Creates phone verification record and texts code to phone
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function post(Request $request)
     {
         $this->validate($request, [
@@ -45,12 +56,23 @@ class PhoneController extends Controller
         return redirect()->to('/phone-verify');
     }
 
+    /**
+     * Show enter verification code page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showVerify()
     {
         $phone = $this->phoneRepo->getLatestVerificationForUser(\Auth::user())->pending_phone;
         return view('phone.show-verify', compact('phone'));
     }
 
+    /**
+     * Checks if code is valid
+     *
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function postVerify(Request $request)
     {
         $this->validate($request, [
@@ -74,7 +96,7 @@ class PhoneController extends Controller
 
         // Expired
         if (Carbon::now()->diffInMinutes(Carbon::parse($verification->created_at)) > $this->codeExpirationMinutes) {
-            // redirect to /phone with message and fill with pending pone
+            // redirect to /phone with message and fill with pending phone
             Session::flash('code', 'This code has expired. Please submit for another.');
             Session::flash('phone', $verification->pending_phone);
             return redirect()->to('/phone');
