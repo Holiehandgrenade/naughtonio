@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phone')->nullable();
+            $table->string('calling_code')->default(1); // default to america calling code
             $table->string('zip')->nullable();
             $table->float('latitude')->nullable();
             $table->float('longitude')->nullable();
