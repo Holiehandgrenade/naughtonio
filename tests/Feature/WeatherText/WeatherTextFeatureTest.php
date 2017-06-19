@@ -17,7 +17,7 @@ class WeatherTextFeatureTest extends TestCase
     /** @test */
     public function user_can_visit_weather_text_url()
     {
-        $user = factory(User::class)->create(['phone' => null]);
+        $user = factory(User::class)->create(['phone' => '5555555555']);
         $this->be($user);
 
         $this->get('/weather-text')
@@ -25,14 +25,19 @@ class WeatherTextFeatureTest extends TestCase
     }
 
     /** @test */
-    public function user_can_post_phone_and_zip_data()
+    public function user_can_post_phone_zip_time_timezone_data()
     {
         $this->expectsJobs(AddLatLongFromZipToUser::class);
 
         $user = factory(User::class)->create(['phone' => null, 'zip' => null]);
         $this->be($user);
 
-        $this->post('weather-text/phone', ['phone' => '5555555555', 'zip' => '55555'])
+        $this->patch('weather-text', [
+            'phone' => '5555555555',
+            'zip' => '55555',
+            'time' => '13:00',
+            'timezone' => 'EST'
+        ])
             ->assertStatus(302);
         $this->assertDatabaseHas('users', ['phone' => '5555555555', 'zip' => '55555']);
     }
@@ -43,7 +48,7 @@ class WeatherTextFeatureTest extends TestCase
         $user = factory(User::class)->create(['phone' => null]);
         $this->be($user);
 
-        $this->post('weather-text/phone', [])
+        $this->patch('weather-text', [])
             ->assertStatus(302);
         $this->assertDatabaseMissing('users', ['phone' => '5555555555']);
 
@@ -55,7 +60,7 @@ class WeatherTextFeatureTest extends TestCase
         $user = factory(User::class)->create(['zip' => null, 'phone' => '5555555555']);
         $this->be($user);
 
-        $this->post('weather-text/phone', ['phone' => '6666666666'])
+        $this->patch('weather-text', ['phone' => '6666666666'])
             ->assertStatus(302);
         $this->assertDatabaseMissing('users', ['phone' => '6666666666']);
 
@@ -152,17 +157,5 @@ class WeatherTextFeatureTest extends TestCase
             'active' => true,
             'time' => '12:00', // converted in WeatherTextRepository
         ]);
-    }
-
-    /** @test */
-    public function phone_is_stripped_of_formatting()
-    {
-        $this->expectsJobs(AddLatLongFromZipToUser::class);
-
-        $user = factory(User::class)->create(['phone' => null]);
-        $this->be($user);
-
-        $this->post('weather-text/phone', ['phone' => '(555) 555-5555', 'zip' => '55555']);
-        $this->assertDatabaseHas('users', ['phone' => '5555555555']);
     }
 }
