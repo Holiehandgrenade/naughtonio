@@ -22,9 +22,8 @@ class SendPhoneVerificationText implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(PhoneRepository $phoneRepository, User $user)
+    public function __construct(User $user)
     {
-        $this->phoneRepo = $phoneRepository;
         $this->user = $user;
     }
 
@@ -35,13 +34,13 @@ class SendPhoneVerificationText implements ShouldQueue
      */
     public function handle()
     {
-        $verification = $this->phoneRepo->getLatestVerificationForUser($this->user);
+        $phoneRepo = new PhoneRepository();
+        $verification = $phoneRepo->getLatestVerificationForUser($this->user);
 
         Nexmo::message()->send([
             'to' => $verification->pending_phone,
             'from' => getenv('NEXMO_PHONE_NUMBER'),
             'text' => 'naughton.io verification number: ' .$verification->verify_code
         ]);
-
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendPhoneVerificationText;
 use App\Repositories\PhoneRepository;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class PhoneController extends Controller
         $this->phoneRepo->createPhoneVerification($user, $request->input('phone'));
 
         // text code to phone
-
+        $this->dispatch(new SendPhoneVerificationText($user));
 
 
         // redirect to /phone-verify
