@@ -15,6 +15,7 @@ class RequiresPhone
      */
     public function handle($request, Closure $next)
     {
+        dd('hi');
         return $next($request);
     }
 }
