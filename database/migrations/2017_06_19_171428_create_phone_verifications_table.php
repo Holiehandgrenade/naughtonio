@@ -17,6 +17,7 @@ class PhoneVerifications extends Migration
             $table->mediumIncrements('id');
             $table->integer('user_id');
             $table->string('pending_phone');
+            $table->string('pending_calling_code')->default(1);
             $table->string('verify_code');
             $table->time('created_at');
         });
