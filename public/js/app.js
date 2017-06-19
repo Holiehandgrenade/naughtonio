@@ -32394,7 +32394,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('form', {
     attrs: {
       "method": "POST",
-      "action": "/weather-text/phone"
+      "action": "/phone"
     }
   }, [_c('input', {
     directives: [{

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <form method="POST" action="/weather-text/phone">
+                <form method="POST" action="/phone">
                     <input type="hidden" name="_token" v-model="csrf_token">
 
                     <label>
