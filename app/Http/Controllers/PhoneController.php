@@ -37,4 +37,9 @@ class PhoneController extends Controller
         // redirect to /phone-verify
         return redirect()->to('/phone-verify');
     }
+
+    public function showVerify()
+    {
+        return view('phone.show-verify');
+    }
 }
