@@ -71,7 +71,7 @@ class PhoneController extends Controller
      * Checks if code is valid
      *
      * @param Request $request
-     * @return $this|\Illuminate\Http\RedirectResponse
+     * @return @mixed
      */
     public function postVerify(Request $request)
     {
