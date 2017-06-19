@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @if(session('code'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('code') }}
+        </div>
+    @endif
+
     {{ Form::open([
         'url' => 'phone',
         'method' => 'post',
