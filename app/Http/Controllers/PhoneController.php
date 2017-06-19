@@ -28,7 +28,7 @@ class PhoneController extends Controller
         $user = \Auth::user();
 
         // store a phone_verification record
-        $this->phoneRepo->createPhoneVerification($user);
+        $this->phoneRepo->createPhoneVerification($user, $request->input('phone'));
 
 
         // text code to phone
