@@ -19,7 +19,7 @@ class PhoneRepository
         \DB::table('phone_verifications')
             ->insert([
                 'user_id' => $user->id,
-                'pending_phone' => $phone,
+                'pending_phone' => $this->stripPhone($phone),
                 'verify_code' => rand(100000, 999999),
                 'created_at' => Carbon::now()
             ]);
@@ -31,5 +31,10 @@ class PhoneRepository
             ->where('user_id', $user->id)
             ->orderByDesc('created_at')
             ->first();
+    }
+
+    private function stripPhone ($phone) {
+        // numeric only
+        return preg_replace('/[^0-9]/s', '', $phone);
     }
 }
