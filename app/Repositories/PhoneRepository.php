@@ -19,7 +19,7 @@ class PhoneRepository
         \DB::table('phone_verifications')
             ->insert([
                 'user_id' => $user->id,
-                'phone' => $phone,
+                'pending_phone' => $phone,
                 'verify_code' => rand(100000, 999999),
                 'created_at' => Carbon::now()
             ]);

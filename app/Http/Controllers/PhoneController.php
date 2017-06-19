@@ -30,9 +30,8 @@ class PhoneController extends Controller
         // store a phone_verification record
         $this->phoneRepo->createPhoneVerification($user, $request->input('phone'));
 
-
         // text code to phone
-
+        
 
 
         // redirect to /phone-verify
