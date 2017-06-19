@@ -27,6 +27,7 @@ class WeatherTextRepository
         $user->update([
             'phone' => $data['phone'],
             'timezone' => $data['timezone'],
+            'zip' => $data['zip'],
         ]);
 
         $time = Carbon::createFromFormat('H:i', $data['time'], $data['timezone'])
