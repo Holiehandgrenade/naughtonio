@@ -31,7 +31,7 @@ class PhoneController extends Controller
         $this->phoneRepo->createPhoneVerification($user, $request->input('phone'));
 
         // text code to phone
-        
+
 
 
         // redirect to /phone-verify
