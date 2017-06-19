@@ -23,6 +23,9 @@ class PhoneController extends Controller
             'phone' => $request->input('phone'),
         ]);
 
-        return back();
+        $url = session()->get('url.intended');
+        session()->forget('url.intended');
+        
+        return redirect()->to($url);
     }
 }

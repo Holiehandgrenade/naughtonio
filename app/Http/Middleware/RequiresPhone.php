@@ -16,9 +16,13 @@ class RequiresPhone
     public function handle($request, Closure $next)
     {
         if ( ! \Auth::user()->phone) {
-            // redirect to update phone
+            // put intended url into session
+            session()->put('url.intended', $request->url());
+
+            // redirect to post phone
             return redirect('/phone');
         }
+
         return $next($request);
     }
 }
