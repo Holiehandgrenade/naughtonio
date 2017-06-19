@@ -18,7 +18,7 @@
             {!! Form::label('phone', null, ['class' => 'col-md-4 control-label'], false) !!}
 
             <div class="col-md-6">
-                {!! Form::text('phone', isset($phone) ? $phone : null, ['class' => 'form-control']) !!}
+                {!! Form::text('phone', session('phone') ? session('phone') : null, ['class' => 'form-control']) !!}
                 @if ($errors->has('phone'))
                     <span class="help-block">
                         <strong>{{ $errors->first('phone') }}</strong>

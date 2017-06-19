@@ -6,6 +6,7 @@ use App\Jobs\SendPhoneVerificationText;
 use App\Repositories\PhoneRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Session;
 
 class PhoneController extends Controller
 {
@@ -72,9 +73,9 @@ class PhoneController extends Controller
         // Expired
         if (Carbon::now()->diffInMinutes(Carbon::parse($verification->created_at)) > $this->codeExpirationMinutes) {
             // redirect to /phone with message and fill with pending pone
-            return redirect()->to('/phone')
-                ->withErrors(['code' => 'This code has expired. Please submit for another.'])
-                ->with(['phone' => $verification->pending_phone]);
+            Session::flash('code', 'This code has expired. Please submit for another.');
+            Session::flash('phone', $verification->pending_phone);
+            return redirect()->to('/phone');
         }
 
         // Incorrect
