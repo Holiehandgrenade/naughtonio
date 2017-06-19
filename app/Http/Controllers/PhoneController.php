@@ -69,18 +69,18 @@ class PhoneController extends Controller
             return redirect()->to($url);
         }
 
-        // Incorrect
-        if ($verification->verify_code != $request->input('code')) {
-            // return back with errors
-            return back()->withErrors(['code' => 'The code did not match the most recent code sent.']);
-        }
-
         // Expired
         if (Carbon::now()->diffInMinutes(Carbon::parse($verification->created_at)) > $this->codeExpirationMinutes) {
             // redirect to /phone with message and fill with pending pone
             return redirect()->to('/phone')
                 ->withErrors(['code' => 'This code has expired. Please submit for another.'])
                 ->with(['phone' => $verification->pending_phone]);
+        }
+
+        // Incorrect
+        if ($verification->verify_code != $request->input('code')) {
+            // return back with errors
+            return back()->withErrors(['code' => 'The code did not match the most recent code sent.']);
         }
 
         // Internal Error. Return to /phone with errors
