@@ -24,7 +24,7 @@
             {!! Form::label('phone', null, ['class' => 'col-md-4 control-label'], false) !!}
 
             <div class="col-md-6">
-                {!! Form::text('phone', session('phone'), ['class' => 'form-control', 'readonly']) !!}
+                {!! Form::text('phone', $phone, ['class' => 'form-control', 'readonly']) !!}
             </div>
         </div>
 

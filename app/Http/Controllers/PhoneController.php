@@ -41,14 +41,14 @@ class PhoneController extends Controller
         $this->dispatch(new SendPhoneVerificationText($user));
 
         // redirect to /phone-verify
-        Session::flash('phone', $phone);
         Session::flash('message', 'A verification code has been sent to this number.');
         return redirect()->to('/phone-verify');
     }
 
     public function showVerify()
     {
-        return view('phone.show-verify');
+        $phone = $this->phoneRepo->getLatestVerificationForUser(\Auth::user())->pending_phone;
+        return view('phone.show-verify', compact('phone'));
     }
 
     public function postVerify(Request $request)
