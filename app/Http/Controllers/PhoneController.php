@@ -80,6 +80,14 @@ class PhoneController extends Controller
 
         $verification = $this->phoneRepo->getLatestVerificationForUser($user);
 
+        // Expired
+        if (Carbon::now()->diffInMinutes(Carbon::parse($verification->created_at)) > $this->codeExpirationMinutes) {
+            // redirect to /phone with message and fill with pending phone
+            Session::flash('code', 'This code has expired. Please submit for another.');
+            Session::flash('phone', $verification->pending_phone);
+            return redirect()->to('/phone');
+        }
+
         // Correct
         if ($verification->verify_code == $request->input('code')) {
             // verify users phone and add to record
@@ -89,14 +97,6 @@ class PhoneController extends Controller
             $url = session()->get('url.intended');
             session()->forget('url.intended');
             return redirect()->to($url);
-        }
-
-        // Expired
-        if (Carbon::now()->diffInMinutes(Carbon::parse($verification->created_at)) > $this->codeExpirationMinutes) {
-            // redirect to /phone with message and fill with pending phone
-            Session::flash('code', 'This code has expired. Please submit for another.');
-            Session::flash('phone', $verification->pending_phone);
-            return redirect()->to('/phone');
         }
 
         // Incorrect

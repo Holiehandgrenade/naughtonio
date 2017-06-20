@@ -118,7 +118,7 @@ class PhoneVerificationFeatureTest extends TestCase
     }
 
     /** @test */
-    public function if_code_is_expired_()
+    public function if_code_is_expired_redirect_to_phone()
     {
         $user = factory(User::class)->create(['phone' => null]);
         $this->be($user);
@@ -127,10 +127,10 @@ class PhoneVerificationFeatureTest extends TestCase
             'user_id' => $user->id,
             'pending_phone' => '1234567890',
             'verify_code' => '555555',
-            'created_at' => Carbon::now()
+            'created_at' => Carbon::now()->subMinutes(10)
         ]);
 
-        $this->post('/phone-verify', ['code' => 999999])
+        $this->post('/phone-verify', ['code' => 555555])
             ->assertStatus(302);
         $this->assertDatabaseMissing('users', [
             'id' => $user->id,
