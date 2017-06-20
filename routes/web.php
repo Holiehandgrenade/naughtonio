@@ -51,6 +51,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/phone-verify', 'PhoneController@showVerify');
     Route::post('/phone-verify', 'PhoneController@postVerify');
 
+    Route::get('/zip', 'ZipController@show');
+    Route::post('/zip', 'ZipController@post');
+
     Route::group(['prefix' => 'weather-text'], function () {
         Route::get('/', 'WeatherTextController@show')
                 ->middleware('requires-phone');
