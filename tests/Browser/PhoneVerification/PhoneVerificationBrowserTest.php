@@ -16,8 +16,6 @@ class PhoneVerificationBrowserTest extends DuskTestCase
     /** @test */
     public function after_phone_submission_redirect_to_verify_page()
     {
-        $this->expectsJobs(SendPhoneVerificationText::class);
-
         $user = factory(User::class)->create(['phone' => null]);
 
         $this->browse(function ($browser) use ($user) {
@@ -27,5 +25,7 @@ class PhoneVerificationBrowserTest extends DuskTestCase
                 ->click('input[type="submit"]');
             $browser->assertPathIs('/phone-verify');
         });
+
+        $this->assertQueued([SendPhoneVerificationText::class]);
     }
 }

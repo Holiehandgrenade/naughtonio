@@ -32,4 +32,23 @@ abstract class DuskTestCase extends BaseTestCase
             'http://localhost:9515', DesiredCapabilities::chrome()
         );
     }
+
+    /**
+     * Asserts that Jobs are in Queue to be dispatched.
+     *
+     * @param array|string $queued
+     */
+    public function assertQueued($queued) {
+        if (!is_array($queued))
+            $queued = func_get_args();
+
+        $repository = app()->make(
+            \Illuminate\Contracts\Queue\Queue::class
+        );
+
+        foreach ($queued as $item) {
+            $job = $repository->pop('dusk-queue');
+            $this->assertTrue($job->resolveName() == $item);
+        }
+    }
 }
