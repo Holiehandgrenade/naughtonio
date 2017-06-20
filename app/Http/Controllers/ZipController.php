@@ -13,6 +13,8 @@ class ZipController extends Controller
 
     public function post(Request $request)
     {
-
+        $this->validate($request, [
+            'zip' => 'required',
+        ]);
     }
 }
