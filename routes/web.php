@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/phone', 'PhoneController@show');
     Route::post('/phone', 'PhoneController@post')->middleware('strips-phone');
     Route::get('/phone-verify', 'PhoneController@showVerify');
-    Route::post('/phone-verify', 'PhoneController@postVerify')->middleware('strips-phone');
+    Route::post('/phone-verify', 'PhoneController@postVerify');
 
     Route::group(['prefix' => 'weather-text'], function () {
         Route::get('/', 'WeatherTextController@show')
