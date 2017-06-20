@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'weather-text'], function () {
         Route::get('/', 'WeatherTextController@show')
-                ->middleware('requires-phone');
+                ->middleware('requires-phone', 'requires-zip');
         Route::patch('/', 'WeatherTextController@update');
     });
 });
