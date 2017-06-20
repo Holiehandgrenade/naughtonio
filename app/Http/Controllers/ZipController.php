@@ -13,6 +13,6 @@ class ZipController extends Controller
 
     public function post(Request $request)
     {
-        
+
     }
 }
