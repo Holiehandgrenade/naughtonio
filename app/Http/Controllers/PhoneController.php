@@ -46,7 +46,7 @@ class PhoneController extends Controller
         $this->phoneRepo->createPhoneVerification($user, $request->input('phone'));
 
         // text code to phone
-        $this->dispatch(new SendPhoneVerificationText($user));
+        dispatch(new SendPhoneVerificationText($user));
 
         // redirect to /phone-verify
         Session::flash('message', 'A verification code has been sent to this number.');

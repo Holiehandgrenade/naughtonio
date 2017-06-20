@@ -59,30 +59,4 @@ class WeatherTextController extends Controller
 
         return back()->with(['success' => 'Record Saved']);
     }
-
-    /**
-     * Updates User phone record
-     *
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function phone(Request $request)
-    {
-        $this->validate($request, [
-            'phone' => 'required',
-            'zip' => 'required',
-        ]);
-
-
-        $user = \Auth::user();
-
-        $user->update([
-            'phone' => $request->input('phone'),
-            'zip' => $request->input('zip'),
-        ]);
-
-        dispatch(new AddLatLongFromZipToUser($user, $request->input('zip')));
-
-        return back();
-    }
 }

@@ -40,7 +40,7 @@ class SendPhoneVerificationText implements ShouldQueue
         Nexmo::message()->send([
             'to' => $verification->pending_calling_code . $verification->pending_phone,
             'from' => getenv('NEXMO_PHONE_NUMBER'),
-            'text' => 'naughton.io verification number: ' .$verification->verify_code
+            'text' => 'naughton.io verification number: ' . $verification->verify_code
         ]);
     }
 }
