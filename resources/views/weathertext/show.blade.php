@@ -26,7 +26,7 @@
             {!! Form::label('phone', null, ['class' => 'col-md-4 control-label'], false) !!}
 
             <div class="col-md-6">
-                {!! Form::text('phone', $user->phone, ['class' => 'form-control']) !!}
+                {!! Form::text('phone', $user->phone, ['class' => 'form-control', 'readonly']) !!}
                 @if ($errors->has('phone'))
                     <span class="help-block">
                     <strong>{{ $errors->first('phone') }}</strong>
@@ -39,7 +39,7 @@
             {!! Form::label('zip', null, ['class' => 'col-md-4 control-label'], false) !!}
 
             <div class="col-md-6">
-                {!! Form::text('zip', $user->zip, ['class' => 'form-control']) !!}
+                {!! Form::text('zip', $user->zip, ['class' => 'form-control', 'readonly']) !!}
                 @if ($errors->has('zip'))
                     <span class="help-block">
                         <strong>{{ $errors->first('zip') }}</strong>
