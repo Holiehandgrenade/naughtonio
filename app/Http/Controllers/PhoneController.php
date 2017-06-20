@@ -102,7 +102,7 @@ class PhoneController extends Controller
         // Incorrect
         if ($verification->verify_code != $request->input('code')) {
             // return back with errors
-            return back()->withErrors(['code' => 'The code did not match the most recent code sent.']);
+            return redirect()->back()->withErrors(['code' => 'The code did not match the most recent code sent.']);
         }
 
         // Internal Error. Return to /phone with errors
