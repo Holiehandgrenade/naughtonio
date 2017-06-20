@@ -20,9 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/phone-inbound', function (Request $request) {
     \Log::info('GET');
     \Log::info($request->all());
+    return Response::json([], 200);
 });
 
 Route::post('/phone-inbound', function (Request $request) {
     \Log::info('POST');
     \Log::info($request->all());
+    return Response::json([], 200);
 });
