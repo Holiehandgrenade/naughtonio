@@ -2,6 +2,7 @@
 
 namespace Tests\Browser\ZipCode;
 
+use App\Jobs\AddLatLongFromZipToUser;
 use App\User;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
@@ -19,6 +20,20 @@ class ZipCodeBrowserTest extends DuskTestCase
                 ->visit('/weather-text'); // has requires-zip middleware
             $browser->assertPathIs('/zip');
         });
+    }
 
+    /** @test */
+    public function when_submitting_a_zip_job_is_queued()
+    {
+        $user = factory(User::class)->create(['phone' => '5555555555', 'zip' => null]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit('/zip')
+                ->type('zip', '55555')
+                ->click('input[type="submit"]');
+        });
+
+        $this->assertQueued(AddLatLongFromZipToUser::class);
     }
 }
