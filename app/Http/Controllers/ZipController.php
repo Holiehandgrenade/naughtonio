@@ -26,9 +26,6 @@ class ZipController extends Controller
 
         dispatch(new AddLatLongFromZipToUser($user, $request->input('zip')));
 
-        $url = session()->get('url.intended');
-        session()->forget('url.intended');
-
-        return redirect()->to($url);
+        return redirect()->to(session()->get('url.intended'));
     }
 }

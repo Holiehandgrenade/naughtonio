@@ -85,6 +85,7 @@ class PhoneController extends Controller
             // redirect to /phone with message and fill with pending phone
             Session::flash('code', 'This code has expired. Please submit for another.');
             Session::flash('phone', $verification->pending_phone);
+
             return redirect()->to('/phone');
         }
 
@@ -94,9 +95,7 @@ class PhoneController extends Controller
             $this->phoneRepo->updateUserPhone($user, $verification);
 
             // redirect to intended url
-            $url = session()->get('url.intended');
-            session()->forget('url.intended');
-            return redirect()->to($url);
+            return redirect()->to(session()->get('url.intended'));
         }
 
         // Incorrect
