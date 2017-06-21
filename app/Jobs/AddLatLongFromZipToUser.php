@@ -37,6 +37,11 @@ class AddLatLongFromZipToUser implements ShouldQueue
     {
         try {
             $geo = Geocode::make()->address($this->zip);
+
+            if ( ! $geo) {
+                throw new ZipToLatLonFailedException();
+            }
+
             $this->user->update([
                 'latitude' => $geo->latitude(),
                 'longitude' => $geo->longitude(),

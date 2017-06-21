@@ -21,6 +21,7 @@ class Handler extends ExceptionHandler
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
         VerificationTextFailedException::class,
+        ZipToLatLonFailedException::class,
     ];
 
     /**
