@@ -1,31 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-    {{ Form::open([
-        'url' => 'zip',
-        'method' => 'post',
-        'class' => 'form-horizontal',
-    ]) }}
+    <div class="container-fluid">
 
-        <div class="form-group{{ $errors->has('zip') ? ' has-error' : '' }}">
-            {!! Form::label('zip', null, ['class' => 'col-md-4 control-label'], false) !!}
+        {{ Form::open([
+            'url' => 'zip',
+            'method' => 'post',
+            'class' => 'form-horizontal',
+        ]) }}
 
-            <div class="col-md-6">
-                {!! Form::text('zip', null, ['class' => 'form-control']) !!}
-                @if ($errors->has('zip'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('zip') }}</strong>
-                    </span>
-                @endif
+            <div class="form-group{{ $errors->has('zip') ? ' has-error' : '' }}">
+                {!! Form::label('zip', null, ['class' => 'col-sm-2 control-label'], false) !!}
+                <div class="col-sm-9">
+                    {!! Form::text('zip', null, ['class' => 'form-control']) !!}
+                    @if ($errors->has('zip'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('zip') }}</strong>
+                        </span>
+                    @endif
+                </div>
             </div>
-        </div>
 
-        <div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
-            <div class="col-md-6">
-                {!! Form::submit('Submit', ['class' => 'form-control']) !!}
+            <div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
+                <div class="col-sm-offset-2 col-sm-2">
+                    {!! Form::submit('Submit', ['class' => 'form-control btn btn-primary']) !!}
+                </div>
             </div>
-        </div>
 
-    {{ Form::close() }}
-
+        {{ Form::close() }}
+    </div>
 @endsection
