@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container-fluid">
-        @if(session('code'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('code') }}
+        @if($errors->has('code'))
+            <div class="alert alert-danger col-sm-offset-2 col-sm-8" role="alert">
+                {{ $errors->first('code') }}
             </div>
         @endif
 

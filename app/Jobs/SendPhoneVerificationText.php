@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Exceptions\VerificationTextFailedException;
 use App\Repositories\PhoneRepository;
 use App\User;
 use Illuminate\Bus\Queueable;
@@ -41,13 +42,11 @@ class SendPhoneVerificationText implements ShouldQueue
 
             Nexmo::message()->send([
                 'to' => $verification->pending_calling_code . $verification->pending_phone,
-                'from' => getenv('NEXMO_PHONE_NUMBER') . 4444,
+                'from' => getenv('NEXMO_PHONE_NUMBER'),
                 'text' => 'naughton.io verification number: ' . $verification->verify_code
             ]);
         } catch (Exception $exception) {
-            return redirect()->to('/phone')
-                ->withErrors(['code' => 'There was an error sending the text, please try again.'])
-                ->with(['phone' => isset($verification) ? $verification->pending_phone : null]);
+            throw new VerificationTextFailedException();
         }
     }
 }

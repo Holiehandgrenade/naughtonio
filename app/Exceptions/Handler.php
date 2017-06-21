@@ -20,6 +20,7 @@ class Handler extends ExceptionHandler
         \Illuminate\Database\Eloquent\ModelNotFoundException::class,
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
+        VerificationTextFailedException::class,
     ];
 
     /**
@@ -40,10 +41,20 @@ class Handler extends ExceptionHandler
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
+     * @return @mixed
      */
     public function render($request, Exception $exception)
     {
+        $class = get_class($exception);
+
+        switch ($class) {
+            case VerificationTextFailedException::class:
+                return redirect()->to('/phone')
+                    ->withErrors(['code' => 'There was an error sending the text, please try again.']);
+//                    ->with(['phone' => isset($verification) ? $verification->pending_phone : null]);
+                break;
+        }
+
         return parent::render($request, $exception);
     }
 
