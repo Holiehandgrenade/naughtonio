@@ -3,6 +3,12 @@
 @section('content')
     <div class="container-fluid">
 
+        @if($errors->has('geocode'))
+            <div class="alert alert-danger col-sm-offset-2 col-sm-8" role="alert">
+                {{ $errors->first('geocode') }}
+            </div>
+        @endif
+
         {{ Form::open([
             'url' => 'zip',
             'method' => 'post',
