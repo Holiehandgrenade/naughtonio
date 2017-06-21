@@ -22,7 +22,14 @@
             <div class="form-group{{ $errors->has('zip') ? ' has-error' : '' }}">
                 {!! Form::label('zip', null, ['class' => 'col-sm-2 control-label'], false) !!}
                 <div class="col-sm-9">
-                    {!! Form::text('zip', null, ['class' => 'form-control']) !!}
+                    <numeric-input
+                            id="zip"
+                            type="tel"
+                            name="zip"
+                            class="form-control"
+                    >
+                    </numeric-input>
+
                     @if ($errors->has('zip'))
                         <span class="help-block">
                             <strong>{{ $errors->first('zip') }}</strong>
