@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/phone', 'PhoneController@show');
     Route::post('/phone', 'PhoneController@post')->middleware('strips-phone');
     Route::get('/phone-verify', 'PhoneController@showVerify');
-    Route::post('/phone-verify', 'PhoneController@postVerify');
+    Route::post('/phone-verify', 'PhoneController@postVerify')->middleware('throttle:30,1');
 
     Route::get('/zip', 'ZipController@show');
     Route::post('/zip', 'ZipController@post');
