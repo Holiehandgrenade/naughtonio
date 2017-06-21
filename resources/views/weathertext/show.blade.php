@@ -2,6 +2,10 @@
 
 @section('content')
     <div class="container-fluid">
+
+        <h4 class="text-center">Receive once a day text summaries of the weather</h4>
+
+
         @if(session('success'))
             <div class="alert alert-success alert-dismissable col-sm-8 col-sm-offset-2" role="alert">
                 <button
@@ -88,10 +92,22 @@
             </div>
 
             <div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
-                <div class="col-sm-offset-2 col-sm-3">
+                <div class="col-sm-offset-2 col-sm-3 col-xs-12">
                     {!! Form::submit('Save', ['class' => 'form-control btn btn-primary']) !!}
+                </div>
+
+                <div class="col-sm-7 col-xs-12">
+                    <a class="btn btn-link col-xs-offset-1 col-xs-5" href="/phone">
+                        Change Phone
+                    </a>
+
+                    <a class="btn btn-link col-xs-5" href="/zip">
+                        Change Zip
+                    </a>
                 </div>
             </div>
         {{ Form::close() }}
+
+
     </div>
 @endsection
