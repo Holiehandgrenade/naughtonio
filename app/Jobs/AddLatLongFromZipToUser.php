@@ -2,12 +2,14 @@
 
 namespace App\Jobs;
 
+use App\Exceptions\ZipToLatLonFailedException;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Geocode;
+use \Exception;
 
 class AddLatLongFromZipToUser implements ShouldQueue
 {
@@ -29,14 +31,18 @@ class AddLatLongFromZipToUser implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @return void
+     * @throws ZipToLatLonFailedException
      */
     public function handle()
     {
-        $geo = Geocode::make()->address($this->zip);
-        $this->user->update([
-            'latitude' => $geo->latitude(),
-            'longitude' => $geo->longitude(),
-        ]);
+        try {
+            $geo = Geocode::make()->address($this->zip);
+            $this->user->update([
+                'latitude' => $geo->latitude(),
+                'longitude' => $geo->longitude(),
+            ]);
+        } catch (Exception $exception) {
+            throw new ZipToLatLonFailedException();
+        };
     }
 }
