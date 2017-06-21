@@ -6,7 +6,7 @@
         {{ Form::open([
             'url' => 'zip',
             'method' => 'post',
-            'class' => 'form-horizontal',
+            'class' => 'form-horizontal col-sm-8 col-sm-offset-2',
         ]) }}
 
             <div class="form-group{{ $errors->has('zip') ? ' has-error' : '' }}">
@@ -22,7 +22,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
-                <div class="col-sm-offset-2 col-sm-2">
+                <div class="col-sm-offset-2 col-sm-3">
                     {!! Form::submit('Submit', ['class' => 'form-control btn btn-primary']) !!}
                 </div>
             </div>
