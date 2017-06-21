@@ -32,7 +32,7 @@
                             value="{{ session('phone') }}"
                             onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                     />
-                    
+
                     @if ($errors->has('phone'))
                         <span class="help-block">
                             <strong>{{ $errors->first('phone') }}</strong>
