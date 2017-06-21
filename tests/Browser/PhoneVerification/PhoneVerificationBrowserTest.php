@@ -95,7 +95,7 @@ class PhoneVerificationBrowserTest extends DuskTestCase
                 ->click('input[type="submit"]');
 
             $browser->assertPathIs('/phone')
-                ->assertSee('This code has expired. Please submit for another.');
+                ->assertSee('This code has expired. Please submit again for another.');
         });
     }
 }
