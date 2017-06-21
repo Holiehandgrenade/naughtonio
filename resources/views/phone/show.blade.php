@@ -23,13 +23,14 @@
             <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                 {!! Form::label('phone', null, ['class' => 'col-sm-2 control-label'], false) !!}
                 <div class="col-sm-9">
-                    <input
+                    <numeric-input
                             id="phone"
-                            name="phone"
                             type="tel"
+                            name="phone"
                             class="form-control"
-                            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                    />
+                            value="{{ old('phone') }}"
+                    >
+                    </numeric-input>
 
                     @if ($errors->has('phone'))
                         <span class="help-block">

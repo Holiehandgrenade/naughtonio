@@ -1,27 +1,23 @@
 <template>
-    <div>
-        <header-component/>
-        <div>this is template body</div>
-        <other-component/>
-    </div>
+    <input
+        :id="id"
+        :name="name"
+        :type="finalType"
+        :class="classes"
+        :value="value"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+    />
 </template>
-<style>
-    body{
-        background-color:#ff0000;
-    }
-</style>
+
 <script>
-    import HeaderComponent from './components/header.vue'
-    import OtherComponent from './components/other.vue'
+
     export default{
-        data(){
-            return{
-                msg:'hello vue'
+        props: ['id', 'name', 'type', 'classes', 'value'],
+        data () {
+            return {
+                // allow for non default to use for tel or number inputs
+                finalType: this.type ? this.type : "number",
             }
-        },
-        components:{
-            'other-component':OtherComponent,
-            HeaderComponent,
         }
     }
 </script>
