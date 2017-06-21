@@ -84,9 +84,8 @@ class PhoneController extends Controller
         if (Carbon::now()->diffInMinutes(Carbon::parse($verification->created_at)) > $this->codeExpirationMinutes) {
             // redirect to /phone with message and fill with pending phone
             Session::flash('phone', $verification->pending_phone);
-
             return redirect()->to('/phone')
-                ->withErrors('code', 'This code has expired. Please submit for another.');
+                ->withErrors(['code' => 'This code has expired. Please submit again for another.']);
         }
 
         // Correct
@@ -105,8 +104,8 @@ class PhoneController extends Controller
         }
 
         // Internal Error. Return to /phone with errors
+        Session::flash('phone', $verification->pending_phone);
         return redirect()->to('/phone')
-            ->withErrors('code', 'Internal error, please try again.')
-            ->with(['phone' => $verification->pending_phone]);
+            ->withErrors(['code' => 'Internal error, please try again.']);
     }
 }
