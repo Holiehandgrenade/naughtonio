@@ -9,11 +9,16 @@
             </div>
         @endif
 
+        <h4 class="text-center">
+            This service requires a phone number
+        </h4>
+
         {{ Form::open([
             'url' => 'phone',
             'method' => 'post',
             'class' => 'form-horizontal col-sm-8 col-sm-offset-2',
         ]) }}
+
 
             <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                 {!! Form::label('phone', null, ['class' => 'col-sm-2 control-label'], false) !!}

@@ -9,6 +9,10 @@
             </div>
         @endif
 
+            <h4 class="text-center">
+                This service requires a zip code
+            </h4>
+
         {{ Form::open([
             'url' => 'zip',
             'method' => 'post',
