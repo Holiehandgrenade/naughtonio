@@ -13,23 +13,21 @@
             This service requires a phone number
         </h4>
 
-        {{ Form::open([
-            'url' => 'phone',
-            'method' => 'post',
-            'class' => 'form-horizontal col-sm-8 col-sm-offset-2',
-        ]) }}
-
+        <form
+                method="POST"
+                action="/phone"
+                class="form-horizontal col-sm-offset-2 col-sm-8"
+        >
+            {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                 {!! Form::label('phone', null, ['class' => 'col-sm-2 control-label'], false) !!}
                 <div class="col-sm-9">
-
                     <input
                             id="phone"
                             name="phone"
-                            type="number"
+                            type="tel"
                             class="form-control"
-                            value="{{ session('phone') }}"
                             onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                     />
 
@@ -46,7 +44,6 @@
                     {!! Form::submit('Submit', ['class' => 'form-control btn btn-primary']) !!}
                 </div>
             </div>
-
-        {{ Form::close() }}
+        </form>
     </div>
 @endsection
