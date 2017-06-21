@@ -109,10 +109,18 @@ class PhoneController extends Controller
             ->withErrors(['code' => 'Internal error, please try again.']);
     }
 
+    /**
+     * Handles inbound text messages
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function inbound(Request $request)
     {
         if ($request->input('keyword') == 'STOP') {
             $this->phoneRepo->handleStopRequest($request);
         }
+
+        return \Response::json([], 200);
     }
 }
