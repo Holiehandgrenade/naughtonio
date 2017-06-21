@@ -108,4 +108,11 @@ class PhoneController extends Controller
         return redirect()->to('/phone')
             ->withErrors(['code' => 'Internal error, please try again.']);
     }
+
+    public function inbound(Request $request)
+    {
+        if ($request->input('keyword') == 'STOP') {
+            $this->phoneRepo->handleStopRequest($request);
+        }
+    }
 }

@@ -11,6 +11,7 @@ namespace App\Repositories;
 
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class PhoneRepository
 {
@@ -39,5 +40,26 @@ class PhoneRepository
             'phone' => $verification->pending_phone,
             'calling_code' => $verification->pending_calling_code,
         ]);
+    }
+
+    public function handleStopRequest(Request $request)
+    {
+        // syntax of a "stop request" should be "stop [app_keyword]"
+        // therefore, index [1] should be the keyword after explode
+        $app = strtolower(explode(' ', $request->input('text'))[1]);
+        // remove calling code from phone
+        $phone = substr($request->input('msisdn'), 1);
+
+        switch ($app) {
+            case 'weather':
+                $this->deactivateWeatherTextRecord($phone);
+                break;
+        }
+    }
+
+    private function deactivateWeatherTextRecord($phone)
+    {
+        $user = User::wherePhone($phone)->first();
+        $user->weatherText->update(['active' => false]);
     }
 }
