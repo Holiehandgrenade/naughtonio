@@ -51,7 +51,6 @@ class Handler extends ExceptionHandler
             case VerificationTextFailedException::class:
                 return redirect()->to('/phone')
                     ->withErrors(['code' => 'There was an error sending the text, please try again.']);
-//                    ->with(['phone' => isset($verification) ? $verification->pending_phone : null]);
                 break;
         }
 
