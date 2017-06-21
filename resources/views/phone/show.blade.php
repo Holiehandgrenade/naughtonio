@@ -23,7 +23,16 @@
             <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                 {!! Form::label('phone', null, ['class' => 'col-sm-2 control-label'], false) !!}
                 <div class="col-sm-9">
-                    {!! Form::text('phone', session('phone'), ['class' => 'form-control']) !!}
+
+                    <input
+                            id="phone"
+                            name="phone"
+                            type="number"
+                            class="form-control"
+                            value="{{ session('phone') }}"
+                            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                    />
+                    
                     @if ($errors->has('phone'))
                         <span class="help-block">
                             <strong>{{ $errors->first('phone') }}</strong>
