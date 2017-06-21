@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         @if(session('success'))
-            <div class="alert alert-success alert-dismissable" role="alert">
+            <div class="alert alert-success alert-dismissable col-sm-8 col-sm-offset-2" role="alert">
                 <button
                         type="button"
                         class="close"
@@ -78,7 +78,7 @@
             <div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
                 {!! Form::label('active', null, ['class' => 'col-sm-2 control-label'], false) !!}
                 <div class="col-sm-9">
-                    {!! Form::checkbox('active', '1', $weatherText ? $weatherText->active : false) !!}
+                    {!! Form::checkbox('active', '1', $weatherText ? $weatherText->active : true) !!}
                     @if ($errors->has('active'))
                         <span class="help-block">
                             <strong>{{ $errors->first('active') }}</strong>

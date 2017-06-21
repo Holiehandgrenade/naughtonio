@@ -3,13 +3,13 @@
 @section('content')
     <div class="container-fluid">
         @if(session('code'))
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger col-sm-8 col-sm-offset-2" role="alert">
                 {{ session('code') }}
             </div>
         @endif
 
         @if(session('message'))
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success col-sm-8 col-sm-offset-2" role="alert">
                 {{ session('message') }}
             </div>
         @endif
