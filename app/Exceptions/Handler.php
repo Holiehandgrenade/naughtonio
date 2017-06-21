@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
         switch ($class) {
             case VerificationTextFailedException::class:
                 return redirect()->to('/phone')
-                    ->withErrors(['code' => 'There was an error sending the text, please try again.']);
+                    ->withErrors(['code' => 'There was an error sending the verification text, please try again.']);
                 break;
         }
 
