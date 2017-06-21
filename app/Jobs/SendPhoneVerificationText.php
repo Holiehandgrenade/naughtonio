@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use \Exception;
 use Nexmo\Laravel\Facade\Nexmo;
 
 class SendPhoneVerificationText implements ShouldQueue
@@ -30,17 +31,23 @@ class SendPhoneVerificationText implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @return void
+     *
      */
     public function handle()
     {
-        $phoneRepo = new PhoneRepository();
-        $verification = $phoneRepo->getLatestVerificationForUser($this->user);
+        try {
+            $phoneRepo = new PhoneRepository();
+            $verification = $phoneRepo->getLatestVerificationForUser($this->user);
 
-        Nexmo::message()->send([
-            'to' => $verification->pending_calling_code . $verification->pending_phone,
-            'from' => getenv('NEXMO_PHONE_NUMBER'),
-            'text' => 'naughton.io verification number: ' . $verification->verify_code
-        ]);
+            Nexmo::message()->send([
+                'to' => $verification->pending_calling_code . $verification->pending_phone,
+                'from' => getenv('NEXMO_PHONE_NUMBER') . 4444,
+                'text' => 'naughton.io verification number: ' . $verification->verify_code
+            ]);
+        } catch (Exception $exception) {
+            return redirect()->to('/phone')
+                ->withErrors(['code' => 'There was an error sending the text, please try again.'])
+                ->with(['phone' => isset($verification) ? $verification->pending_phone : null]);
+        }
     }
 }
