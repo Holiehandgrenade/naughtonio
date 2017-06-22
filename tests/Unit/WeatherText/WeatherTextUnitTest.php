@@ -27,7 +27,7 @@ class WeatherTextUnitTest extends TestCase
         $userTwo = factory(User::class)->create();
 
         $weatherTextOne = new WeatherText([
-            'time' => Carbon::now()->addMinutes(5)->format('H:i'),
+            'time' => Carbon::now()->format('H:i'),
             'active' => 1,
         ]);
         $weatherTextTwo = new WeatherText([
@@ -38,7 +38,7 @@ class WeatherTextUnitTest extends TestCase
         $userOne->weatherText()->save($weatherTextOne);
         $userTwo->weatherText()->save($weatherTextTwo);
 
-        $fiftenMinutes = WeatherText::withinFifteenMinutes()->get();
+        $fiftenMinutes = WeatherText::current()->get();
 
         $this->assertTrue($fiftenMinutes->pluck('time')->contains($weatherTextOne->time));
         $this->assertFalse($fiftenMinutes->pluck('time')->contains($weatherTextTwo->time));
