@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\WeatherText\WeatherText;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -36,8 +37,22 @@ class TextUserWithWeatherUpdate implements ShouldQueue
     {
         $user = $this->weatherText->user;
 
-        $weather = DarkSky::location($user->latitude, $user->longitude)
-            ->daily()[0];
+        // get hourly weather for next 24 hours
+        $weather = collect(DarkSky::location($user->latitude, $user->longitude)
+            ->hourly())
+            ->take(24);
+
+        $maxTemp = $weather->max('temperature');
+        $minTemp = $weather->min('temperature');
+
+        $highestRain = $weather->where('precipProbability', $weather->max('precipProbability'))->sortBy('time')->values();
+        $midHighestRain = $highestRain[(int)floor($highestRain->count() / 2)];
+
+        $highestTemp = $weather->where('temperature', $maxTemp)->sortBy('time')->values();
+        $midHighestTemp = $highestTemp[(int)floor($highestTemp->count() / 2)];
+
+        $lowestTemp = $weather->where('temperature', $minTemp)->sortBy('time')->values();
+        $midLowestTemp = $lowestTemp[(int)floor($lowestTemp->count() / 2)];
 
         $url = 'https://rest.nexmo.com/sms/json?' . http_build_query(
                 [
@@ -45,11 +60,16 @@ class TextUserWithWeatherUpdate implements ShouldQueue
                     'api_secret' => getenv('NEXMO_SECRET'),
                     'to' => $user->calling_code . $user->phone,
                     'from' => getenv('NEXMO_PHONE_NUMBER'),
-                    'text' =>   'High: ' . $weather->temperatureMax . "\n" .
-                        'Low: ' . $weather->temperatureMin . "\n" .
-                        'Rain: ' . $weather->precipProbability * 100 . "%\n" .
-                        'Humidity: ' . $weather->humidity * 100 . "%\n" .
-                        'Summary: ' . $weather->summary,
+                    'text' =>   'High: ' . $maxTemp .
+                        " at " . Carbon::createFromTimestamp($midHighestTemp->time)->timezone($user->timezone)->format('h:i a') . "\n" .
+
+                        'Low: ' . $minTemp .
+                        " at " . Carbon::createFromTimestamp($midLowestTemp->time)->timezone($user->timezone)->format('h:i a') . "\n" .
+
+                        'Highest Rain Chance: ' . $midHighestRain->precipProbability * 100 . "%" .
+                        " at " . Carbon::createFromTimestamp($midHighestRain->time)->timezone($user->timezone)->format('h:i a') . "\n" .
+
+                        'Humidity: ' . ceil($weather->avg('humidity') * 100) . "%",
                 ]
             );
 
