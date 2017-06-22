@@ -17,6 +17,7 @@ use App\Models\WeatherText\WeatherText;
 
 Artisan::command('weatherText', function () {
     WeatherText::current()
+        ->active()
         ->get()
         ->each(function ($w) {
             dispatch(new TextUserWithWeatherUpdate($w));
