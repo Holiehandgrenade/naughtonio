@@ -22,11 +22,9 @@ class WeatherText extends Model
             ->format('H:i');
     }
 
-    public function scopeWithinFifteenMinutes($query)
+    public function scopeCurrent($query)
     {
-        $ago = Carbon::now()->subSeconds(450)->format('H:i');
-        $future = Carbon::now()->addSeconds(450)->format('H:i');
-return $query;
-//        return $query->whereBetween('time', [$ago, $future]);
+        $now = Carbon::now()->format('H:i');
+        return $query->where('time', $now);
     }
 }
