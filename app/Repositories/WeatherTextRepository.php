@@ -25,9 +25,7 @@ class WeatherTextRepository
         }
 
         $user->update([
-            'phone' => $data['phone'],
             'timezone' => $data['timezone'],
-            'zip' => $data['zip'],
         ]);
 
         $time = Carbon::createFromFormat('H:i', $data['time'], $data['timezone'])
@@ -40,8 +38,6 @@ class WeatherTextRepository
         ]);
 
         $user->weatherText()->save($weatherText);
-
-        dispatch(new AddLatLongFromZipToUser($user, $user->fresh()->zip));
     }
 
     public function getTimezones()
