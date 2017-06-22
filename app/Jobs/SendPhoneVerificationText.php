@@ -49,4 +49,16 @@ class SendPhoneVerificationText implements ShouldQueue
             throw new VerificationTextFailedException();
         }
     }
+
+    /**
+     * The job failed to process.
+     *
+     * @param  Exception $exception
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function failed(Exception $exception)
+    {
+        return redirect()->to('/phone')
+            ->withErrors(['code' => 'There was an error sending the verification text. Please try again.']);
+    }
 }
