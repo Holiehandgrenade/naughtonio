@@ -60,13 +60,13 @@ class TextUserWithWeatherUpdate implements ShouldQueue
                     'api_secret' => getenv('NEXMO_SECRET'),
                     'to' => $user->calling_code . $user->phone,
                     'from' => getenv('NEXMO_PHONE_NUMBER'),
-                    'text' =>   'High: ' . $maxTemp .
+                    'text' =>   'High: ' . ceil($maxTemp) .
                         " at " . Carbon::createFromTimestamp($midHighestTemp->time)->timezone($user->timezone)->format('h:i a') . "\n" .
 
-                        'Low: ' . $minTemp .
+                        'Low: ' . floor($minTemp) .
                         " at " . Carbon::createFromTimestamp($midLowestTemp->time)->timezone($user->timezone)->format('h:i a') . "\n" .
 
-                        'Highest Rain Chance: ' . $midHighestRain->precipProbability * 100 . "%" .
+                        'Highest Rain Chance: ' . ceil($midHighestRain->precipProbability * 100) . "%" .
                         " at " . Carbon::createFromTimestamp($midHighestRain->time)->timezone($user->timezone)->format('h:i a') . "\n" .
 
                         'Humidity: ' . ceil($weather->avg('humidity') * 100) . "%",
