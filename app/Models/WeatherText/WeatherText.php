@@ -27,4 +27,9 @@ class WeatherText extends Model
         $now = Carbon::now()->format('H:i');
         return $query->where('time', $now);
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', '1');
+    }
 }
