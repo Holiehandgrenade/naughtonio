@@ -26,7 +26,7 @@ class WeatherText extends Model
     {
         $ago = Carbon::now()->subSeconds(450)->format('H:i');
         $future = Carbon::now()->addSeconds(450)->format('H:i');
-
-        return $query->whereBetween('time', [$ago, $future]);
+return $query;
+//        return $query->whereBetween('time', [$ago, $future]);
     }
 }

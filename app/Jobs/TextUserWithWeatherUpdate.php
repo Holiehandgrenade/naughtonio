@@ -37,12 +37,26 @@ class TextUserWithWeatherUpdate implements ShouldQueue
         $user = $this->weatherText->user;
 
         $weather = DarkSky::location($user->latitude, $user->longitude)
-                        ->currently();
+            ->daily()[0];
 
-        Nexmo::message()->send([
-            'to' => $user->calling_code . $user->phone,
-            'from' => getenv('NEXMO_PHONE_NUMBER'),
-            'text' => 'Current Temperature: ' . $weather->temperature. ' -- ',
-        ]);
+        $url = 'https://rest.nexmo.com/sms/json?' . http_build_query(
+                [
+                    'api_key' =>  getenv('NEXMO_KEY'),
+                    'api_secret' => getenv('NEXMO_SECRET'),
+                    'to' => $user->calling_code . $user->phone,
+                    'from' => getenv('NEXMO_PHONE_NUMBER'),
+                    'text' =>   'High: ' . $weather->temperatureMax . "\n" .
+                        'Low: ' . $weather->temperatureMin . "\n" .
+                        'Rain: ' . $weather->precipProbability * 100 . "%\n" .
+                        'Humidity: ' . $weather->humidity * 100 . "%\n" .
+                        'Summary: ' . $weather->summary,
+                ]
+            );
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_exec($ch);
     }
 }
+
+
