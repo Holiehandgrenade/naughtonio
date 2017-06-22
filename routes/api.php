@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/phone-inbound', 'PhoneController@inbound');
+// Might be required for Nexmo's pinging, but as far as I know, it's unused
+Route::post('/phone-inbound', 'PhoneController@inbound');

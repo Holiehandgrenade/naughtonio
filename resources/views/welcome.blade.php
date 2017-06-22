@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             html, body {
                 background-color: #fff;
@@ -21,35 +22,7 @@
                 margin: 0;
             }
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
+            a {
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 12px;
@@ -59,37 +32,44 @@
                 text-transform: uppercase;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
+            .content {
+                text-align: center;
             }
+
+            .web-group {
+                margin-top: 6em;
+                margin-bottom: 6em;
+            }
+
+            .space-links > a{
+                margin-bottom: 3em;
+            }
+
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
+        <div class="container content">
+            <div class="web-group">
+                <h1>Account Pages</h1>
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/weather-text">Weather Text</a>
+                </div>
+            </div>
+
+            <div class="web-group">
+                <h1>Public Pages</h1>
+                <div class="row space-links">
+                    <a class="col-xs-6 col-md-4" href="/public/face">Face</a>
+                    <a class="col-xs-6 col-md-4" href="/public/pathfinder">Pathfinder</a>
+                    <a class="col-xs-6 col-md-4" href="/public/genetic-pathfinder">Genetic Pathfinder</a>
+                    <a class="col-xs-6 col-md-4" href="/public/quoridor">Quoridor</a>
+                    <a class="col-xs-6 col-md-4" href="/public/star-wars">Star Wars</a>
+                    <a class="col-xs-6 col-md-4" href="/public/tiny-tables">Tiny Tables</a>
+                    <a class="col-xs-6 col-md-4 col-md-offset-4" href="/public/loans">Loans</a>
                 </div>
             </div>
         </div>
+
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\RequiresPhone;
+use App\Http\Middleware\RequiresZip;
+use App\Http\Middleware\StripsPhoneInput;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -56,5 +59,8 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'requires-zip' => RequiresZip::class,
+        'requires-phone' => RequiresPhone::class,
+        'strips-phone' => StripsPhoneInput::class,
     ];
 }

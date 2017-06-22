@@ -46,4 +46,17 @@ Route::group(['prefix' => 'public'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
 
+    Route::get('/phone', 'PhoneController@show');
+    Route::post('/phone', 'PhoneController@post')->middleware('strips-phone');
+    Route::get('/phone-verify', 'PhoneController@showVerify');
+    Route::post('/phone-verify', 'PhoneController@postVerify')->middleware('throttle:30,1');
+
+    Route::get('/zip', 'ZipController@show');
+    Route::post('/zip', 'ZipController@post');
+
+    Route::group(['prefix' => 'weather-text'], function () {
+        Route::get('/', 'WeatherTextController@show')
+                ->middleware('requires-phone', 'requires-zip');
+        Route::patch('/', 'WeatherTextController@update');
+    });
 });

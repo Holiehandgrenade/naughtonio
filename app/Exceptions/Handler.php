@@ -20,6 +20,8 @@ class Handler extends ExceptionHandler
         \Illuminate\Database\Eloquent\ModelNotFoundException::class,
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
+        VerificationTextFailedException::class,
+        ZipToLatLonFailedException::class,
     ];
 
     /**
@@ -40,10 +42,22 @@ class Handler extends ExceptionHandler
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
+     * @return @mixed
      */
     public function render($request, Exception $exception)
     {
+        $class = get_class($exception);
+
+        switch ($class) {
+            case VerificationTextFailedException::class:
+                return redirect()->to('/phone')
+                    ->withErrors(['code' => 'There was an error sending the verification text. Please try again.']);
+                break;
+            case ZipToLatLonFailedException::class:
+                return redirect()->to('/zip')
+                    ->withErrors(['geocode' => 'There was an error converting zip code to degrees measurements. Please try again.']);
+        }
+
         return parent::render($request, $exception);
     }
 

@@ -41,6 +41,13 @@ return [
             'retry_after' => 90,
         ],
 
+        'dusk-connection' => [
+            'driver' => 'database',
+            'table' => 'jobs',
+            'queue' => 'dusk-queue',
+            'retry_after' => 90,
+        ],
+
         'beanstalkd' => [
             'driver' => 'beanstalkd',
             'host' => 'localhost',
