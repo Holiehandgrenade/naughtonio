@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
 
-        <h4 class="text-center">Receive once a day text summaries of next 24-hour weather</h4>
+        <h4 class="text-center">Receive once a day text summaries of next 16-hour weather</h4>
 
 
         @if(session('success'))
