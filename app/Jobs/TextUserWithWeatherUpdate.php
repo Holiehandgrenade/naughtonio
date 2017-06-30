@@ -40,7 +40,7 @@ class TextUserWithWeatherUpdate implements ShouldQueue
         // get hourly weather for next 24 hours
         $weather = collect(DarkSky::location($user->latitude, $user->longitude)
             ->hourly())
-            ->take(24);
+            ->take(16);
 
         $maxTemp = $weather->max('temperature');
         $minTemp = $weather->min('temperature');

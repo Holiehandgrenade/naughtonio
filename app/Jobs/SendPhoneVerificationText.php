@@ -58,7 +58,6 @@ class SendPhoneVerificationText implements ShouldQueue
      */
     public function failed(Exception $exception)
     {
-        \Log::info('failed');
         return redirect()->to('/phone')
             ->withErrors(['code' => 'There was an error sending the verification text. Please try again.']);
     }
