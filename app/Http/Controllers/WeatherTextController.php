@@ -49,9 +49,7 @@ class WeatherTextController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'zip'       => 'required',
             'time'      => 'required',
-            'phone'     => 'required',
             'timezone'  => 'required',
         ]);
 

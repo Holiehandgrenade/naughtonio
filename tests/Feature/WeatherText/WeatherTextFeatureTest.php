@@ -25,21 +25,18 @@ class WeatherTextFeatureTest extends TestCase
     }
 
     /** @test */
-    public function user_can_post_phone_zip_time_timezone_data()
+    public function user_can_patch_time_timezone_data()
     {
-        $this->expectsJobs(AddLatLongFromZipToUser::class);
-
         $user = factory(User::class)->create(['phone' => null, 'zip' => null]);
         $this->be($user);
 
         $this->patch('weather-text', [
-            'phone' => '5555555555',
-            'zip' => '55555',
             'time' => '13:00',
-            'timezone' => 'EST'
+            'timezone' => 'UTC'
         ])
             ->assertStatus(302);
-        $this->assertDatabaseHas('users', ['phone' => '5555555555', 'zip' => '55555']);
+        $this->assertDatabaseHas('weather_texts', ['time' => '13:00']);
+        $this->assertDatabaseHas('users', ['timezone' => 'UTC']);
     }
 
     /** @test */
