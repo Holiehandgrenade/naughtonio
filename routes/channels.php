@@ -17,11 +17,11 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
-Broadcast::channel('phone-verify.1', function ($user) {
-    \Log::info('route');
-    return true;
-//    $phoneRepo = new PhoneRepository();
-//    $verification = $phoneRepo->getLatestVerificationForUser($user);
-//
-//    return $verification->id == $verificationId;
+Broadcast::channel('phone-verify.{verificationId}', function ($user, $verificationId) {
+    $phoneRepo = new PhoneRepository();
+    $verification = $phoneRepo->getLatestVerificationForUser($user);
+
+    if ( ! $verification) return false;
+
+    return $verification->id == $verificationId;
 });
