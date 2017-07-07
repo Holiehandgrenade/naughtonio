@@ -1776,11 +1776,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        console.log('sdf');
-        // Echo.private(`order.${orderId}`)
-        //     .listen('ShippingStatusUpdated', (e) => {
-        //         console.log(e.update);
-        //     });
+        Echo.private('phone-verify.1').listen('PhoneVerificationSendingFailed', function (e) {
+            console.log(e);
+        });
     }
 });
 

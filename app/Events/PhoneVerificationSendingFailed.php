@@ -23,6 +23,7 @@ class PhoneVerificationSendingFailed implements ShouldBroadcast
      */
     public function __construct($verification)
     {
+        \Log::info('construct');
         $this->verification = $verification;
     }
 
@@ -33,6 +34,7 @@ class PhoneVerificationSendingFailed implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('phone-verify.' . $this->verification->id);
+        \Log::info('broadcastOn');
+        return new PrivateChannel('phone-verify.1');
     }
 }

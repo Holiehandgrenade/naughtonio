@@ -9,11 +9,10 @@
 <script type="text/javascript">
     export default{
         mounted () {
-            console.log('sdf');
-            // Echo.private(`order.${orderId}`)
-            //     .listen('ShippingStatusUpdated', (e) => {
-            //         console.log(e.update);
-            //     });
+            Echo.private(`phone-verify.1`)
+                .listen('PhoneVerificationSendingFailed', (e) => {
+                    console.log(e);
+                });
         }
     }
 </script>
