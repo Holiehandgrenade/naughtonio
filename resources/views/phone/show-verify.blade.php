@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <failed-phone-verification></failed-phone-verification>
+
     <div class="container-fluid">
         @if(session('code'))
             <div class="alert alert-danger col-sm-8 col-sm-offset-2" role="alert">
