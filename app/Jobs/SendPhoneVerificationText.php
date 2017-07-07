@@ -42,7 +42,7 @@ class SendPhoneVerificationText implements ShouldQueue
         try {
             Nexmo::message()->send([
                 'to' => $this->verification->pending_calling_code . $this->verification->pending_phone,
-                'from' => getenv('NEXMO_PHONE_NUMBER') . 23423423,
+                'from' => getenv('NEXMO_PHONE_NUMBER'),
                 'text' => 'naughton.io verification number: ' . $this->verification->verify_code
             ]);
         } catch (\Exception $exception) {

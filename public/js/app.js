@@ -1773,14 +1773,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['verification'],
 
     mounted: function mounted() {
-        Echo.private("phone-verify." + this.verification.id).listen('PhoneVerificationSendingFailed', function (e) {
-            console.log(e);
+        var _this = this;
+
+        $("#errorModal").modal();
+        Echo.private("Phone.Verify." + this.verification.id).listen('PhoneVerificationSendingFailed', function (e) {
+            _this.displayErrorModal();
         });
+    },
+
+
+    methods: {
+        displayErrorModal: function displayErrorModal() {
+            $("#errorModal").modal();
+        }
     }
 });
 
@@ -4283,7 +4306,7 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(36)();
-exports.push([module.i, "\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 36 */
@@ -37463,8 +37486,29 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div')
-},staticRenderFns: []}
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "modal fade",
+    attrs: {
+      "id": "errorModal",
+      "role": "dialog"
+    }
+  }, [_c('div', {
+    staticClass: "modal-dialog"
+  }, [_c('div', {
+    staticClass: "modal-content"
+  }, [_c('div', {
+    staticClass: "modal-body",
+    staticStyle: {
+      "text-align": "center"
+    }
+  }, [_c('p', [_vm._v("There was an error in sending the verification code")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "/phone"
+    }
+  }, [_vm._v("Please try submitting again")])])])])])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
