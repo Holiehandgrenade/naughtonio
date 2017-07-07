@@ -45,7 +45,7 @@ class SendPhoneVerificationText implements ShouldQueue
                 'from' => getenv('NEXMO_PHONE_NUMBER') . 223432,
                 'text' => 'naughton.io verification number: ' . $this->verification->verify_code
             ]);
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             throw new VerificationTextFailedException();
         }
     }
@@ -58,8 +58,6 @@ class SendPhoneVerificationText implements ShouldQueue
      */
     public function failed(Exception $exception)
     {
-        \Log::info($this->verification->id);
-
-//        event(new PhoneVerificationSendingFailed($this->verification));
+        event(new PhoneVerificationSendingFailed($this->verification));
     }
 }
