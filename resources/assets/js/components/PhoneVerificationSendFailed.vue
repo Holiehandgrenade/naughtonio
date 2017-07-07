@@ -32,7 +32,6 @@
 
         methods: {
             displayErrorModal () {
-                console.log('display');
                 $("#errorModal").modal()
             },
         },
