@@ -7,6 +7,9 @@
 
         <title>Laravel</title>
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -48,7 +51,7 @@
         </style>
     </head>
     <body>
-        <div class="container content">
+        <div id="app" class="container content">
             <div class="web-group">
                 <h1>Account Pages</h1>
                 <div class="links">

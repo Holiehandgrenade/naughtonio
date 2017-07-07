@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <failed-phone-verification
+        :verification="{{ $phoneVerification }}"
+    >
+    </failed-phone-verification>
+
     <div class="container-fluid">
         @if(session('code'))
             <div class="alert alert-danger col-sm-8 col-sm-offset-2" role="alert">
@@ -23,7 +29,7 @@
             <div class="form-group">
                 {!! Form::label('phone', null, ['class' => 'col-sm-2 control-label'], false) !!}
                 <div class="col-sm-9">
-                    {!! Form::text('phone', $phone, ['class' => 'form-control', 'readonly']) !!}
+                    {!! Form::text('phone', json_decode($phoneVerification)->pending_phone, ['class' => 'form-control', 'readonly']) !!}
                 </div>
             </div>
 
