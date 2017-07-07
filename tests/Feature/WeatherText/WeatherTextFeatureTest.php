@@ -100,23 +100,18 @@ class WeatherTextFeatureTest extends TestCase
     /** @test */
     public function if_user_doesnt_have_weather_text_associated_on_patch_then_create()
     {
-        $this->expectsJobs(AddLatLongFromZipToUser::class);
-
         $user = factory(User::class)->create(['phone' => '9999999999']);
         $this->be($user);
 
         $this->assertNull($user->weatherText);
 
         $this->patch('weather-text', [
-            'phone' => '5555555555',
             'timezone' => 'EST',
             'active' => true,
             'time' => '07:00',
-            'zip' => '55555',
         ]);
 
         $this->assertDatabaseHas('users', [
-            'phone' => '5555555555',
             'timezone' => 'EST',
         ]);
 
@@ -130,8 +125,6 @@ class WeatherTextFeatureTest extends TestCase
     /** @test */
     public function if_user_has_weather_text_associated_simply_update()
     {
-        $this->expectsJobs(AddLatLongFromZipToUser::class);
-
         $user = factory(User::class)->create(['phone' => '9999999999']);
         $weatherText = new WeatherText([
             'time' => '8:00',
@@ -141,15 +134,12 @@ class WeatherTextFeatureTest extends TestCase
         $this->be($user);
 
         $this->patch('weather-text', [
-            'phone' => '5555555555',
             'timezone' => 'EST',
             'active' => true,
             'time' => '7:00',
-            'zip' => '55555',
         ]);
 
         $this->assertDatabaseHas('users', [
-            'phone' => '5555555555',
             'timezone' => 'EST',
         ]);
         $this->assertDatabaseHas('weather_texts', [
