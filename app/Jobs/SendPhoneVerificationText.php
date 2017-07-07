@@ -58,6 +58,7 @@ class SendPhoneVerificationText implements ShouldQueue
      */
     public function failed(Exception $exception)
     {
+        \Log::info('failed');
         event(new PhoneVerificationSendingFailed($this->verification));
     }
 }

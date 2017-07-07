@@ -1801,6 +1801,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         displayErrorModal: function displayErrorModal() {
+            console.log('display');
             $("#errorModal").modal();
         }
     }

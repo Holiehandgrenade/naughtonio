@@ -18,6 +18,7 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 });
 
 Broadcast::channel('Phone.Verify.{verificationId}', function ($user, $verificationId) {
+    \Log::info('channel');
     $phoneRepo = new PhoneRepository();
     $verification = $phoneRepo->getLatestVerificationForUser($user);
 
