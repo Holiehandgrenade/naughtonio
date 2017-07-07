@@ -848,10 +848,7 @@ window.Vue = __webpack_require__(56);
 Vue.component('example', __webpack_require__(43));
 Vue.component('weathertext-phone-input', __webpack_require__(46));
 Vue.component('numeric-input', __webpack_require__(44));
-<<<<<<< HEAD
-=======
 Vue.component('failed-phone-verification', __webpack_require__(45));
->>>>>>> weather-text
 
 var app = new Vue({
   el: '#app'
@@ -1763,14 +1760,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 31 */,
-/* 32 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-<<<<<<< HEAD
-=======
 //
 //
 //
@@ -1818,7 +1812,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
->>>>>>> weather-text
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_masked_input__ = __webpack_require__(52);
 //
 //
@@ -1863,11 +1856,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 33 */
-<<<<<<< HEAD
-/***/ (function(module, exports, __webpack_require__) {
-=======
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
->>>>>>> weather-text
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
@@ -4312,10 +4301,6 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ }),
-<<<<<<< HEAD
-/* 35 */,
-/* 36 */,
-=======
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4379,7 +4364,6 @@ module.exports = function() {
 
 
 /***/ }),
->>>>>>> weather-text
 /* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15164,9 +15148,6 @@ return jQuery;
 
 
 /***/ }),
-<<<<<<< HEAD
-/* 39 */,
-=======
 /* 39 */
 /***/ (function(module, exports) {
 
@@ -15940,7 +15921,6 @@ var Echo = function () {
 module.exports = Echo;
 
 /***/ }),
->>>>>>> weather-text
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -33223,12 +33203,6 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-<<<<<<< HEAD
-/* 42 */,
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-=======
 /* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37370,7 +37344,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
->>>>>>> weather-text
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(29),
@@ -37436,12 +37409,6 @@ module.exports = Component.exports
 
 
 /***/ }),
-<<<<<<< HEAD
-/* 45 */,
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-=======
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37449,13 +37416,10 @@ module.exports = Component.exports
 /* styles */
 __webpack_require__(53)
 
->>>>>>> weather-text
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(32),
+  __webpack_require__(31),
   /* template */
-<<<<<<< HEAD
-=======
   __webpack_require__(47),
   /* scopeId */
   null,
@@ -37490,7 +37454,6 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(32),
   /* template */
->>>>>>> weather-text
   __webpack_require__(50),
   /* scopeId */
   null,
@@ -37518,9 +37481,6 @@ module.exports = Component.exports
 
 
 /***/ }),
-<<<<<<< HEAD
-/* 47 */,
-=======
 /* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37557,7 +37517,6 @@ if (false) {
 }
 
 /***/ }),
->>>>>>> weather-text
 /* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38067,11 +38026,6 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ff_polyfill__["a" /* default 
 
 
 /***/ }),
-<<<<<<< HEAD
-/* 53 */,
-/* 54 */,
-/* 55 */,
-=======
 /* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38352,7 +38306,6 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
->>>>>>> weather-text
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
