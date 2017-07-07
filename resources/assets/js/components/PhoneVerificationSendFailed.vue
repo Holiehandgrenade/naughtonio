@@ -24,7 +24,6 @@
         props: ['verification'],
 
         mounted () {
-            $("#errorModal").modal()
             Echo.private("Phone.Verify." + this.verification.id)
                 .listen('PhoneVerificationSendingFailed', (e) => {
                     this.displayErrorModal();
