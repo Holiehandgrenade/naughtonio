@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Events\PhoneVerificationSendingFailed;
 use App\Exceptions\VerificationTextFailedException;
 use App\Repositories\PhoneRepository;
 use App\User;
@@ -17,7 +18,7 @@ class SendPhoneVerificationText implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $phoneRepo, $user;
+    public $phoneRepo, $user, $verification;
 
     /**
      * Create a new job instance.
@@ -38,12 +39,12 @@ class SendPhoneVerificationText implements ShouldQueue
     {
         try {
             $phoneRepo = new PhoneRepository();
-            $verification = $phoneRepo->getLatestVerificationForUser($this->user);
+            $this->verification = $phoneRepo->getLatestVerificationForUser($this->user);
 
             Nexmo::message()->send([
-                'to' => $verification->pending_calling_code . $verification->pending_phone,
-                'from' => getenv('NEXMO_PHONE_NUMBER'),
-                'text' => 'naughton.io verification number: ' . $verification->verify_code
+                'to' => $this->verification->pending_calling_code . $this->verification->pending_phone,
+                'from' => getenv('NEXMO_PHONE_NUMBER') . 23432432,
+                'text' => 'naughton.io verification number: ' . $this->verification->verify_code
             ]);
         } catch (Exception $exception) {
             throw new VerificationTextFailedException();
@@ -58,7 +59,6 @@ class SendPhoneVerificationText implements ShouldQueue
      */
     public function failed(Exception $exception)
     {
-        return redirect()->to('/phone')
-            ->withErrors(['code' => 'There was an error sending the verification text. Please try again.']);
+        event(new PhoneVerificationSendingFailed($this->verification));
     }
 }
