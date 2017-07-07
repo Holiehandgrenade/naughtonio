@@ -60,8 +60,8 @@ class PhoneController extends Controller
      */
     public function showVerify()
     {
-        $phone = $this->phoneRepo->getLatestVerificationForUser(\Auth::user())->pending_phone;
-        return view('phone.show-verify', compact('phone'));
+        $phoneVerification = $this->phoneRepo->getLatestVerificationForUser(\Auth::user());
+        return view('phone.show-verify', compact('phoneVerification'));
     }
 
     /**
