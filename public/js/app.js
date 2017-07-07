@@ -1775,8 +1775,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['verification'],
+
     mounted: function mounted() {
-        Echo.private('phone-verify.1').listen('PhoneVerificationSendingFailed', function (e) {
+        Echo.private("phone-verify." + this.verification.id).listen('PhoneVerificationSendingFailed', function (e) {
             console.log(e);
         });
     }

@@ -29,7 +29,7 @@
             <div class="form-group">
                 {!! Form::label('phone', null, ['class' => 'col-sm-2 control-label'], false) !!}
                 <div class="col-sm-9">
-                    {!! Form::text('phone', $phoneVerification->pending_phone, ['class' => 'form-control', 'readonly']) !!}
+                    {!! Form::text('phone', json_decode($phoneVerification)->pending_phone, ['class' => 'form-control', 'readonly']) !!}
                 </div>
             </div>
 

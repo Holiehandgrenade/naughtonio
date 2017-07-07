@@ -60,7 +60,7 @@ class PhoneController extends Controller
      */
     public function showVerify()
     {
-        $phoneVerification = $this->phoneRepo->getLatestVerificationForUser(\Auth::user());
+        $phoneVerification = json_encode($this->phoneRepo->getLatestVerificationForUser(\Auth::user()));
         return view('phone.show-verify', compact('phoneVerification'));
     }
 
