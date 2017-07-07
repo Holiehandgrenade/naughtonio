@@ -25,6 +25,10 @@ class PhoneController extends Controller
      */
     public function show()
     {
+        if ( ! session()->get('url.intended')) {
+            session()->put('url.intended', session()->get('_previous.url'));
+        }
+
         return view('phone.show');
     }
 
@@ -94,7 +98,9 @@ class PhoneController extends Controller
             $this->phoneRepo->updateUserPhone($user, $verification);
 
             // redirect to intended url
-            return redirect()->to(session()->get('url.intended'));
+            $url = session()->get('url.intended');
+            session()->forget('url.intended');
+            return redirect()->to($url);
         }
 
         // Incorrect
