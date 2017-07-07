@@ -11,6 +11,17 @@
 |
 */
 
+use App\Repositories\PhoneRepository;
+
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
+});
+
+Broadcast::channel('Phone.Verify.{verificationId}', function ($user, $verificationId) {
+    $phoneRepo = new PhoneRepository();
+    $verification = $phoneRepo->getLatestVerificationForUser($user);
+
+    if ( ! $verification) return false;
+
+    return $verification->id == $verificationId;
 });

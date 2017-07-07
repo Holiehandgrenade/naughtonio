@@ -25,6 +25,10 @@ class PhoneController extends Controller
      */
     public function show()
     {
+        if ( ! session()->get('url.intended')) {
+            session()->put('url.intended', session()->get('_previous.url'));
+        }
+
         return view('phone.show');
     }
 
@@ -60,8 +64,8 @@ class PhoneController extends Controller
      */
     public function showVerify()
     {
-        $phone = $this->phoneRepo->getLatestVerificationForUser(\Auth::user())->pending_phone;
-        return view('phone.show-verify', compact('phone'));
+        $phoneVerification = json_encode($this->phoneRepo->getLatestVerificationForUser(\Auth::user()));
+        return view('phone.show-verify', compact('phoneVerification'));
     }
 
     /**
@@ -94,7 +98,9 @@ class PhoneController extends Controller
             $this->phoneRepo->updateUserPhone($user, $verification);
 
             // redirect to intended url
-            return redirect()->to(session()->get('url.intended'));
+            $url = session()->get('url.intended');
+            session()->forget('url.intended');
+            return redirect()->to($url);
         }
 
         // Incorrect
