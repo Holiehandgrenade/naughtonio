@@ -33,6 +33,6 @@ class PhoneVerificationSendingFailed implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('phone-verify.' . $this->verification->id);
+        return new PrivateChannel('Phone.Verify.' . $this->verification->id);
     }
 }

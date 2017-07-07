@@ -11,7 +11,7 @@
         props: ['verification'],
 
         mounted () {
-            Echo.private("phone-verify." + this.verification.id)
+            Echo.private("Phone.Verify." + this.verification.id)
                 .listen('PhoneVerificationSendingFailed', (e) => {
                     console.log(e);
                 });
