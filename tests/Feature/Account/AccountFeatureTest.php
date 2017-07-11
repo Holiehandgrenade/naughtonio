@@ -3,6 +3,7 @@
 namespace Tests\Feature\Account;
 
 use App\User;
+use Hash;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -63,13 +64,36 @@ class AccountFeatureTest extends TestCase
     }
 
     /** @test */
-    public function user_can_update_username()
+    public function user_can_update_email()
     {
         $user = factory(User::class)->create(['username' => 'me', 'email' => 'a@b.com']);
         $this->be($user);
 
         $this->patch('/account', ['username' => 'me', 'email' => 'else@else.com']);
-//            ->assertStatus(200);
         $this->assertDatabaseHas('users', ['username' => 'me', 'email' => 'else@else.com']);
+    }
+
+    /** @test */
+    public function user_can_update_username()
+    {
+        $user = factory(User::class)->create(['username' => 'me', 'email' => 'a@b.com']);
+        $this->be($user);
+
+        $this->patch('/account', ['username' => 'else', 'email' => 'a@b.com']);
+        $this->assertDatabaseHas('users', ['username' => 'else', 'email' => 'a@b.com']);
+    }
+
+    /** @test */
+    public function user_can_update_password()
+    {
+        $user = factory(User::class)->create(['password' => bcrypt('pass'), 'username' => 'me', 'email' => 'a@b.com']);
+        $this->be($user);
+
+        $this->patch('/account', ['username' => 'me', 'email' => 'a@b.com', 'password' => 'word']);
+
+        $user = $user->fresh();
+
+        $this->assertTrue(Hash::check('word', $user->password));
+        $this->assertFalse(Hash::check('pass', $user->password));
     }
 }

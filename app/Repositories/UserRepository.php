@@ -16,7 +16,11 @@ class UserRepository
 {
     public function updateUser(User $user, Request $request)
     {
-        $user->fill($request->all());
+        $user->fill($request->except('password'));
+
+        if ($request->has('password')) {
+            $user->password = bcrypt($request->input('password'));
+        }
 
         $user->save();
     }

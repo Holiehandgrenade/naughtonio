@@ -15,6 +15,11 @@ class UserController extends Controller
         $this->userRepo = $userRepository;
     }
 
+    /**
+     * Updates user record
+     *
+     * @param Request $request
+     */
     public function update(Request $request)
     {
         $user = \Auth::user();
