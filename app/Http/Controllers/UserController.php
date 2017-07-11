@@ -39,7 +39,7 @@ class UserController extends Controller
         ]);
 
         // If user does not enter correct current password, invalid
-        if ( ! \Hash::check($request->input('current_password'), $user->password)) {
+        if ($request->has('current_password') && ! \Hash::check($request->input('current_password'), $user->password)) {
             return redirect()->back()
                 ->withErrors(['current_password' => 'The current password is incorrect.']);
         }

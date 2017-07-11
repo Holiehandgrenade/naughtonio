@@ -84,17 +84,6 @@ class AccountFeatureTest extends TestCase
     }
 
     /** @test */
-    public function user_can_update_password()
-    {
-        $user = factory(User::class)->create(['password' => bcrypt('pass'), 'username' => 'me', 'email' => 'a@b.com']);
-        $this->be($user);
-
-        $this->patch('/account', ['username' => 'me', 'email' => 'a@b.com', 'password' => 'word']);
-        $this->assertTrue(Hash::check('word', $user->password));
-        $this->assertFalse(Hash::check('pass', $user->password));
-    }
-
-    /** @test */
     public function if_old_password_given_doesnt_match_dont_update_password()
     {
         $user = factory(User::class)->create(['password' => bcrypt('pass'), 'username' => 'me', 'email' => 'a@b.com']);
@@ -109,5 +98,39 @@ class AccountFeatureTest extends TestCase
         ]);
         $this->assertFalse(Hash::check('word', $user->password));
         $this->assertTrue(Hash::check('pass', $user->password));
+    }
+
+    /** @test */
+    public function password_must_be_confirmed()
+    {
+        $user = factory(User::class)->create(['password' => bcrypt('pass'), 'username' => 'me', 'email' => 'a@b.com']);
+        $this->be($user);
+
+        $this->patch('/account', [
+            'username' => 'me',
+            'email' => 'a@b.com',
+            'password' => 'word',
+            'password_confirmation' => 'something_wrong',
+            'current_password' => 'pass',
+        ]);
+        $this->assertFalse(Hash::check('word', $user->password));
+        $this->assertTrue(Hash::check('pass', $user->password));
+    }
+
+    /** @test */
+    public function user_can_update_password()
+    {
+        $user = factory(User::class)->create(['password' => bcrypt('pass'), 'username' => 'me', 'email' => 'a@b.com']);
+        $this->be($user);
+
+        $this->patch('/account', [
+            'username' => 'me',
+            'email' => 'a@b.com',
+            'password' => 'word',
+            'password_confirmation' => 'word',
+            'current_password' => 'pass',
+        ]);
+        $this->assertTrue(Hash::check('word', $user->password));
+        $this->assertFalse(Hash::check('pass', $user->password));
     }
 }
