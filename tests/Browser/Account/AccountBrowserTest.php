@@ -126,4 +126,30 @@ class AccountBrowserTest extends DuskTestCase
             $browser->assertSee('The password confirmation does not match.');
         });
     }
+
+    /** @test */
+    public function all_fields_can_be_updated_when_done_right()
+    {
+        $user = factory(User::class)->create([
+            'username' => 'me',
+            'email' => 'me@me.com',
+            'password' => bcrypt('password')
+        ]);
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit('/account');
+
+            $browser->type('username', 'you')
+                ->type('email', 'you@you.com')
+                ->type('current_password', "password")
+                ->type('password', "new_password")
+                ->type('password_confirmation', "new_password")
+                ->click('input[type="submit"]');
+
+            $browser->assertSee('Record Updated')
+                ->assertInputValue('username','you')
+                ->assertInputValue('email','you@you.com');
+        });
+    }
 }

@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="container-fluid">
+
+        @if(session()->has('success'))
+            <div class="alert alert-success col-sm-offset-2 col-sm-8" role="alert">
+                {{ session()->get('success') }}
+            </div>
+        @endif
+
         {{--<h4 class="text-center">--}}
             {{--This service requires a phone number--}}
         {{--</h4>--}}

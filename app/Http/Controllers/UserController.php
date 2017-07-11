@@ -45,5 +45,7 @@ class UserController extends Controller
         }
 
         $this->userRepo->updateUser($user, $request);
+
+        return back()->with(['success' => 'Record Updated']);
     }
 }
