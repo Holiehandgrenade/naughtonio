@@ -11,8 +11,8 @@ use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class PhoneVerificationBrowserTest extends DuskTestCase
-{
-    use DatabaseMigrations;
+{use DatabaseMigrations;
+
 
     /** @test */
     public function after_phone_submission_redirect_to_verify_page()

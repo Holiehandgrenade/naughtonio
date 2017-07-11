@@ -45,6 +45,8 @@ Route::group(['prefix' => 'public'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/account', 'UserController@show');
+    Route::patch('/account', 'UserController@update');
 
     Route::get('/phone', 'PhoneController@show');
     Route::post('/phone', 'PhoneController@post')->middleware('strips-phone');
