@@ -26,4 +26,104 @@ class AccountBrowserTest extends DuskTestCase
                     ->assertSee('Confirm New Password');
         });
     }
+
+    /** @test */
+    public function username_is_required()
+    {
+        $user = factory(User::class)->create();
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit('/account');
+
+            $browser->type('username', "")
+                    ->click('input[type="submit"]');
+
+            $browser->assertSee('The username field is required.');
+        });
+    }
+
+    /** @test */
+    public function email_is_required()
+    {
+        $user = factory(User::class)->create();
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit('/account');
+
+            $browser->type('email', "")
+                ->click('input[type="submit"]');
+
+            $browser->assertSee('The email field is required.');
+        });
+    }
+
+    /** @test */
+    public function username_must_be_unique()
+    {
+        factory(User::class)->create(['username' => 'unique']);
+        $user = factory(User::class)->create();
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit('/account');
+
+            $browser->type('username', "unique")
+                ->click('input[type="submit"]');
+
+            $browser->assertSee('The username has already been taken.');
+        });
+    }
+
+    /** @test */
+    public function email_must_be_unique()
+    {
+        factory(User::class)->create(['email' => 'unique@unique.com']);
+        $user = factory(User::class)->create();
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit('/account');
+
+            $browser->type('email', "unique@unique.com")
+                ->click('input[type="submit"]');
+
+            $browser->assertSee('The email has already been taken.');
+        });
+    }
+
+    /** @test */
+    public function old_password_must_match()
+    {
+        $user = factory(User::class)->create(['password' => bcrypt('anything')]);
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit('/account');
+
+            $browser->type('current_password', "somethingelse")
+                ->click('input[type="submit"]');
+
+            $browser->assertSee('The current password is incorrect.');
+        });
+    }
+
+    /** @test */
+    public function new_password_must_be_confirmed()
+    {
+        $user = factory(User::class)->create(['password' => bcrypt('password')]);
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit('/account');
+
+            $browser->type('current_password', "password")
+                ->type('password', "new_password")
+                ->type('password_confirmation', "wrong_password")
+                ->click('input[type="submit"]');
+
+            $browser->assertSee('The password confirmation does not match.');
+        });
+    }
 }

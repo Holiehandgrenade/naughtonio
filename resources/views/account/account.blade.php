@@ -26,6 +26,7 @@
                 </div>
             </div>
 
+
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 {!! Form::label('email', null, ['class' => 'col-sm-2 control-label'], false) !!}
                 <div class="col-sm-9">
@@ -46,6 +47,32 @@
                     @if ($errors->has('current_password'))
                         <span class="help-block">
                             <strong>{{ $errors->first('current_password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                {!! Form::label('new password', null, ['class' => 'col-sm-2 control-label'], false) !!}
+                <div class="col-sm-9">
+                    {!! Form::text('password', null, ['class' => 'form-control']) !!}
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+
+            <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                {!! Form::label('confirm new password', null, ['class' => 'col-sm-2 control-label'], false) !!}
+                <div class="col-sm-9">
+                    {!! Form::text('password_confirmation', null, ['class' => 'form-control']) !!}
+                    @if ($errors->has('password_confirmation'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password_confirmation') }}</strong>
                         </span>
                     @endif
                 </div>
