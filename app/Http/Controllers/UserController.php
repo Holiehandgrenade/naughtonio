@@ -15,6 +15,13 @@ class UserController extends Controller
         $this->userRepo = $userRepository;
     }
 
+    public function show()
+    {
+        $user = \Auth::user();
+
+        return view('account.account', compact('user'));
+    }
+
     /**
      * Updates user record
      *
