@@ -50,7 +50,7 @@
             <div class="form-group{{ $errors->has('current_password') ? ' has-error' : '' }}">
                 {!! Form::label('current password', null, ['class' => 'col-sm-2 control-label'], false) !!}
                 <div class="col-sm-9">
-                    {!! Form::text('current_password', null, ['class' => 'form-control']) !!}
+                    {!! Form::password('current_password', ['class' => 'form-control']) !!}
                     @if ($errors->has('current_password'))
                         <span class="help-block">
                             <strong>{{ $errors->first('current_password') }}</strong>
@@ -63,7 +63,7 @@
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                 {!! Form::label('new password', null, ['class' => 'col-sm-2 control-label'], false) !!}
                 <div class="col-sm-9">
-                    {!! Form::text('password', null, ['class' => 'form-control']) !!}
+                    {!! Form::password('password', ['class' => 'form-control']) !!}
                     @if ($errors->has('password'))
                         <span class="help-block">
                             <strong>{{ $errors->first('password') }}</strong>
@@ -76,7 +76,7 @@
             <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                 {!! Form::label('confirm new password', null, ['class' => 'col-sm-2 control-label'], false) !!}
                 <div class="col-sm-9">
-                    {!! Form::text('password_confirmation', null, ['class' => 'form-control']) !!}
+                    {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                     @if ($errors->has('password_confirmation'))
                         <span class="help-block">
                             <strong>{{ $errors->first('password_confirmation') }}</strong>
