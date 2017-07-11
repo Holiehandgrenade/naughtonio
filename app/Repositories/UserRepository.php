@@ -16,7 +16,9 @@ class UserRepository
 {
     public function updateUser(User $user, Request $request)
     {
-        $user->fill($request->except('password'));
+        $user->fill($request->except([
+            'password', 'password_confirmation', 'current_password'
+        ]));
 
         if ($request->has('password')) {
             $user->password = bcrypt($request->input('password'));

@@ -93,4 +93,21 @@ class AccountFeatureTest extends TestCase
         $this->assertTrue(Hash::check('word', $user->password));
         $this->assertFalse(Hash::check('pass', $user->password));
     }
+
+    /** @test */
+    public function if_old_password_given_doesnt_match_dont_update_password()
+    {
+        $user = factory(User::class)->create(['password' => bcrypt('pass'), 'username' => 'me', 'email' => 'a@b.com']);
+        $this->be($user);
+
+        $this->patch('/account', [
+            'username' => 'me',
+            'email' => 'a@b.com',
+            'password' => 'word',
+            'password_confirmation' => 'word',
+            'current_password' => 'something_wrong',
+        ]);
+        $this->assertFalse(Hash::check('word', $user->password));
+        $this->assertTrue(Hash::check('pass', $user->password));
+    }
 }
