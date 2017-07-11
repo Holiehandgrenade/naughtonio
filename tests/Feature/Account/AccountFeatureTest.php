@@ -90,9 +90,6 @@ class AccountFeatureTest extends TestCase
         $this->be($user);
 
         $this->patch('/account', ['username' => 'me', 'email' => 'a@b.com', 'password' => 'word']);
-
-        $user = $user->fresh();
-
         $this->assertTrue(Hash::check('word', $user->password));
         $this->assertFalse(Hash::check('pass', $user->password));
     }
