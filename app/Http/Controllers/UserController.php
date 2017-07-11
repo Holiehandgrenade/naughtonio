@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    private $userRepo;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepo = $userRepository;
+    }
+
     public function update(Request $request)
     {
         $user = \Auth::user();
@@ -16,9 +24,6 @@ class UserController extends Controller
             'email' => ['required', Rule::unique('users')->ignore($user->id, 'id')],
         ]);
 
-
-        $user->fill($request->all());
-
-        $user->save();
+        $this->userRepo->updateUser($user, $request);
     }
 }
