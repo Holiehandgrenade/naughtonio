@@ -22,4 +22,18 @@ class AccountFeatureTest extends TestCase
             ->assertStatus(302);
         $this->assertDatabaseMissing('users', ['email' => 'me@you.com']);
     }
+
+    /** @test */
+    public function username_must_be_unique()
+    {
+        factory(User::class)->create(['username' => 'unique', 'email' => 'unique@unique.com']);
+
+        $user = factory(User::class)->create(['username' => 'me', 'email' => 'a@b.com']);
+        $this->be($user);
+
+        $this->patch('/account', ['username' => 'unique', 'email' => 'a@b.com'])
+            ->assertStatus(302);
+        $this->assertCount(1, \DB::table('users')->where('username', 'unique')->get());
+        $this->assertDatabaseMissing('users', ['username' => 'unique', 'email' => 'a@b.com']);
+    }
 }
