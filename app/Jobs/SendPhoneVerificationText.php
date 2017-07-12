@@ -46,6 +46,8 @@ class SendPhoneVerificationText implements ShouldQueue
                 'text' => 'naughton.io verification number: ' . $this->verification->verify_code
             ]);
         } catch (\Exception $exception) {
+            \Log::info('************************ Verification Text Failed ************************');
+            \Log::info($exception->getMessage());
             throw new VerificationTextFailedException();
         }
     }
