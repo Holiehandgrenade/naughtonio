@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class PhoneVerification extends Model
 {
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     /**
      * Route notifications for the Nexmo channel.
      *

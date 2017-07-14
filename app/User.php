@@ -36,6 +36,11 @@ class User extends Authenticatable
         return $this->calling_code . $this->phone;
     }
 
+    public function phoneVerifications()
+    {
+        return $this->hasMany(PhoneVerification::class);
+    }
+
     /**
      * Strips phone of non numeric characters
      *
