@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe1607227687fb07621ab4ddf8fda4ab",
+    "content-hash": "852a5d6a042447a199122470605b5d8c",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1607,20 +1607,21 @@
         },
         {
             "name": "naughtonium/laravel-dark-sky",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/naughtonium/laravel-dark-sky.git",
-                "reference": "f0cab620a06b528f77264eab78d91af08f9c2748"
+                "reference": "910c1aeab47cf3254dbd4bbcb4acb1b3b191d389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/naughtonium/laravel-dark-sky/zipball/f0cab620a06b528f77264eab78d91af08f9c2748",
-                "reference": "f0cab620a06b528f77264eab78d91af08f9c2748",
+                "url": "https://api.github.com/repos/naughtonium/laravel-dark-sky/zipball/910c1aeab47cf3254dbd4bbcb4acb1b3b191d389",
+                "reference": "910c1aeab47cf3254dbd4bbcb4acb1b3b191d389",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "~5.3|~6.0",
+                "illuminate/support": "5.3.* || 5.4.*",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -1655,7 +1656,7 @@
                 "laravel-dark-sky",
                 "naughtonium"
             ],
-            "time": "2017-06-21T23:31:02+00:00"
+            "time": "2017-07-13T13:53:17+00:00"
         },
         {
             "name": "nesbot/carbon",
