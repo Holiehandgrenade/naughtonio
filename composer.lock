@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe1607227687fb07621ab4ddf8fda4ab",
+    "content-hash": "99add1f70953631a89030eec8c77c571",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1607,20 +1607,21 @@
         },
         {
             "name": "naughtonium/laravel-dark-sky",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/naughtonium/laravel-dark-sky.git",
-                "reference": "f0cab620a06b528f77264eab78d91af08f9c2748"
+                "reference": "910c1aeab47cf3254dbd4bbcb4acb1b3b191d389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/naughtonium/laravel-dark-sky/zipball/f0cab620a06b528f77264eab78d91af08f9c2748",
-                "reference": "f0cab620a06b528f77264eab78d91af08f9c2748",
+                "url": "https://api.github.com/repos/naughtonium/laravel-dark-sky/zipball/910c1aeab47cf3254dbd4bbcb4acb1b3b191d389",
+                "reference": "910c1aeab47cf3254dbd4bbcb4acb1b3b191d389",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "~5.3|~6.0",
+                "illuminate/support": "5.3.* || 5.4.*",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -1655,7 +1656,7 @@
                 "laravel-dark-sky",
                 "naughtonium"
             ],
-            "time": "2017-06-21T23:31:02+00:00"
+            "time": "2017-07-13T13:53:17+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1756,45 +1757,6 @@
             ],
             "description": "PHP Client for using Nexmo's API.",
             "time": "2017-04-04T23:27:54+00:00"
-        },
-        {
-            "name": "nexmo/laravel",
-            "version": "0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Nexmo/nexmo-laravel.git",
-                "reference": "9857550e7464a4443f52711c905a091588887389"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Nexmo/nexmo-laravel/zipball/9857550e7464a4443f52711c905a091588887389",
-                "reference": "9857550e7464a4443f52711c905a091588887389",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^5.2",
-                "nexmo/client": "0.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Nexmo\\Laravel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tim Lytle",
-                    "email": "tim@nexmo.com",
-                    "homepage": "http://twitter.com/tjlytle",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Laravel Package for Nexmo's PHP Client",
-            "time": "2017-04-19T02:43:32+00:00"
         },
         {
             "name": "nikic/php-parser",

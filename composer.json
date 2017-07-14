@@ -14,7 +14,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "naughtonium/laravel-dark-sky": "^1.0",
-        "nexmo/laravel": "^0.4.0",
+        "nexmo/client": "^0.4.0",
         "pusher/pusher-php-server": "^2.6"
     },
     "require-dev": {

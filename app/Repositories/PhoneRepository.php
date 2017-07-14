@@ -28,8 +28,7 @@ class PhoneRepository
 
     public function getLatestVerificationForUser(User $user)
     {
-        return \DB::table('phone_verifications')
-            ->where('user_id', $user->id)
+        return $user->phoneVerifications()
             ->orderByDesc('created_at')
             ->first();
     }
