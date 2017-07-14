@@ -31,10 +31,6 @@ class PhoneRepository
         return $user->phoneVerifications()
             ->orderByDesc('created_at')
             ->first();
-//        return \DB::table('phone_verifications')
-//            ->where('user_id', $user->id)
-//            ->orderByDesc('created_at')
-//            ->first();
     }
 
     public function updateUserPhone(User $user, $verification)
