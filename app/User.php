@@ -27,6 +27,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * Route notifications for the Nexmo channel.
+     *
+     * @return string
+     */
+    public function routeNotificationForNexmo()
+    {
+        return $this->phone;
+    }
+
+    /**
      * Strips phone of non numeric characters
      *
      * @param $phone
