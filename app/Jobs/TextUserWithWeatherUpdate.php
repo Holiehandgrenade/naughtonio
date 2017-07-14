@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\WeatherText\WeatherText;
+use App\Notifications\GenericTextMessage;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -54,28 +55,19 @@ class TextUserWithWeatherUpdate implements ShouldQueue
         $lowestTemp = $weather->where('temperature', $minTemp)->sortBy('time')->values();
         $midLowestTemp = $lowestTemp[(int)floor($lowestTemp->count() / 2)];
 
-        $url = 'https://rest.nexmo.com/sms/json?' . http_build_query(
-                [
-                    'api_key' =>  getenv('NEXMO_KEY'),
-                    'api_secret' => getenv('NEXMO_SECRET'),
-                    'to' => $user->calling_code . $user->phone,
-                    'from' => getenv('NEXMO_PHONE_NUMBER'),
-                    'text' =>   'High: ' . ceil($maxTemp) .
-                        " at " . Carbon::createFromTimestamp($midHighestTemp->time)->timezone($user->timezone)->format('h:i a') . "\n" .
+        $message = 'High: ' . ceil($maxTemp) .
+            " at " . Carbon::createFromTimestamp($midHighestTemp->time)->timezone($user->timezone)->format('h:i a') . "\n" .
 
-                        'Low: ' . floor($minTemp) .
-                        " at " . Carbon::createFromTimestamp($midLowestTemp->time)->timezone($user->timezone)->format('h:i a') . "\n" .
+            'Low: ' . floor($minTemp) .
+            " at " . Carbon::createFromTimestamp($midLowestTemp->time)->timezone($user->timezone)->format('h:i a') . "\n" .
 
-                        'Highest Rain Chance: ' . ceil($midHighestRain->precipProbability * 100) . "%" .
-                        " at " . Carbon::createFromTimestamp($midHighestRain->time)->timezone($user->timezone)->format('h:i a') . "\n" .
+            'Highest Rain Chance: ' . ceil($midHighestRain->precipProbability * 100) . "%" .
+            " at " . Carbon::createFromTimestamp($midHighestRain->time)->timezone($user->timezone)->format('h:i a') . "\n" .
 
-                        'Humidity: ' . ceil($weather->avg('humidity') * 100) . "%",
-                ]
-            );
+            'Humidity: ' . ceil($weather->avg('humidity') * 100) . "%";
 
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_exec($ch);
+
+        $user->notify(new GenericTextMessage($message));
     }
 }
 

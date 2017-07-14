@@ -33,7 +33,7 @@ class User extends Authenticatable
      */
     public function routeNotificationForNexmo()
     {
-        return $this->phone;
+        return $this->calling_code . $this->phone;
     }
 
     /**
