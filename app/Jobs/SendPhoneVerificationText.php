@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Events\PhoneVerificationSendingFailed;
 use App\Exceptions\VerificationTextFailedException;
+use App\Notifications\GenericTextMessage;
 use App\Repositories\PhoneRepository;
 use App\User;
 use Illuminate\Bus\Queueable;
@@ -12,7 +13,6 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use \Exception;
-use Nexmo\Laravel\Facade\Nexmo;
 
 class SendPhoneVerificationText implements ShouldQueue
 {
@@ -40,11 +40,9 @@ class SendPhoneVerificationText implements ShouldQueue
     public function handle()
     {
         try {
-            Nexmo::message()->send([
-                'to' => $this->verification->pending_calling_code . $this->verification->pending_phone,
-                'from' => getenv('NEXMO_PHONE_NUMBER'),
-                'text' => 'naughton.io verification number: ' . $this->verification->verify_code
-            ]);
+            $message = 'naughton.io verification number: ' . $this->verification->verify_code;
+            $this->verification->notify(new GenericTextMessage($message));
+
         } catch (\Exception $exception) {
             \Log::info('************************ Verification Text Failed ************************');
             \Log::info($exception->getMessage());

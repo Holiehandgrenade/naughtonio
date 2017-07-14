@@ -10,7 +10,6 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Nexmo\Laravel\Facade\Nexmo;
 use DarkSky;
 
 class TextUserWithWeatherUpdate implements ShouldQueue
