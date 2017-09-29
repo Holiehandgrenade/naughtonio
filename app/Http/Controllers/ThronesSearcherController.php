@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\BreadthSearcher;
 use App\Repositories\ThronesSearcherRepository;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,9 @@ class ThronesSearcherController extends Controller
 
     public function search(Request $request)
     {
-        dd($request->all());
+        $searcher = new BreadthSearcher();
+
+        $path = $searcher->findChain($request->input('first_character'), $request->input('second_character'));
+        dd($path);
     }
 }

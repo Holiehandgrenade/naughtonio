@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Libraries;
 
 use App\Repositories\ThronesSearcherRepository;
 
@@ -8,15 +8,16 @@ class BreadthSearcher
 {
     public $start, $end, $cameFrom, $characters, $houses, $thronesRepo;
 
-    public function __construct(ThronesSearcherRepository $thronesSearcherRepository)
+    public function __construct()
     {
-        $this->thronesRepo = $thronesSearcherRepository;
+
+        $this->thronesRepo = new ThronesSearcherRepository();
 
         // remove characters who don't have allegiances
         $this->characters = $this->thronesRepo->getAllCharacters();
 
         // get all houses
-        $this->houses = collect(json_decode(\Storage::get('public/houses.json')));
+        $this->houses = $this->thronesRepo->getAllHouses();
     }
 
     public function search()
@@ -122,7 +123,8 @@ class BreadthSearcher
 
         // finally stick the start on the end
         $path->put($characterName = $this->characters->where('Id', $this->start)->first()->Name, '');
-        dd($path);
+
+        return $path;
     }
 
 

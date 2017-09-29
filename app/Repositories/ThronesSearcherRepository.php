@@ -24,4 +24,9 @@ class ThronesSearcherRepository
             return ($n->Spouse || $n->Allegiances) && $n->Name;
         });
     }
+
+    public function getAllHouses()
+    {
+        return collect(json_decode(\Storage::get('public/houses.json')));
+    }
 }
