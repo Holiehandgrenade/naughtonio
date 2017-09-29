@@ -93,8 +93,9 @@ class BreadthSearcher
 
         $found = $this->search();
 
+        // return empty array if no path found
         if ( ! $found) {
-            dd('no connections found');
+            return [];
         }
 
 
@@ -109,11 +110,11 @@ class BreadthSearcher
 
             switch ($method) {
                 case 'married_to':
-                    $path->put($characterName, "Married To");
+                    $path->put($characterName, "marriage");
                     break;
                 case 'shared_house':
                     $house = $this->houses->where('Id', $this->cameFrom[$current]['vessel'])->first()->Name;
-                    $path->put($characterName, "Mutual Allegiance: " . $house);
+                    $path->put($characterName, $house);
                     break;
             }
 
