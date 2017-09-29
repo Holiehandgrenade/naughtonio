@@ -16,4 +16,9 @@ class ThronesSearcherController extends Controller
             });
         return view('public.thronessearcher.show', compact('characters'));
     }
+
+    public function search(Request $request)
+    {
+        dd($request->all());
+    }
 }

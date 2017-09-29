@@ -48085,8 +48085,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['characters'],
@@ -48096,7 +48094,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             characterSelectedOne: null,
             characterSelectedTwo: null,
             characterSelectedIdOne: null,
-            characterSelectedIdTwo: null
+            characterSelectedIdTwo: null,
+            token: $('meta[name="csrf-token"]').attr('content')
         };
     },
 
@@ -48125,7 +48124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(8)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 73 */
@@ -48172,10 +48171,30 @@ module.exports = Component.exports
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('form', {
     attrs: {
-      "action": "/song-of-ice-and-fire-connector",
+      "action": "/public/song-of-ice-and-fire-connector",
       "method": "post"
     }
   }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.token),
+      expression: "token"
+    }],
+    attrs: {
+      "type": "hidden",
+      "name": "_token"
+    },
+    domProps: {
+      "value": (_vm.token)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.token = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -48183,7 +48202,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "characterSelectedIdOne"
     }],
     attrs: {
-      "type": ""
+      "type": "",
+      "name": "characterSelectedIdOne"
     },
     domProps: {
       "value": (_vm.characterSelectedIdOne)
@@ -48228,7 +48248,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "characterSelectedIdTwo"
     }],
     attrs: {
-      "type": ""
+      "type": "",
+      "name": "characterSelectedIdTwo"
     },
     domProps: {
       "value": (_vm.characterSelectedIdTwo)

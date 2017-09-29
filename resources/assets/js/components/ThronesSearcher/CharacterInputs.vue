@@ -1,17 +1,16 @@
 <template>
     <div>
+        <form action="/public/song-of-ice-and-fire-connector" method="post">
+            <input type="hidden" v-model="token" name="_token">
 
-
-        <form action="/song-of-ice-and-fire-connector" method="post">
-
-            <input type="" v-model="characterSelectedIdOne">
+            <input type="" v-model="characterSelectedIdOne" name="characterSelectedIdOne">
             <input type="text" v-model="characterSelectedOne" list="characterDataListOne">
             <datalist id="characterDataListOne">
                 <option v-for="character in characters">{{ character }}</option>
             </datalist>
 
 
-            <input type="" v-model="characterSelectedIdTwo">
+            <input type="" v-model="characterSelectedIdTwo" name="characterSelectedIdTwo">
             <input type="text" v-model="characterSelectedTwo" list="characterDataListTwo">
             <datalist id="characterDataListTwo">
                 <option v-for="character in characters">{{ character }}</option>
@@ -20,7 +19,6 @@
 
             <button type="submit">Search</button>
         </form>
-
     </div>
 </template>
 <style>
@@ -36,6 +34,7 @@
                 characterSelectedTwo: null,
                 characterSelectedIdOne: null,
                 characterSelectedIdTwo: null,
+                token: $('meta[name="csrf-token"]').attr('content'),
             };
         },
 
