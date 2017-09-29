@@ -3,14 +3,14 @@
         <form action="/public/song-of-ice-and-fire-connector" method="post">
             <input type="hidden" v-model="token" name="_token">
 
-            <input type="" v-model="characterSelectedIdOne" name="characterSelectedIdOne">
+            <input type="hidden" v-model="characterSelectedIdOne" name="first_character">
             <input type="text" v-model="characterSelectedOne" list="characterDataListOne">
             <datalist id="characterDataListOne">
                 <option v-for="character in characters">{{ character }}</option>
             </datalist>
 
 
-            <input type="" v-model="characterSelectedIdTwo" name="characterSelectedIdTwo">
+            <input type="hidden" v-model="characterSelectedIdTwo" name="second_character">
             <input type="text" v-model="characterSelectedTwo" list="characterDataListTwo">
             <datalist id="characterDataListTwo">
                 <option v-for="character in characters">{{ character }}</option>

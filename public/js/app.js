@@ -48202,8 +48202,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "characterSelectedIdOne"
     }],
     attrs: {
-      "type": "",
-      "name": "characterSelectedIdOne"
+      "type": "hidden",
+      "name": "first_character"
     },
     domProps: {
       "value": (_vm.characterSelectedIdOne)
@@ -48248,8 +48248,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "characterSelectedIdTwo"
     }],
     attrs: {
-      "type": "",
-      "name": "characterSelectedIdTwo"
+      "type": "hidden",
+      "name": "second_character"
     },
     domProps: {
       "value": (_vm.characterSelectedIdTwo)
