@@ -11,7 +11,7 @@
             </datalist>
 
 
-            <input type="hidden" v-model="characterSelectedIdTwo">
+            <input type="" v-model="characterSelectedIdTwo">
             <input type="text" v-model="characterSelectedTwo" list="characterDataListTwo">
             <datalist id="characterDataListTwo">
                 <option v-for="character in characters">{{ character }}</option>
@@ -42,6 +42,9 @@
         watch: {
             characterSelectedOne (character) {
                 this.characterSelectedIdOne = this.findId(character);
+            },
+            characterSelectedTwo (character) {
+                this.characterSelectedIdTwo = this.findId(character);
             }
         },
 

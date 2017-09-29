@@ -48103,6 +48103,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     watch: {
         characterSelectedOne: function characterSelectedOne(character) {
             this.characterSelectedIdOne = this.findId(character);
+        },
+        characterSelectedTwo: function characterSelectedTwo(character) {
+            this.characterSelectedIdTwo = this.findId(character);
         }
     },
 
@@ -48225,7 +48228,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "characterSelectedIdTwo"
     }],
     attrs: {
-      "type": "hidden"
+      "type": ""
     },
     domProps: {
       "value": (_vm.characterSelectedIdTwo)
