@@ -14,14 +14,14 @@ use Illuminate\Support\Collection;
 class ThronesSearcherRepository
 {
     /**
-     * Returns all characters who have either a spouse or house allegiances
+     * Returns all characters who have either a spouse or house allegiances and has a name
      *
      * @return Collection
      */
     public function getAllCharacters()
     {
         return collect(json_decode(\Storage::get('public/characters.json')))->filter(function ($n) {
-            return $n->Spouse || $n->Allegiances;
+            return ($n->Spouse || $n->Allegiances) && $n->Name;
         });
     }
 }

@@ -14,7 +14,6 @@ class ThronesSearcherController extends Controller
             ->mapWithKeys(function ($char) {
                 return [$char->Id => $char->Name];
             });
-
         return view('public.thronessearcher.show', compact('characters'));
     }
 }

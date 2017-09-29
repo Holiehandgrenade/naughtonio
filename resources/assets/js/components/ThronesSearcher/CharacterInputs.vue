@@ -53,8 +53,10 @@
                     }
                 }
 
-                console.log(this.characterSelectedIdOne);
+                // missing character id
+                if ( ! this.characterSelectedIdOne || ! this.characterSelectedIdTwo) return;
 
+                console.log(this.characterSelectedIdOne);
             }
         },
     }

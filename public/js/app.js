@@ -48114,6 +48114,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }
 
+            // missing character id
+            if (!this.characterSelectedIdOne || !this.characterSelectedIdTwo) return;
+
             console.log(this.characterSelectedIdOne);
         }
     }
