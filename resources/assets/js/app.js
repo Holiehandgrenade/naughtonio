@@ -23,6 +23,7 @@ Vue.component('example', require('./components/Example.vue'));
 Vue.component('weathertext-phone-input', require('./components/WeatherText/PhoneInput.vue'));
 Vue.component('numeric-input', require('./components/NumericInput.vue'));
 Vue.component('failed-phone-verification', require('./components/PhoneVerificationSendFailed.vue'));
+Vue.component('enhanced-data-list', require('./components/EnhancedDataList.vue'));
 
 
 
