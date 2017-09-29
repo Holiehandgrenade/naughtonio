@@ -4,20 +4,21 @@
 
         <form action="/song-of-ice-and-fire-connector" method="post">
 
+            <input type="" v-model="characterSelectedIdOne">
             <input type="text" v-model="characterSelectedOne" list="characterDataListOne">
             <datalist id="characterDataListOne">
                 <option v-for="character in characters">{{ character }}</option>
             </datalist>
 
 
-
+            <input type="hidden" v-model="characterSelectedIdTwo">
             <input type="text" v-model="characterSelectedTwo" list="characterDataListTwo">
             <datalist id="characterDataListTwo">
                 <option v-for="character in characters">{{ character }}</option>
             </datalist>
 
 
-            <button type="submit" @click="submit">Search</button>
+            <button type="submit">Search</button>
         </form>
 
     </div>
@@ -38,26 +39,20 @@
             };
         },
 
+        watch: {
+            characterSelectedOne (character) {
+                this.characterSelectedIdOne = this.findId(character);
+            }
+        },
+
         methods: {
-            submit(e) {
-                e.preventDefault();
-
-                // get character ids
+            findId (character) {
                 for (var i in this.characters) {
-                    if (this.characters[i] == this.characterSelectedOne) {
-                        this.characterSelectedIdOne = i;
-                    }
-
-                    if (this.characters[i] == this.characterSelectedTwo) {
-                        this.characterSelectedIdTwo = i;
+                    if (this.characters[i] == character) {
+                        return i;
                     }
                 }
-
-                // missing character id
-                if ( ! this.characterSelectedIdOne || ! this.characterSelectedIdTwo) return;
-
-                console.log(this.characterSelectedIdOne);
-            }
+            },
         },
     }
 </script>

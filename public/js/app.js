@@ -48086,6 +48086,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['characters'],
@@ -48099,25 +48100,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+    watch: {
+        characterSelectedOne: function characterSelectedOne(character) {
+            this.characterSelectedIdOne = this.findId(character);
+        }
+    },
+
     methods: {
-        submit: function submit(e) {
-            e.preventDefault();
-
-            // get character ids
+        findId: function findId(character) {
             for (var i in this.characters) {
-                if (this.characters[i] == this.characterSelectedOne) {
-                    this.characterSelectedIdOne = i;
-                }
-
-                if (this.characters[i] == this.characterSelectedTwo) {
-                    this.characterSelectedIdTwo = i;
+                if (this.characters[i] == character) {
+                    return i;
                 }
             }
-
-            // missing character id
-            if (!this.characterSelectedIdOne || !this.characterSelectedIdTwo) return;
-
-            console.log(this.characterSelectedIdOne);
         }
     }
 });
@@ -48127,7 +48122,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(8)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 73 */
@@ -48181,6 +48176,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
+      value: (_vm.characterSelectedIdOne),
+      expression: "characterSelectedIdOne"
+    }],
+    attrs: {
+      "type": ""
+    },
+    domProps: {
+      "value": (_vm.characterSelectedIdOne)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.characterSelectedIdOne = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
       value: (_vm.characterSelectedOne),
       expression: "characterSelectedOne"
     }],
@@ -48204,6 +48218,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.characters), function(character) {
     return _c('option', [_vm._v(_vm._s(character))])
   })), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.characterSelectedIdTwo),
+      expression: "characterSelectedIdTwo"
+    }],
+    attrs: {
+      "type": "hidden"
+    },
+    domProps: {
+      "value": (_vm.characterSelectedIdTwo)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.characterSelectedIdTwo = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -48232,9 +48265,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })), _vm._v(" "), _c('button', {
     attrs: {
       "type": "submit"
-    },
-    on: {
-      "click": _vm.submit
     }
   }, [_vm._v("Search")])])])
 },staticRenderFns: []}
