@@ -10,9 +10,12 @@ class ThronesSearcherController extends Controller
     public function show()
     {
         $thronesRepo = new ThronesSearcherRepository();
-        $characters = $thronesRepo->getAllCharacters();
-        dd($characters);
+        $characters = $thronesRepo->getAllCharacters()
+            ->mapWithKeys(function ($char) {
+                return [$char->Id => $char->Name];
+            });
 
-        return view('public.thronessearcher.show');
+        dd($characters);
+        return view('public.thronessearcher.show', compact('characters'));
     }
 }

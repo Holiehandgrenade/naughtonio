@@ -9,8 +9,15 @@
 namespace App\Repositories;
 
 
+use Illuminate\Support\Collection;
+
 class ThronesSearcherRepository
 {
+    /**
+     * Returns all characters who have either a spouse or house allegiances
+     *
+     * @return Collection
+     */
     public function getAllCharacters()
     {
         return collect(json_decode(\Storage::get('public/characters.json')))->filter(function ($n) {
