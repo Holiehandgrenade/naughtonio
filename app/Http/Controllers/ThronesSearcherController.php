@@ -15,7 +15,6 @@ class ThronesSearcherController extends Controller
                 return [$char->Id => $char->Name];
             });
 
-        dd($characters);
         return view('public.thronessearcher.show', compact('characters'));
     }
 }
