@@ -2,16 +2,18 @@
 
 namespace App;
 
+use App\Repositories\ThronesSearcherRepository;
+
 class BreadthSearcher
 {
-    public $start, $end, $cameFrom, $characters, $houses;
+    public $start, $end, $cameFrom, $characters, $houses, $thronesRepo;
 
-    public function __construct()
+    public function __construct(ThronesSearcherRepository $thronesSearcherRepository)
     {
+        $this->thronesRepo = $thronesSearcherRepository;
+
         // remove characters who don't have allegiances
-        $this->characters = collect(json_decode(\Storage::get('public/characters.json')))->filter(function ($n) {
-            return $n->Spouse || $n->Allegiances;
-        });
+        $this->characters = $this->thronesRepo->getAllCharacters();
 
         // get all houses
         $this->houses = collect(json_decode(\Storage::get('public/houses.json')));
