@@ -42,6 +42,8 @@ Route::group(['prefix' => 'public'], function () {
 
     Route::get('jp', 'PublicController@jp');
     Route::post('jp', 'PublicController@jpPost');
+
+    Route::get('song-of-ice-and-fire-connector', 'ThronesSearcherController@show');
 });
 
 Route::group(['middleware' => 'auth'], function () {
