@@ -10,6 +10,8 @@ class ThronesSearcherController extends Controller
 {
     public function show()
     {
+        session()->forget('path');
+
         $thronesRepo = new ThronesSearcherRepository();
         $characters = $thronesRepo->getAllCharacters()
             ->mapWithKeys(function ($char) {
@@ -23,6 +25,9 @@ class ThronesSearcherController extends Controller
         $searcher = new BreadthSearcher();
 
         $path = $searcher->findChain($request->input('first_character'), $request->input('second_character'));
-        dd($path);
+
+        \Session::flash('path', $path);
+
+        return back()->with('path', $path);
     }
 }
