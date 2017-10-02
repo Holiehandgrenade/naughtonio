@@ -2,12 +2,15 @@
 
 @section('content')
         <character-inputs
-            :characters="{{ $characters }}"
+                :characters="{{ $characters }}"
+                selected-one="{{ session()->get('characterSelectedOne') }}"
+                selected-two="{{ session()->get('characterSelectedTwo') }}"
         >
         </character-inputs>
 
-
         @if(session()->has('path'))
-                {{ dd(session()->get('path')) }}
+                @foreach(session()->get('path') as $character)
+                        <p>{{$character}}</p>
+                @endforeach
         @endif
 @endsection

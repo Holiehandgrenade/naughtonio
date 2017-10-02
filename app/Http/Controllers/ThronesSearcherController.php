@@ -10,8 +10,6 @@ class ThronesSearcherController extends Controller
 {
     public function show()
     {
-        session()->forget('path');
-
         $thronesRepo = new ThronesSearcherRepository();
         $characters = $thronesRepo->getAllCharacters()
             ->mapWithKeys(function ($char) {
@@ -24,10 +22,12 @@ class ThronesSearcherController extends Controller
     {
         $searcher = new BreadthSearcher();
 
-        $path = $searcher->findChain($request->input('first_character'), $request->input('second_character'));
+        $path = $searcher->findChain($request->input('first_character_id'), $request->input('second_character_id'));
 
         \Session::flash('path', $path);
+        \Session::flash('characterSelectedOne', $request->input('first_character_name'));
+        \Session::flash('characterSelectedTwo', $request->input('second_character_name'));
 
-        return back()->with('path', $path);
+        return redirect()->to('/public/song-of-ice-and-fire-connector');
     }
 }

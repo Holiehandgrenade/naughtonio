@@ -1122,11 +1122,11 @@ window.Vue = __webpack_require__(61);
 /**
  * Custom Vue Components
  */
-Vue.component('example', __webpack_require__(47));
+Vue.component('example', __webpack_require__(46));
 Vue.component('weathertext-phone-input', __webpack_require__(50));
-Vue.component('numeric-input', __webpack_require__(48));
-Vue.component('failed-phone-verification', __webpack_require__(49));
-Vue.component('character-inputs', __webpack_require__(73));
+Vue.component('numeric-input', __webpack_require__(47));
+Vue.component('failed-phone-verification', __webpack_require__(48));
+Vue.component('character-inputs', __webpack_require__(49));
 
 var app = new Vue({
   el: '#app'
@@ -1980,8 +1980,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 31 */,
-/* 32 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2010,7 +2009,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2039,7 +2038,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2081,6 +2080,72 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         displayErrorModal: function displayErrorModal() {
             $("#errorModal").modal();
+        }
+    }
+});
+
+/***/ }),
+/* 34 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['characters', 'selectedOne', 'selectedTwo'],
+
+    data: function data() {
+        return {
+            characterSelectedOne: this.selectedOne ? this.selectedOne : null, // i did this to not "edit a prop"
+            characterSelectedTwo: this.selectedTwo ? this.selectedTwo : null, // vue doesn't like that and i didn't feel like learning
+            characterSelectedIdOne: null,
+            characterSelectedIdTwo: null,
+            token: $('meta[name="csrf-token"]').attr('content')
+        };
+    },
+
+    watch: {
+        characterSelectedOne: function characterSelectedOne(character) {
+            this.characterSelectedIdOne = this.findId(character);
+        },
+        characterSelectedTwo: function characterSelectedTwo(character) {
+            this.characterSelectedIdTwo = this.findId(character);
+        }
+    },
+
+    methods: {
+        findId: function findId(character) {
+            for (var i in this.characters) {
+                if (this.characters[i] == character) {
+                    return i;
+                }
+            }
         }
     }
 });
@@ -4580,12 +4645,18 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ }),
-/* 38 */,
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(8)();
 exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(8)();
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 40 */
@@ -37565,15 +37636,14 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 /***/ }),
-/* 46 */,
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(32),
+  __webpack_require__(31),
   /* template */
-  __webpack_require__(54),
+  __webpack_require__(53),
   /* scopeId */
   null,
   /* cssModules */
@@ -37600,14 +37670,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(33),
+  __webpack_require__(32),
   /* template */
-  __webpack_require__(53),
+  __webpack_require__(52),
   /* scopeId */
   null,
   /* cssModules */
@@ -37634,18 +37704,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(59)
+__webpack_require__(58)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(34),
+  __webpack_require__(33),
   /* template */
-  __webpack_require__(52),
+  __webpack_require__(51),
   /* scopeId */
   null,
   /* cssModules */
@@ -37672,6 +37742,44 @@ module.exports = Component.exports
 
 
 /***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(59)
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(34),
+  /* template */
+  __webpack_require__(55),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/jack/Sites/naughtonio/resources/assets/js/components/ThronesSearcher/CharacterInputs.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] CharacterInputs.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ee3bd0ee", Component.options)
+  } else {
+    hotAPI.reload("data-v-ee3bd0ee", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
 /* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37679,7 +37787,7 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(35),
   /* template */
-  __webpack_require__(55),
+  __webpack_require__(54),
   /* scopeId */
   null,
   /* cssModules */
@@ -37706,8 +37814,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 51 */,
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -37743,7 +37850,7 @@ if (false) {
 }
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -37769,7 +37876,7 @@ if (false) {
 }
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -37798,7 +37905,7 @@ if (false) {
 }
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -37856,6 +37963,144 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-b5572bd8", module.exports)
+  }
+}
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('form', {
+    attrs: {
+      "action": "/public/song-of-ice-and-fire-connector",
+      "method": "post"
+    }
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.token),
+      expression: "token"
+    }],
+    attrs: {
+      "type": "hidden",
+      "name": "_token"
+    },
+    domProps: {
+      "value": (_vm.token)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.token = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.characterSelectedIdOne),
+      expression: "characterSelectedIdOne"
+    }],
+    attrs: {
+      "type": "hidden",
+      "name": "first_character_id"
+    },
+    domProps: {
+      "value": (_vm.characterSelectedIdOne)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.characterSelectedIdOne = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.characterSelectedOne),
+      expression: "characterSelectedOne"
+    }],
+    attrs: {
+      "type": "text",
+      "list": "characterDataListOne",
+      "name": "first_character_name"
+    },
+    domProps: {
+      "value": (_vm.characterSelectedOne)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.characterSelectedOne = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('datalist', {
+    attrs: {
+      "id": "characterDataListOne"
+    }
+  }, _vm._l((_vm.characters), function(character) {
+    return _c('option', [_vm._v(_vm._s(character))])
+  })), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.characterSelectedIdTwo),
+      expression: "characterSelectedIdTwo"
+    }],
+    attrs: {
+      "type": "hidden",
+      "name": "second_character_id"
+    },
+    domProps: {
+      "value": (_vm.characterSelectedIdTwo)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.characterSelectedIdTwo = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.characterSelectedTwo),
+      expression: "characterSelectedTwo"
+    }],
+    attrs: {
+      "type": "text",
+      "list": "characterDataListTwo",
+      "name": "second_character_name"
+    },
+    domProps: {
+      "value": (_vm.characterSelectedTwo)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.characterSelectedTwo = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('datalist', {
+    attrs: {
+      "id": "characterDataListTwo"
+    }
+  }, _vm._l((_vm.characters), function(character) {
+    return _c('option', [_vm._v(_vm._s(character))])
+  })), _vm._v(" "), _c('button', {
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("Search")])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-ee3bd0ee", module.exports)
   }
 }
 
@@ -38252,14 +38497,13 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ff_polyfill__["a" /* default 
 
 
 /***/ }),
-/* 58 */,
-/* 59 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(39);
+var content = __webpack_require__(38);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -38270,6 +38514,32 @@ if(false) {
  if(!content.locals) {
    module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-2b702318\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PhoneVerificationSendFailed.vue", function() {
      var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-2b702318\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PhoneVerificationSendFailed.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(39);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(9)("e3c8950c", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-ee3bd0ee\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CharacterInputs.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-ee3bd0ee\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CharacterInputs.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -48045,286 +48315,6 @@ module.exports = function(module) {
 __webpack_require__(11);
 module.exports = __webpack_require__(12);
 
-
-/***/ }),
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['characters'],
-
-    data: function data() {
-        return {
-            characterSelectedOne: null,
-            characterSelectedTwo: null,
-            characterSelectedIdOne: null,
-            characterSelectedIdTwo: null,
-            token: $('meta[name="csrf-token"]').attr('content')
-        };
-    },
-
-    watch: {
-        characterSelectedOne: function characterSelectedOne(character) {
-            this.characterSelectedIdOne = this.findId(character);
-        },
-        characterSelectedTwo: function characterSelectedTwo(character) {
-            this.characterSelectedIdTwo = this.findId(character);
-        }
-    },
-
-    methods: {
-        findId: function findId(character) {
-            for (var i in this.characters) {
-                if (this.characters[i] == character) {
-                    return i;
-                }
-            }
-        }
-    }
-});
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(8)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(75)
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(71),
-  /* template */
-  __webpack_require__(74),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/jack/Sites/naughtonio/resources/assets/js/components/ThronesSearcher/CharacterInputs.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] CharacterInputs.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ee3bd0ee", Component.options)
-  } else {
-    hotAPI.reload("data-v-ee3bd0ee", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('form', {
-    attrs: {
-      "action": "/public/song-of-ice-and-fire-connector",
-      "method": "post"
-    }
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.token),
-      expression: "token"
-    }],
-    attrs: {
-      "type": "hidden",
-      "name": "_token"
-    },
-    domProps: {
-      "value": (_vm.token)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.token = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.characterSelectedIdOne),
-      expression: "characterSelectedIdOne"
-    }],
-    attrs: {
-      "type": "hidden",
-      "name": "first_character"
-    },
-    domProps: {
-      "value": (_vm.characterSelectedIdOne)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.characterSelectedIdOne = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.characterSelectedOne),
-      expression: "characterSelectedOne"
-    }],
-    attrs: {
-      "type": "text",
-      "list": "characterDataListOne"
-    },
-    domProps: {
-      "value": (_vm.characterSelectedOne)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.characterSelectedOne = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('datalist', {
-    attrs: {
-      "id": "characterDataListOne"
-    }
-  }, _vm._l((_vm.characters), function(character) {
-    return _c('option', [_vm._v(_vm._s(character))])
-  })), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.characterSelectedIdTwo),
-      expression: "characterSelectedIdTwo"
-    }],
-    attrs: {
-      "type": "hidden",
-      "name": "second_character"
-    },
-    domProps: {
-      "value": (_vm.characterSelectedIdTwo)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.characterSelectedIdTwo = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.characterSelectedTwo),
-      expression: "characterSelectedTwo"
-    }],
-    attrs: {
-      "type": "text",
-      "list": "characterDataListTwo"
-    },
-    domProps: {
-      "value": (_vm.characterSelectedTwo)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.characterSelectedTwo = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('datalist', {
-    attrs: {
-      "id": "characterDataListTwo"
-    }
-  }, _vm._l((_vm.characters), function(character) {
-    return _c('option', [_vm._v(_vm._s(character))])
-  })), _vm._v(" "), _c('button', {
-    attrs: {
-      "type": "submit"
-    }
-  }, [_vm._v("Search")])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-ee3bd0ee", module.exports)
-  }
-}
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(72);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(9)("e3c8950c", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-ee3bd0ee\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CharacterInputs.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-ee3bd0ee\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CharacterInputs.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
 
 /***/ })
 /******/ ]);
