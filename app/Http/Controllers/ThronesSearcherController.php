@@ -28,6 +28,6 @@ class ThronesSearcherController extends Controller
         \Session::flash('characterSelectedOne', $request->input('first_character_name'));
         \Session::flash('characterSelectedTwo', $request->input('second_character_name'));
 
-        return redirect()->to('/public/song-of-ice-and-fire-connector');
+        return redirect()->route('ice-and-fire-form');
     }
 }
