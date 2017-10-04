@@ -27,12 +27,12 @@ class ThronesSearcherController extends Controller
         $searcher = new BreadthSearcher($request->input('first_character_id'), $request->input('second_character_id'));
 
         $path = $searcher->findChain();
-        $characterSelectedOne = $searcher->getStartCharacter()->Name;
-        $characterSelectedTwo = $searcher->getEndCharacter()->Name;
+        $characterSelectedOne = $searcher->getStartCharacter();
+        $characterSelectedTwo = $searcher->getEndCharacter();
 
         \Session::flash('path', $path);
-        \Session::flash('characterSelectedOne', $characterSelectedOne);
-        \Session::flash('characterSelectedTwo', $characterSelectedTwo);
+        \Session::flash('characterSelectedOne', json_encode($characterSelectedOne));
+        \Session::flash('characterSelectedTwo', json_encode($characterSelectedTwo));
 
         return redirect()->route('ice-and-fire-form');
     }

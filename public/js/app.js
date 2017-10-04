@@ -2125,8 +2125,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            characterSelectedOne: this.selectedOne ? this.selectedOne : null, // i did this to not "edit a prop"
-            characterSelectedTwo: this.selectedTwo ? this.selectedTwo : null, // vue doesn't like that and i didn't feel like learning
+            characterSelectedOne: this.selectedOne ? JSON.parse(this.selectedOne).Name : null, // i did this to not "edit a prop"
+            characterSelectedTwo: this.selectedTwo ? JSON.parse(this.selectedTwo).Name : null, // vue doesn't like that and i didn't feel like learning
             characterSelectedIdOne: null,
             characterSelectedIdTwo: null,
             token: $('meta[name="csrf-token"]').attr('content')
@@ -2134,7 +2134,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     mounted: function mounted() {
-        console.log(this.selectedOne);
+        if (this.characterSelectedOne) {
+            this.characterSelectedIdOne = JSON.parse(this.selectedOne).Id;
+        }
+
+        if (this.characterSelectedTwo) {
+            this.characterSelectedIdTwo = JSON.parse(this.selectedTwo).Id;
+        }
     },
 
 
