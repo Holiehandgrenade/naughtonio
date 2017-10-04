@@ -3,12 +3,9 @@
         <form action="/public/song-of-ice-and-fire-connector" method="post">
             <input type="hidden" v-model="token" name="_token">
 
-
-
             <input type="hidden" v-model="characterSelectedIdOne" name="first_character_id">
             <v-select v-model="characterSelectedOne" :options="characters"></v-select>
-
-
+            
             <input type="hidden" v-model="characterSelectedIdTwo" name="second_character_id">
             <v-select v-model="characterSelectedTwo" :options="characters"></v-select>
 
