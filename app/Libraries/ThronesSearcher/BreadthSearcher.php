@@ -8,9 +8,8 @@ class BreadthSearcher
 {
     public $start, $end, $cameFrom, $characters, $houses, $thronesRepo;
 
-    public function __construct()
+    public function __construct($start = null, $end = null)
     {
-
         $this->thronesRepo = new ThronesSearcherRepository();
 
         // remove characters who don't have allegiances
@@ -18,6 +17,12 @@ class BreadthSearcher
 
         // get all houses
         $this->houses = $this->thronesRepo->getAllHouses();
+
+        // start, end, current are all character Ids
+        $this->start = $start ? $start : $this->characters->random()->Id;
+        $this->end = $end ? $end : $this->characters->random()->Id;
+        $this->cameFrom = collect([$this->start => null]);
+
     }
 
     public function search()
@@ -84,13 +89,8 @@ class BreadthSearcher
         return $mappedNeighbors;
     }
 
-    public function findChain($start = null, $end = null)
+    public function findChain()
     {
-        // start, end, current are all character Ids
-        $this->start = $start ? $start : $this->characters->random()->Id;
-        $this->end = $end ? $end : $this->characters->random()->Id;
-        $this->cameFrom = collect([$this->start => null]);
-
         $found = $this->search();
 
         // return empty array if no path found
@@ -136,5 +136,15 @@ class BreadthSearcher
             'method' => $method,
             'vessel' => $vessel
         ];
+    }
+
+    public function getStartCharacter()
+    {
+        return $this->characters->where('Id', $this->start)->first();
+    }
+
+    public function getEndCharacter()
+    {
+        return $this->characters->where('Id', $this->end)->first();
     }
 }
