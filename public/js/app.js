@@ -2116,6 +2116,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['characters', 'selectedOne', 'selectedTwo'],
@@ -4657,7 +4665,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(8)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 40 */
@@ -37972,7 +37980,11 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('form', {
+  return _c('div', {
+    staticStyle: {
+      "padding": "15px"
+    }
+  }, [_c('form', {
     attrs: {
       "action": "/public/song-of-ice-and-fire-connector",
       "method": "post"
@@ -38017,17 +38029,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.characterSelectedIdOne = $event.target.value
       }
     }
-  }), _vm._v(" "), _c('v-select', {
-    attrs: {
-      "options": _vm.characters
-    },
-    model: {
-      value: (_vm.characterSelectedOne),
-      callback: function($$v) {
-        _vm.characterSelectedOne = $$v
-      },
-      expression: "characterSelectedOne"
-    }
   }), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
@@ -38053,6 +38054,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "options": _vm.characters
     },
     model: {
+      value: (_vm.characterSelectedOne),
+      callback: function($$v) {
+        _vm.characterSelectedOne = $$v
+      },
+      expression: "characterSelectedOne"
+    }
+  }), _vm._v(" "), _c('v-select', {
+    attrs: {
+      "options": _vm.characters
+    },
+    model: {
       value: (_vm.characterSelectedTwo),
       callback: function($$v) {
         _vm.characterSelectedTwo = $$v
@@ -38060,6 +38072,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "characterSelectedTwo"
     }
   }), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-info",
     attrs: {
       "type": "submit"
     }
