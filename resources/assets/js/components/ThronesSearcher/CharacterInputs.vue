@@ -1,7 +1,5 @@
 <template>
-    <div
-        style="padding:15px;"
-    >
+
         <form action="/public/song-of-ice-and-fire-connector" method="post">
             <input type="hidden" v-model="token" name="_token">
             <input type="hidden" v-model="characterSelectedIdOne" name="first_character_id">
@@ -20,7 +18,6 @@
 
 
         </form>
-    </div>
 </template>
 <style>
 
