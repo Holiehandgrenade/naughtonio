@@ -12,6 +12,7 @@ class ThronesSearcherController extends Controller
     {
         $thronesRepo = new ThronesSearcherRepository();
         $characters = $thronesRepo->getAllCharacters()
+            ->sortBy('Name')
             ->map(function ($char) {
                 return [
                     'label' => $char->Name,
@@ -19,6 +20,7 @@ class ThronesSearcherController extends Controller
                 ];
             })
             ->values();
+
         return view('public.thronessearcher.show', compact('characters'));
     }
 
