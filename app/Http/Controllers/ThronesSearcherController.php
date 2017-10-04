@@ -14,8 +14,14 @@ class ThronesSearcherController extends Controller
         $characters = $thronesRepo->getAllCharacters()
             ->sortBy('Name')
             ->map(function ($char) {
+                if($char->Aliases){
+                    $nickname = ': ' . $char->Aliases[0];
+                } else {
+                    $nickname = '';
+                }
+
                 return [
-                    'label' => $char->Name,
+                    'label' => $char->Name . $nickname,
                     'value' => $char->Id,
                 ];
             })
