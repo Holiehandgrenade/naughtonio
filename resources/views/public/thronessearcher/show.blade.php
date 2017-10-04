@@ -9,8 +9,8 @@
         </character-inputs>
 
         @if(session()->has('path'))
-                @foreach(session()->get('path') as $character)
-                        <p>{{$character}}</p>
+                @foreach(session()->get('path') as $character => $relation)
+                        {{$character}} : {{ $relation }} <br>
                 @endforeach
         @endif
 @endsection

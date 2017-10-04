@@ -3,18 +3,14 @@
         <form action="/public/song-of-ice-and-fire-connector" method="post">
             <input type="hidden" v-model="token" name="_token">
 
+
+
             <input type="hidden" v-model="characterSelectedIdOne" name="first_character_id">
-            <input type="text" v-model="characterSelectedOne" list="characterDataListOne" name="first_character_name">
-            <datalist id="characterDataListOne">
-                <option v-for="character in characters">{{ character }}</option>
-            </datalist>
+            <v-select v-model="characterSelectedOne" :options="characters"></v-select>
 
 
             <input type="hidden" v-model="characterSelectedIdTwo" name="second_character_id">
-            <input type="text" v-model="characterSelectedTwo" list="characterDataListTwo" name="second_character_name">
-            <datalist id="characterDataListTwo">
-                <option v-for="character in characters">{{ character }}</option>
-            </datalist>
+            <v-select v-model="characterSelectedTwo" :options="characters"></v-select>
 
 
             <button type="submit">Search</button>
@@ -38,23 +34,15 @@
             };
         },
 
+        mounted() {console.log(this.selectedOne);},
+
         watch: {
             characterSelectedOne (character) {
-                this.characterSelectedIdOne = this.findId(character);
+                this.characterSelectedIdOne = character.value;
             },
             characterSelectedTwo (character) {
-                this.characterSelectedIdTwo = this.findId(character);
+                this.characterSelectedIdTwo = character.value;
             }
-        },
-
-        methods: {
-            findId (character) {
-                for (var i in this.characters) {
-                    if (this.characters[i] == character) {
-                        return i;
-                    }
-                }
-            },
         },
     }
 </script>

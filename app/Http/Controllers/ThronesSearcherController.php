@@ -12,9 +12,13 @@ class ThronesSearcherController extends Controller
     {
         $thronesRepo = new ThronesSearcherRepository();
         $characters = $thronesRepo->getAllCharacters()
-            ->mapWithKeys(function ($char) {
-                return [$char->Id => $char->Name];
-            });
+            ->map(function ($char) {
+                return [
+                    'label' => $char->Name,
+                    'value' => $char->Id,
+                ];
+            })
+            ->values();
         return view('public.thronessearcher.show', compact('characters'));
     }
 
