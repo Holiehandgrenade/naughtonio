@@ -16,10 +16,8 @@
                         v-model="characterSelectedTwo" :options="characters"
                 ></v-select>
 
-                <div class="col-xs-12 col-sm-2">
-                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    <button @click="randomize"><i class="fa fa-random" aria-hidden="true"></i></button>
-                </div>
+                <i @click="submit" class="fa fa-search fa-lg" aria-hidden="true"></i>
+                <i @click="randomize" class="fa fa-random fa-lg" aria-hidden="true"></i>
             </div>
         </form>
         </div>
@@ -71,6 +69,9 @@
                 $('input[name="first_character_id"]').val(null);
                 $('input[name="second_character_id"]').val(null);
 
+                this.submit();
+            },
+            submit() {
                 document.getElementById("characterSearchForm").submit();
             },
         },

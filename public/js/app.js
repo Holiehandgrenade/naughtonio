@@ -2127,8 +2127,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['characters', 'selectedOne', 'selectedTwo'],
@@ -2171,6 +2169,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $('input[name="first_character_id"]').val(null);
             $('input[name="second_character_id"]').val(null);
 
+            this.submit();
+        },
+        submit: function submit() {
             document.getElementById("characterSearchForm").submit();
         }
     }
@@ -38089,30 +38090,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "characterSelectedTwo"
     }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "col-xs-12 col-sm-2"
-  }, [_vm._m(0), _vm._v(" "), _c('button', {
+  }), _vm._v(" "), _c('i', {
+    staticClass: "fa fa-search fa-lg",
+    attrs: {
+      "aria-hidden": "true"
+    },
+    on: {
+      "click": _vm.submit
+    }
+  }), _vm._v(" "), _c('i', {
+    staticClass: "fa fa-random fa-lg",
+    attrs: {
+      "aria-hidden": "true"
+    },
     on: {
       "click": _vm.randomize
     }
-  }, [_c('i', {
-    staticClass: "fa fa-random",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })])])], 1)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    attrs: {
-      "type": "submit"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-search",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })])
-}]}
+  })], 1)])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
