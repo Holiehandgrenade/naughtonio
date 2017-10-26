@@ -14,9 +14,13 @@
                         </character-inputs>
 
                         @if(session()->has('path'))
-                                @foreach(session()->get('path') as $character => $relation)
-                                        {{$character}} : {{ $relation }} <br>
-                                @endforeach
+                                @if( ! session()->get('path'))
+                                        <p>no path found</p>
+                                @else
+                                        @foreach(session()->get('path') as $character => $relation)
+                                                {{$character}} : {{ $relation }} <br>
+                                        @endforeach
+                                @endif
                         @endif
                 </div>
         </div>
