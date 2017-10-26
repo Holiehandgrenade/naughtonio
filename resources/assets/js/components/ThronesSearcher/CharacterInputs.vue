@@ -5,20 +5,27 @@
             <input type="hidden" v-model="characterSelectedIdOne" name="first_character_id">
             <input type="hidden" v-model="characterSelectedIdTwo" name="second_character_id">
 
+            <div class="row">
+                <v-select
+                        class="col-md-3"
+                        v-model="characterSelectedOne" :options="characters"
+                ></v-select>
 
-            <v-select
-                    v-model="characterSelectedOne" :options="characters"
-            ></v-select>
+                <v-select
+                        class="col-md-3"
+                        v-model="characterSelectedTwo" :options="characters"
+                ></v-select>
 
-            <v-select
-                    v-model="characterSelectedTwo" :options="characters"
-            ></v-select>
-
-            <button type="submit" class="btn btn-info">Search</button>
+                <button type="submit" class="btn btn-info">Search</button>
+                <button type="submit" class="btn btn-info">Search</button>
+            </div>
         </form>
 </template>
 <style>
-
+    .open-indicator{
+        /* overwrites the arrow icon for the v-select dropdown */
+        right: 25px !important;
+    }
 </style>
 <script type="text/javascript">
     export default{
