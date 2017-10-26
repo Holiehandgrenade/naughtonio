@@ -140,13 +140,14 @@ class BreadthSearcher
         ];
     }
 
+    // since i swapped start and end to correct how the path "reverses" itself, return the swapped characters here
     public function getStartCharacter()
     {
-        return $this->characters->where('Id', $this->start)->first();
+        return $this->characters->where('Id', $this->end)->first();
     }
 
     public function getEndCharacter()
     {
-        return $this->characters->where('Id', $this->end)->first();
+        return $this->characters->where('Id', $this->start)->first();
     }
 }
