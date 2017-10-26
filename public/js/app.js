@@ -2126,6 +2126,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['characters', 'selectedOne', 'selectedTwo'],
@@ -2157,6 +2158,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         characterSelectedTwo: function characterSelectedTwo(character) {
             this.characterSelectedIdTwo = character.value;
+        }
+    },
+
+    methods: {
+        randomize: function randomize(e) {
+            // I had to use jquery instead of updating the v-model values
+            // since the form was not aware of the changes due only to the javascript
+            // Weird, but I'm sure if I understood the vue resolution cycle it would make more sense
+            $('input[name="first_character_id"]').val(null);
+            $('input[name="second_character_id"]').val(null);
+
+            document.getElementById("characterSearchForm").submit();
         }
     }
 });
@@ -37982,10 +37995,11 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('form', {
+  return _c('div', [_c('form', {
     attrs: {
       "action": "/public/song-of-ice-and-fire-connector",
-      "method": "post"
+      "method": "post",
+      "id": "characterSearchForm"
     }
   }, [_c('input', {
     directives: [{
@@ -38050,7 +38064,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('v-select', {
-    staticClass: "col-md-3",
+    staticClass: "col-md-6",
     attrs: {
       "options": _vm.characters
     },
@@ -38080,10 +38094,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Search")]), _vm._v(" "), _c('button', {
     staticClass: "btn btn-info",
-    attrs: {
-      "type": "submit"
+    on: {
+      "click": _vm.randomize
     }
-  }, [_vm._v("Search")])], 1)])
+  }, [_vm._v("Random")])], 1)])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
