@@ -13,15 +13,22 @@
                         >
                         </character-inputs>
 
-                        @if(session()->has('path'))
-                                @if( ! session()->get('path'))
-                                        <p>no path found</p>
-                                @else
-                                        @foreach(session()->get('path') as $character => $relation)
-                                                {{$character}} : {{ $relation }} <br>
-                                        @endforeach
+                        <div style="text-align: center;">
+                                @if(session()->has('path'))
+                                        @if( ! session()->get('path'))
+                                                <p>no path found</p>
+                                        @else
+                                                @foreach(session()->get('path') as $character => $relation)
+                                                        <p class="thrones-searcher-character">
+                                                                {{$character}}
+                                                        </p>
+                                                        <p class="thrones-searcher-relationship">
+                                                                {{ $relation }}
+                                                        </p>
+                                                @endforeach
+                                        @endif
                                 @endif
-                        @endif
+                        </div>
                 </div>
         </div>
 
