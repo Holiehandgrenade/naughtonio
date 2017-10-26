@@ -16,8 +16,12 @@
                         v-model="characterSelectedTwo" :options="characters"
                 ></v-select>
 
-                <i @click="submit" class="fa fa-search fa-lg" aria-hidden="true"></i>
-                <i @click="randomize" class="fa fa-random fa-lg" aria-hidden="true"></i>
+                <div class="col-xs-4 col-sm-2">
+                    <div class="row">
+                        <i @click="submit" class="fa fa-search fa-lg col-xs-offset-2 col-sm-offset-2" aria-hidden="true"></i>
+                        <i @click="randomize" class="fa fa-random fa-lg col-xs-offset-1 col-sm-offset-3" aria-hidden="true"></i>
+                    </div>
+                </div>
             </div>
         </form>
         </div>

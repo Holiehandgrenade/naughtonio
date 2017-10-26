@@ -2127,6 +2127,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['characters', 'selectedOne', 'selectedTwo'],
@@ -38090,8 +38094,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "characterSelectedTwo"
     }
-  }), _vm._v(" "), _c('i', {
-    staticClass: "fa fa-search fa-lg",
+  }), _vm._v(" "), _c('div', {
+    staticClass: "col-xs-4 col-sm-2"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('i', {
+    staticClass: "fa fa-search fa-lg col-xs-offset-2 col-sm-offset-2",
     attrs: {
       "aria-hidden": "true"
     },
@@ -38099,14 +38107,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.submit
     }
   }), _vm._v(" "), _c('i', {
-    staticClass: "fa fa-random fa-lg",
+    staticClass: "fa fa-random fa-lg col-xs-offset-1 col-sm-offset-3",
     attrs: {
       "aria-hidden": "true"
     },
     on: {
       "click": _vm.randomize
     }
-  })], 1)])])
+  })])])], 1)])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
