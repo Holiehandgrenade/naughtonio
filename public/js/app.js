@@ -2127,6 +2127,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['characters', 'selectedOne', 'selectedTwo'],
@@ -38064,7 +38066,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('v-select', {
-    staticClass: "col-md-6",
+    staticClass: "col-xs-12 col-sm-5",
     attrs: {
       "options": _vm.characters
     },
@@ -38076,7 +38078,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "characterSelectedOne"
     }
   }), _vm._v(" "), _c('v-select', {
-    staticClass: "col-md-3",
+    staticClass: "col-xs-12 col-sm-5",
     attrs: {
       "options": _vm.characters
     },
@@ -38087,18 +38089,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "characterSelectedTwo"
     }
-  }), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-info",
-    attrs: {
-      "type": "submit"
-    }
-  }, [_vm._v("Search")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-info",
+  }), _vm._v(" "), _c('div', {
+    staticClass: "col-xs-12 col-sm-2"
+  }, [_vm._m(0), _vm._v(" "), _c('button', {
     on: {
       "click": _vm.randomize
     }
-  }, [_vm._v("Random")])], 1)])])
-},staticRenderFns: []}
+  }, [_c('i', {
+    staticClass: "fa fa-random",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])])], 1)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('button', {
+    attrs: {
+      "type": "submit"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-search",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
