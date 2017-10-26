@@ -15,8 +15,6 @@
             ></v-select>
 
             <button type="submit" class="btn btn-info">Search</button>
-
-
         </form>
 </template>
 <style>

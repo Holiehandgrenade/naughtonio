@@ -19,8 +19,11 @@ class BreadthSearcher
         $this->houses = $this->thronesRepo->getAllHouses();
 
         // start, end, current are all character Ids
-        $this->start = $start ? $start : $this->characters->random()->Id;
-        $this->end = $end ? $end : $this->characters->random()->Id;
+        // yes i know this sets the end to start and the start to end
+        // since the path is created backwards, i do this to make displaying the path easier
+        // considering no one but me is gunna ever read this, haha Jack look at what you did
+        $this->end = $start ? $start : $this->characters->random()->Id;
+        $this->start = $end ? $end : $this->characters->random()->Id;
         $this->cameFrom = collect([$this->start => null]);
 
     }
@@ -97,7 +100,6 @@ class BreadthSearcher
         if ( ! $found) {
             return [];
         }
-
 
         // getting to this point, we can assume a path exists. No risk of infinite while-looping
         $current = $this->end;
