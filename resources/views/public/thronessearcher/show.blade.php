@@ -25,7 +25,7 @@
                                                                 {{$character}}
                                                         </p>
                                                         <p class="thrones-searcher-relationship">
-                                                                <div title="Hi Bryan">{{ $relation }}</div>
+                                                                {{ $relation }}
                                                         </p>
                                                 @endforeach
                                         @endif

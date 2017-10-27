@@ -112,7 +112,7 @@ class BreadthSearcher
 
             switch ($method) {
                 case 'married_to':
-                    $path->put($characterName, "marriage");
+                    $path->put($characterName, "Marriage");
                     break;
                 case 'shared_house':
                     $house = $this->houses->where('Id', $this->cameFrom[$current]['vessel'])->first()->Name;
