@@ -3,16 +3,18 @@
 @section('content')
 
         <div class="container">
-                <div
-                        style="padding:15px;"
-                >
-                        <character-inputs
-                                :characters="{{ $characters }}"
-                                selected-one="{{ session()->get('characterSelectedOne') }}"
-                                selected-two="{{ session()->get('characterSelectedTwo') }}"
-                        >
-                        </character-inputs>
+                <div>
+                        {{--Selection Header--}}
+                        <div style="margin-bottom: 40px;">
+                                <character-inputs
+                                        :characters="{{ $characters }}"
+                                        selected-one="{{ session()->get('characterSelectedOne') }}"
+                                        selected-two="{{ session()->get('characterSelectedTwo') }}"
+                                >
+                                </character-inputs>
+                        </div>
 
+                        {{--Output Body--}}
                         <div style="text-align: center;">
                                 @if(session()->has('path'))
                                         @if( ! session()->get('path'))
@@ -23,12 +25,15 @@
                                                                 {{$character}}
                                                         </p>
                                                         <p class="thrones-searcher-relationship">
-                                                                {{ $relation }}
+                                                                <div title="Hi Bryan">{{ $relation }}</div>
                                                         </p>
                                                 @endforeach
                                         @endif
                                 @endif
                         </div>
+
+                        {{--Footer--}}
+                        <div></div>
                 </div>
         </div>
 

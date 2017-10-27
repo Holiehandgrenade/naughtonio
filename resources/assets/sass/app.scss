@@ -11,9 +11,15 @@
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+body {
+  /* to account for the fixed navbar */
+  padding-top: 70px;
+}
+
 .thrones-searcher-character{
   color: #333333;
   font-size: large;
+  font-weight: 600;
 }
 
 .thrones-searcher-relationship{
