@@ -5,7 +5,7 @@
         <div class="container">
                 <div style="height: 100%;">
                         {{--Selection Header--}}
-                        <h4 style="text-align: center;">Select two characters to find how they're connected</h4>
+                        <h4 style="text-align: center;">Select two Song of Ice and Fire characters to find how they're connected</h4>
                         <div style="margin-bottom: 40px;">
                                 <character-inputs
                                         :characters="{{ $characters }}"
