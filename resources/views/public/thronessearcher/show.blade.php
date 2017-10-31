@@ -18,7 +18,7 @@
                         <div style="text-align: center;">
                                 @if(session()->has('path'))
                                         @if( ! session()->get('path'))
-                                                <p>no path found</p>
+                                                <p>No path found</p>
                                         @else
                                                 @foreach(session()->get('path') as $character => $relation)
                                                         <p class="thrones-searcher-character">

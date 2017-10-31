@@ -11,21 +11,34 @@ class ThronesSearcherController extends Controller
     public function show()
     {
         $thronesRepo = new ThronesSearcherRepository();
-        $characters = $thronesRepo->getAllCharacters()
-            ->sortBy('Name')
-            ->map(function ($char) {
-                if($char->Aliases){
-                    $nickname = ': ' . $char->Aliases[0];
-                } else {
-                    $nickname = '';
-                }
 
-                return [
-                    'label' => $char->Name . $nickname,
-                    'value' => $char->Id,
-                ];
-            })
-            ->values();
+        if ( ! $characters = \Session::get('thrones.characters')) {
+            $characters = $thronesRepo->getAllCharacters();
+
+            // add nicknames to characters who share a name with other characters
+            $characters = $characters->sortBy('Name')
+                ->map(function ($char) use ($characters) {
+
+                    if (count($characters->where('Name', $char->Name)) > 1) {
+                        if($char->Aliases){
+                            $nickname = ': ' . collect($char->Aliases)->random();
+                        } else {
+                            $nickname = '';
+                        }
+                    } else {
+                        $nickname = '';
+                    }
+
+                    return [
+                        'label' => $char->Name . $nickname,
+                        'value' => $char->Id,
+                    ];
+                })
+                ->values();
+
+            // put character array in session for speedy loading
+            \Session::put('thrones.characters', $characters);
+        }
 
         return view('public.thronessearcher.show', compact('characters'));
     }
