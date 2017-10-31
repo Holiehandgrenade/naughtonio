@@ -5,7 +5,7 @@
     <div class="container">
         <p>Inspired by <a href="https://oracleofbacon.org/">The Oracle of Bacon,</a> this program uses a
             <a href="http://www.redblobgames.com/pathfinding/a-star/introduction.html#breadth-first-search">Breadth First Search</a>
-             algorithm to find any possible paths between two given characters.
+             algorithm to find any possible paths between two given characters in the world of A Song of Ice and Fire.
         </p>
 
         <p>The connections between characters are currently defined by if they are at least one of the following:
