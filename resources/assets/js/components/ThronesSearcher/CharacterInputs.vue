@@ -31,6 +31,9 @@
         /* overwrites the arrow icon for the v-select dropdown */
         right: 25px !important;
     }
+    i.fa:hover {
+        color: black;
+    }
 </style>
 <script type="text/javascript">
     export default{
@@ -47,6 +50,14 @@
         },
 
         mounted() {
+            var self = this;
+            $(document).keypress(function(e) {
+                if(e.which == 13) {
+                    // enter pressed
+                    self.submit();
+                }
+            });
+
             if(this.characterSelectedOne) {
                 this.characterSelectedIdOne = JSON.parse(this.selectedOne).Id;
             }

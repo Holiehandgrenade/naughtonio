@@ -2075,6 +2075,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['characters', 'selectedOne', 'selectedTwo'],
@@ -2090,6 +2093,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     mounted: function mounted() {
+        var self = this;
+        $(document).keypress(function (e) {
+            if (e.which == 13) {
+                // enter pressed
+                self.submit();
+            }
+        });
+
         if (this.characterSelectedOne) {
             this.characterSelectedIdOne = JSON.parse(this.selectedOne).Id;
         }
@@ -4631,7 +4642,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(39)();
-exports.push([module.i, "\n.open-indicator{\n    /* overwrites the arrow icon for the v-select dropdown */\n    right: 25px !important;\n}\n", ""]);
+exports.push([module.i, "\n.open-indicator{\n    /* overwrites the arrow icon for the v-select dropdown */\n    right: 25px !important;\n}\ni.fa:hover {\n    color: black;\n}\n", ""]);
 
 /***/ }),
 /* 39 */
