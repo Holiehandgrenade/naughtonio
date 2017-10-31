@@ -57,4 +57,9 @@ class ThronesSearcherController extends Controller
 
         return redirect()->route('ice-and-fire-form');
     }
+
+    public function about()
+    {
+        return view('public.thronessearcher.about');
+    }
 }

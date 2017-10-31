@@ -43,8 +43,12 @@ Route::group(['prefix' => 'public'], function () {
     Route::get('jp', 'PublicController@jp');
     Route::post('jp', 'PublicController@jpPost');
 
-    Route::get('song-of-ice-and-fire-connector', 'ThronesSearcherController@show')->name('ice-and-fire-form');
-    Route::post('song-of-ice-and-fire-connector', 'ThronesSearcherController@search');
+    Route::group(['prefix' => 'song-of-ice-and-fire-connector'], function () {
+        Route::get('/', 'ThronesSearcherController@show')->name('ice-and-fire-form');
+        Route::post('/', 'ThronesSearcherController@search');
+        Route::get('/about', 'ThronesSearcherController@about');
+    });
+
 });
 
 Route::group(['middleware' => 'auth'], function () {

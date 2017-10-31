@@ -2135,7 +2135,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             document.getElementById("characterSearchForm").submit();
         },
         about: function about() {
-            console.log('asdf');
+            window.location.href = '/public/song-of-ice-and-fire-connector/about';
         }
     }
 });

@@ -91,7 +91,7 @@
                 document.getElementById("characterSearchForm").submit();
             },
             about() {
-                console.log('asdf');
+                window.location.href = '/public/song-of-ice-and-fire-connector/about';
             },
         },
     }
