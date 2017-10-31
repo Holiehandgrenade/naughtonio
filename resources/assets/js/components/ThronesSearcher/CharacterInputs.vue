@@ -19,7 +19,8 @@
                 <div class="col-xs-4 col-sm-2">
                     <div class="row">
                         <i @click="submit" class="fa fa-search fa-lg col-xs-offset-2 col-sm-offset-2" aria-hidden="true"></i>
-                        <i @click="randomize" class="fa fa-random fa-lg col-xs-offset-1 col-sm-offset-3" aria-hidden="true"></i>
+                        <i @click="randomize" class="fa fa-random fa-lg col-xs-offset-2 col-sm-offset-2" aria-hidden="true"></i>
+                        <i @click="about" class="fa fa-question-circle fa-lg col-xs-offset-2 col-sm-offset-2" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -88,6 +89,9 @@
             },
             submit() {
                 document.getElementById("characterSearchForm").submit();
+            },
+            about() {
+                console.log('asdf');
             },
         },
     }

@@ -15,7 +15,7 @@
                         </div>
 
                         {{--Output Body--}}
-                        <div style="text-align: center; overflow: scroll; height: 70%;">
+                        <div style="text-align: center;">
                                 @if(session()->has('path'))
                                         @if( ! session()->get('path'))
                                                 <p>No path found</p>
@@ -33,14 +33,7 @@
                         </div>
 
                         {{--Footer--}}
-                        <div style="position: fixed; bottom: 30px; border: 1px solid; margin-top: 40px;" class="row col-xs-12">
-                                <div class="col-xs-4">
-                                        <a>About the algorithm</a>
-                                </div>
-                                <div class="col-xs-4 col-xs-offset-4">
-                                        <a>Contributing to the library</a>
-                                </div>
-                        </div>
+                        <div></div>
                 </div>
         </div>
 

@@ -2078,6 +2078,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['characters', 'selectedOne', 'selectedTwo'],
@@ -2132,6 +2133,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         submit: function submit() {
             document.getElementById("characterSearchForm").submit();
+        },
+        about: function about() {
+            console.log('asdf');
         }
     }
 });
@@ -38118,12 +38122,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.submit
     }
   }), _vm._v(" "), _c('i', {
-    staticClass: "fa fa-random fa-lg col-xs-offset-1 col-sm-offset-3",
+    staticClass: "fa fa-random fa-lg col-xs-offset-2 col-sm-offset-2",
     attrs: {
       "aria-hidden": "true"
     },
     on: {
       "click": _vm.randomize
+    }
+  }), _vm._v(" "), _c('i', {
+    staticClass: "fa fa-question-circle fa-lg col-xs-offset-2 col-sm-offset-2",
+    attrs: {
+      "aria-hidden": "true"
+    },
+    on: {
+      "click": _vm.about
     }
   })])])], 1)])])
 },staticRenderFns: []}
