@@ -43,7 +43,7 @@ Route::group(['prefix' => 'public'], function () {
     Route::get('jp', 'PublicController@jp');
     Route::post('jp', 'PublicController@jpPost');
 
-    Route::group(['prefix' => 'song-of-ice-and-fire-connector'], function () {
+    Route::group(['prefix' => 'six-degrees-of-ice-and-fire'], function () {
         Route::get('/', 'ThronesSearcherController@show')->name('ice-and-fire-form');
         Route::post('/', 'ThronesSearcherController@search');
         Route::get('/about', 'ThronesSearcherController@about');

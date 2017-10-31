@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form action="/public/song-of-ice-and-fire-connector" method="post" id="characterSearchForm">
+        <form action="/public/six-degrees-of-ice-and-fire" method="post" id="characterSearchForm">
             <input type="hidden" v-model="token" name="_token">
             <input type="hidden" v-model="characterSelectedIdOne" name="first_character_id">
             <input type="hidden" v-model="characterSelectedIdTwo" name="second_character_id">
@@ -91,7 +91,7 @@
                 document.getElementById("characterSearchForm").submit();
             },
             about() {
-                window.location.href = '/public/song-of-ice-and-fire-connector/about';
+                window.location.href = '/public/six-degrees-of-ice-and-fire/about';
             },
         },
     }

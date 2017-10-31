@@ -2135,7 +2135,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             document.getElementById("characterSearchForm").submit();
         },
         about: function about() {
-            window.location.href = '/public/song-of-ice-and-fire-connector/about';
+            window.location.href = '/public/six-degrees-of-ice-and-fire/about';
         }
     }
 });
@@ -38019,7 +38019,7 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('form', {
     attrs: {
-      "action": "/public/song-of-ice-and-fire-connector",
+      "action": "/public/six-degrees-of-ice-and-fire",
       "method": "post",
       "id": "characterSearchForm"
     }
