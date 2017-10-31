@@ -62,13 +62,14 @@
             <div class="web-group">
                 <h1>Public Pages</h1>
                 <div class="row space-links">
+                    <a class="col-xs-6 col-md-4" href="{{ route('ice-and-fire-form') }}">6 Degrees of Ice and Fire</a>
                     <a class="col-xs-6 col-md-4" href="/public/face">Face</a>
                     <a class="col-xs-6 col-md-4" href="/public/pathfinder">Pathfinder</a>
                     <a class="col-xs-6 col-md-4" href="/public/genetic-pathfinder">Genetic Pathfinder</a>
                     <a class="col-xs-6 col-md-4" href="/public/quoridor">Quoridor</a>
                     <a class="col-xs-6 col-md-4" href="/public/star-wars">Star Wars</a>
                     <a class="col-xs-6 col-md-4" href="/public/tiny-tables">Tiny Tables</a>
-                    <a class="col-xs-6 col-md-4 col-md-offset-4" href="/public/loans">Loans</a>
+                    <a class="col-xs-6 col-md-4" href="/public/loans">Loans</a>
                 </div>
             </div>
         </div>
