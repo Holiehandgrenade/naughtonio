@@ -2,8 +2,27 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
+//Font Awesome Icons
+@import "font-awesome-4.7.0/css/font-awesome.min.css";
+
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+body {
+  /* to account for the fixed navbar */
+  padding-top: 70px;
+}
+
+.thrones-searcher-character{
+  color: #333333;
+  font-size: large;
+  font-weight: 600;
+}
+
+.thrones-searcher-relationship{
+  color: #333333;
+  font-size: small;
+}

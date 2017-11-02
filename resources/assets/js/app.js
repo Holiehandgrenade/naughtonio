@@ -23,9 +23,10 @@ Vue.component('example', require('./components/Example.vue'));
 Vue.component('weathertext-phone-input', require('./components/WeatherText/PhoneInput.vue'));
 Vue.component('numeric-input', require('./components/NumericInput.vue'));
 Vue.component('failed-phone-verification', require('./components/PhoneVerificationSendFailed.vue'));
+Vue.component('character-inputs', require('./components/ThronesSearcher/CharacterInputs.vue'));
 
-
-
+import vSelect from 'vue-select';
+Vue.component('v-select', vSelect);
 
 const app = new Vue({
     el: '#app'
