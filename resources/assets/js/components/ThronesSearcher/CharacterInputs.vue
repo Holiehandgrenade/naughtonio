@@ -7,12 +7,12 @@
 
             <div class="row">
                 <v-select
-                        class="col-xs-12 col-sm-5"
+                        class="col-xs-12 col-sm-5 character-selector"
                         v-model="characterSelectedOne" :options="characters"
                 ></v-select>
 
                 <v-select
-                        class="col-xs-12 col-sm-5"
+                        class="col-xs-12 col-sm-5 character-selector"
                         v-model="characterSelectedTwo" :options="characters"
                 ></v-select>
 
@@ -34,6 +34,9 @@
     }
     i.fa:hover {
         color: black;
+    }
+    .character-selector {
+        margin-bottom: 15px;
     }
 </style>
 <script type="text/javascript">
