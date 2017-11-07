@@ -16,13 +16,6 @@ class WeatherText extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getTimeAttribute($time)
-    {
-        return Carbon::parse($time)
-            ->setTimezone(new \DateTimeZone($this->user->timezone))
-            ->format('H:i');
-    }
-
     public function scopeCurrent($query)
     {
         $now = Carbon::now()->format('H:i');

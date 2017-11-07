@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -21,8 +22,11 @@ class AddLocalTimeToWeatherTexts extends Migration
 
         // and then i will update each records local time based on their manually fixed global time
         \App\Models\WeatherText\WeatherText::all()->each(function ($w) {
-            // weather text has a getTimeAttribute that converts it to local
-            $w->local_time = $w->time;
+            // weather text had a getTimeAttribute that converted it to local
+            $time = Carbon::parse($w->time)
+                ->setTimezone(new \DateTimeZone($this->user->timezone))
+                ->format('H:i');
+            $w->local_time = $time;
             $w->save();
         });
     }

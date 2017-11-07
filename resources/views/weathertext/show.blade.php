@@ -57,7 +57,7 @@
                 {!! Form::label('time', null, ['class' => 'col-sm-2 control-label'], false) !!}
 
                 <div class="col-sm-9">
-                    {!! Form::select('time', $times, $weatherText ? $weatherText->time : null, ['class' => 'form-control']) !!}
+                    {!! Form::select('time', $times, $weatherText ? $weatherText->local_time : null, ['class' => 'form-control']) !!}
                     @if ($errors->has('time'))
                         <span class="help-block">
                             <strong>{{ $errors->first('time') }}</strong>
