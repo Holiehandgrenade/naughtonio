@@ -37,7 +37,7 @@ class TextUserWithWeatherUpdate implements ShouldQueue
     {
         $user = $this->weatherText->user;
 
-        // get hourly weather for next 24 hours
+        // get hourly weather for next 16 hours
         $weather = collect(DarkSky::location($user->latitude, $user->longitude)
             ->hourly())
             ->take(16);
