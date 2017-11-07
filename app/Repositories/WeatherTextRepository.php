@@ -28,9 +28,7 @@ class WeatherTextRepository
             'timezone' => $data['timezone'],
         ]);
 
-        $time = Carbon::createFromFormat('H:i', $data['time'], $data['timezone'])
-            ->setTimezone(new \DateTimeZone('UTC'))
-            ->format('H:i');
+        $time = $this->getUTCTime($data);
 
         $weatherText->fill([
             'time' => $time,
@@ -38,6 +36,12 @@ class WeatherTextRepository
         ]);
 
         $user->weatherText()->save($weatherText);
+    }
+
+    public function getUTCTime($data) {
+        return Carbon::createFromFormat('H:i', $data['time'], $data['timezone'])
+            ->setTimezone(new \DateTimeZone('UTC'))
+            ->format('H:i');
     }
 
     public function getTimezones()
