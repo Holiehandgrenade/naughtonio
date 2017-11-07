@@ -24,20 +24,12 @@ class WeatherTextController extends Controller
     {
         $user = \Auth::user();
 
-        if ($user->phone == null) {
-
-            // If user doesn't have a phone already, return form
-            return view('weathertext.phone');
-        } else {
-
-            // Else return regular form
-            return view('weathertext.show', [
-                'user'          => $user,
-                'weatherText'   => $user->weatherText,
-                'times'         => $this->weatherTextRepo->getTimes(),
-                'timezones'     => $this->weatherTextRepo->getTimezones(),
-            ]);
-        }
+        return view('weathertext.show', [
+            'user'          => $user,
+            'weatherText'   => $user->weatherText,
+            'times'         => $this->weatherTextRepo->getTimes(),
+            'timezones'     => $this->weatherTextRepo->getTimezones(),
+        ]);
     }
 
     /**
