@@ -31,6 +31,7 @@ class WeatherTextRepository
         $time = $this->getUTCTime($data);
 
         $weatherText->fill([
+            'local_time' => $data['time'],
             'time' => $time,
             'active' => isset($data['active']),
         ]);
