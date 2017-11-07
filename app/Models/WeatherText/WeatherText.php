@@ -2,6 +2,7 @@
 
 namespace App\Models\WeatherText;
 
+use App\Repositories\WeatherTextRepository;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -31,5 +32,17 @@ class WeatherText extends Model
     public function scopeActive($query)
     {
         return $query->where('active', '1');
+    }
+
+    public function updateAlertTime()
+    {
+        $repo = new WeatherTextRepository();
+        $time = $repo->getUTCTime([
+            'time' => $this->local_time,
+            'timezone' => $this->user->timezone,
+        ]);
+
+        $this->time = $time;
+        $this->save();
     }
 }

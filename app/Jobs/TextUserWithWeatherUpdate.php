@@ -67,6 +67,9 @@ class TextUserWithWeatherUpdate implements ShouldQueue
 
 
         $user->notify(new GenericTextMessage($message));
+
+        // due to daylight savings, always try to update the alert time for tomorrow
+        $this->weatherText->updateAlertTime();
     }
 }
 
