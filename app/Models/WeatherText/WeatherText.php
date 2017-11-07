@@ -27,6 +27,16 @@ class WeatherText extends Model
         return $query->where('active', '1');
     }
 
+    public function getTimeAttribute($time)
+    {
+        return Carbon::parse($time)->format('H:i');
+    }
+
+    public function getLocalTimeAttribute($localTime)
+    {
+        return Carbon::parse($localTime)->format('H:i');
+    }
+
     public function updateAlertTime()
     {
         $repo = new WeatherTextRepository();
