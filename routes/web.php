@@ -49,6 +49,8 @@ Route::group(['prefix' => 'public'], function () {
         Route::get('/about', 'ThronesSearcherController@about');
     });
 
+    Route::get('tomswiftly', 'TomSwiftlyController@index');
+
 });
 
 Route::group(['middleware' => 'auth'], function () {
