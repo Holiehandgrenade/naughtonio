@@ -70,6 +70,7 @@
                     <a class="col-xs-6 col-md-4" href="/public/star-wars">Star Wars</a>
                     <a class="col-xs-6 col-md-4" href="/public/tiny-tables">Tiny Tables</a>
                     <a class="col-xs-6 col-md-4" href="/public/loans">Loans</a>
+                    <a class="col-xs-6 col-md-4" href="/public/tomswiftly">Tom Swiftly</a>
                 </div>
             </div>
         </div>
