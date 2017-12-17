@@ -15,7 +15,8 @@
         "laravelcollective/html": "^5.4.0",
         "naughtonium/laravel-dark-sky": "^1.0",
         "nexmo/client": "^0.4.0",
-        "pusher/pusher-php-server": "~3.0"
+        "pusher/pusher-php-server": "~3.0",
+        "thujohn/twitter": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
