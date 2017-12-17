@@ -12,5 +12,7 @@ class TwitterController extends Controller
         $status = $request->input('status');
 
         Twitter::postTweet(['status' => $status]);
+
+        return json_encode(["status" => 200, "message" => "sent tweet"]);
     }
 }
