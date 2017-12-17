@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class TwitterController extends Controller
 {
-    public function tweet($tweet)
+    public function tweet(Request $request)
     {
-        \Log::info($tweet);
+        \Log::info($request->all());
     }
 }
