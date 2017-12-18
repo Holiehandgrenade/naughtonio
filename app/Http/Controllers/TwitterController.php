@@ -14,19 +14,16 @@ class TwitterController extends Controller
         $code = $request->input('code');
 
         $split = str_split($timestamp);
-        \Log::info($split);
+
         foreach($split as $key => $num) {
             $split[$key] = ord($num);
         }
-        \Log::info($split);
 
         if ($code == implode($split)) {
             Twitter::postTweet(['status' => $status]);
 
             return json_encode(["status" => 200, "message" => "sent tweet"]);
         }
-        \Log::info($code);
-        \Log::info(implode($split));
 
         return json_encode(["status" => 400, "message" => "bad code"]);
     }
